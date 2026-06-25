@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens. The neutral palette (background / card / border / muted /
+ * secondary) is shared verbatim with tmpdf for cross-app consistency. The brand
+ * accent is indigo (DESIGN.md §11), and tm-tracker adds two extras: a mint
+ * "completed" shade and pastel gold/silver/bronze medal row tints.
+ */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Brand accent — indigo-600 */
+    --primary: 243.4 75.4% 58.6%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 243.4 75.4% 58.6%;
+
+    --radius: 0.5rem;
+
+    /* Completed-paper shade — mint */
+    --completed: 152 81% 96%;
+    --completed-foreground: 164 86% 20%;
+
+    /* Medal row tints (pastel) */
+    --medal-gold: 55 97% 88%;
+    --medal-silver: 210 40% 94%;
+    --medal-bronze: 27 80% 90%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Indigo-400 reads better on dark */
+    --primary: 234.5 89.5% 73.9%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 234.5 89.5% 73.9%;
+
+    /* Muted deep-green completed shade for dark */
+    --completed: 164 60% 14%;
+    --completed-foreground: 152 60% 80%;
+
+    /* Muted medal tints for dark */
+    --medal-gold: 45 40% 22%;
+    --medal-silver: 215 18% 28%;
+    --medal-bronze: 25 35% 24%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Leaderboard medal row tints — applied to top-3 rows. Kept here (not inline)
+   * so light/dark variants resolve from one place. */
+  .row-gold {
+    background-color: hsl(var(--medal-gold));
+  }
+  .row-silver {
+    background-color: hsl(var(--medal-silver));
+  }
+  .row-bronze {
+    background-color: hsl(var(--medal-bronze));
+  }
+}
+
+/* Scrollbar styling (matches tmpdf) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}

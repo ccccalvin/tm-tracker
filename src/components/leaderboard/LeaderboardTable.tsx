@@ -1,0 +1,99 @@
+import type { AppUser, ClassInfo, LeaderboardEntry } from '@/types';
+import { rankEntries, topPositions } from '@/lib/ranking';
+import { LEADERBOARD_TOP_POSITIONS } from '@/lib/config';
+import { formatCount } from '@/lib/format';
+import { ClassBadge } from '@/components/ClassBadge';
+import { Skeleton } from '@/components/ui';
+import { cn } from '@/lib/cn';
+
+/** Top-3 medal tint helper (classes defined in index.css). */
+function medalClass(rank: number): string {
+  if (rank === 1) return 'row-gold';
+  if (rank === 2) return 'row-silver';
+  if (rank === 3) return 'row-bronze';
+  return '';
+}
+
+/**
+ * One leaderboard row: plain rank · name + class badge · paper count.
+ * Used by the table and (with the same layout) the standalone "You" panel.
+ */
+export function LeaderboardRow({
+  entry,
+  classMap,
+  className,
+  medal = true,
+}: {
+  entry: LeaderboardEntry;
+  classMap: Map<string, ClassInfo>;
+  className?: string;
+  /** Whether to apply the top-3 gold/silver/bronze tint. The standalone "You"
+   * panel passes false so it never reads as a second medal area (DESIGN §6.2). */
+  medal?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        'flex items-center gap-3 rounded-md px-3 py-2.5 text-sm',
+        medal && medalClass(entry.rank),
+        entry.isYou && 'ring-1 ring-primary/40 font-semibold',
+        className,
+      )}
+    >
+      <span className="w-6 shrink-0 text-center tabular-nums text-muted-foreground">
+        {entry.rank}
+      </span>
+      <span className="flex min-w-0 flex-1 items-center gap-2">
+        <span className="truncate">{entry.displayName || 'Unnamed'}</span>
+        <ClassBadge badge={classMap.get(entry.classId)?.badge ?? ''} />
+      </span>
+      <span className="shrink-0 whitespace-nowrap tabular-nums text-muted-foreground">
+        {formatCount(entry.paperCount)}
+      </span>
+    </div>
+  );
+}
+
+/**
+ * The ranked leaderboard for one scope. Pass `classId` undefined for the global
+ * "All" board, or a classId to filter to that class. Shows the top
+ * LEADERBOARD_TOP_POSITIONS rank positions (ties can surface more than that).
+ */
+export function LeaderboardTable({
+  users,
+  myUid,
+  classId,
+  classMap,
+  loading,
+}: {
+  users: AppUser[];
+  myUid: string;
+  classId?: string;
+  classMap: Map<string, ClassInfo>;
+  loading: boolean;
+}) {
+  if (loading) {
+    return (
+      <div className="space-y-2">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Skeleton key={i} className="h-10 w-full" />
+        ))}
+      </div>
+    );
+  }
+
+  const entries = rankEntries(users, myUid, classId);
+  const rows = topPositions(entries, LEADERBOARD_TOP_POSITIONS);
+
+  if (rows.length === 0) {
+    return <p className="py-6 text-center text-sm text-muted-foreground">No ranked students yet.</p>;
+  }
+
+  return (
+    <div className="space-y-1">
+      {rows.map((entry) => (
+        <LeaderboardRow key={entry.uid} entry={entry} classMap={classMap} />
+      ))}
+    </div>
+  );
+}

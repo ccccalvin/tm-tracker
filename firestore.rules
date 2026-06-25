@@ -1,0 +1,92 @@
+rules_version = '2';
+
+// tm-tracker Firestore security rules.
+//
+// Model (DESIGN.md §3/§12):
+//  - The whole app is login-gated: every read requires auth.
+//  - Anyone signed in may read user PROFILES (needed to render the leaderboard
+//    and admin table). Profiles hold no secrets beyond email; scores/notes live
+//    in the private `completions` subcollection.
+//  - A user may edit their OWN profile's display fields, but NOT escalate
+//    privileges: role + isTMStudent are admin-only, and paperCount may only
+//    move by ±1 per write (honor-system logging; admins audit via completions).
+//  - classId locks once onboarded (only admins reassign).
+//  - Scores/notes (completions) are readable only by the owner + admins.
+//  - Classes are admin-managed.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+    function isAdmin() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    // The seed admin — recognised by verified Google email (keep in sync with
+    // src/lib/config.ts BOOTSTRAP_ADMIN_EMAIL).
+    function isBootstrapAdmin() {
+      return isSignedIn() && request.auth.token.email == 'calvintkusnadi@gmail.com';
+    }
+
+    match /users/{uid} {
+      allow read: if isSignedIn();
+
+      // First sign-in: a user creates only their own doc, cannot self-grant
+      // TM/admin (admin allowed only for the bootstrap email).
+      allow create: if isOwner(uid)
+        && request.resource.data.isTMStudent == false
+        && request.resource.data.paperCount == 0
+        && (request.resource.data.role == 'student'
+            || (request.resource.data.role == 'admin' && isBootstrapAdmin()));
+
+      // Admins can change anything. Owners can edit display fields only:
+      //  - role / isTMStudent / email / createdAt are frozen,
+      //  - paperCount may change by at most ±1 (honor-system logging),
+      //  - classId is frozen once onboarded.
+      allow update: if isAdmin()
+        || (isOwner(uid)
+            && request.resource.data.role == resource.data.role
+            && request.resource.data.isTMStudent == resource.data.isTMStudent
+            && request.resource.data.email == resource.data.email
+            && request.resource.data.createdAt == resource.data.createdAt
+            && request.resource.data.paperCount >= resource.data.paperCount - 1
+            && request.resource.data.paperCount <= resource.data.paperCount + 1
+            && (request.resource.data.classId == resource.data.classId
+                || resource.data.onboarded == false));
+
+      allow delete: if isAdmin();
+
+      // Private: scores + notes. Owner reads/writes; admins read (oversight).
+      match /completions/{paperId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow create, update: if isOwner(uid)
+          && (request.resource.data.score == null
+              || (request.resource.data.score is number
+                  && request.resource.data.score >= 0
+                  && request.resource.data.score <= 100));
+        allow delete: if isOwner(uid);
+      }
+
+      match /todos/{paperId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow write: if isOwner(uid);
+      }
+    }
+
+    match /classes/{classId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin() || isBootstrapAdmin();
+    }
+
+    // Default deny.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

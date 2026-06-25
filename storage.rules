@@ -1,0 +1,19 @@
+rules_version = '2';
+
+// tm-tracker Storage rules.
+//  - Any signed-in user can READ papers (the PDFs are login-gated like the rest
+//    of the app — DESIGN.md §9/§27).
+//  - Clients never WRITE: PDFs are uploaded out-of-band with privileged
+//    credentials (scripts/upload-pdfs.mjs or the Firebase console), which bypass
+//    these rules. There is no in-app upload (DESIGN.md §14).
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /papers/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

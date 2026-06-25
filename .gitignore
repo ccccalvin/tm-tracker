@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Source PDFs — these live in Firebase Storage, NOT in the repo (866 MB).
+# The catalog (src/data/catalog.json) is generated from these filenames and IS
+# committed; the PDFs themselves are uploaded via scripts/upload-pdfs.mjs.
+yr12-advn-trials/
+**/*.pdf
+
+# Local env / secrets
+.env
+.env.local
+serviceAccountKey.json
+
+# Firebase emulator state
+.emulator-data/
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Editor / OS
+.DS_Store
+*.tsbuildinfo
+
+# Stale compiled config (tsc emits these from vite.config.ts; Vite must use the .ts)
+vite.config.js
+vite.config.d.ts

@@ -1,0 +1,4882 @@
+{
+  "sets": [
+    {
+      "id": "yr12-advn-trials",
+      "name": "Year 12 Advanced — Trials",
+      "type": "Trials",
+      "count": 487
+    }
+  ],
+  "papers": [
+    {
+      "id": "yr12-advn-trials__abbotsleigh-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Abbotsleigh",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Abbotsleigh 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/abbotsleigh-2006.pdf",
+      "fileName": "Abbotsleigh 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__abbotsleigh-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Abbotsleigh",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Abbotsleigh 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/abbotsleigh-2007.pdf",
+      "fileName": "Abbotsleigh 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__abbotsleigh-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Abbotsleigh",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Abbotsleigh 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/abbotsleigh-2010.pdf",
+      "fileName": "Abbotsleigh 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__abbotsleigh-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Abbotsleigh",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Abbotsleigh 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/abbotsleigh-2011.pdf",
+      "fileName": "Abbotsleigh 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__abbotsleigh-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Abbotsleigh",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Abbotsleigh 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/abbotsleigh-2016.pdf",
+      "fileName": "Abbotsleigh 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__abbotsleigh-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Abbotsleigh",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Abbotsleigh 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/abbotsleigh-2020.pdf",
+      "fileName": "Abbotsleigh 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__abbotsleigh-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Abbotsleigh",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Abbotsleigh 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/abbotsleigh-2021.pdf",
+      "fileName": "Abbotsleigh 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__abbotsleigh-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Abbotsleigh",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Abbotsleigh 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/abbotsleigh-2023.pdf",
+      "fileName": "Abbotsleigh 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__abbotsleigh-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Abbotsleigh",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Abbotsleigh 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/abbotsleigh-2024.pdf",
+      "fileName": "Abbotsleigh 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__ascham-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Ascham",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Ascham 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/ascham-2007.pdf",
+      "fileName": "Ascham 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__ascham-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Ascham",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Ascham 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/ascham-2008.pdf",
+      "fileName": "Ascham 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__ascham-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Ascham",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Ascham 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/ascham-2011.pdf",
+      "fileName": "Ascham 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__ascham-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Ascham",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Ascham 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/ascham-2012.pdf",
+      "fileName": "Ascham 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__ascham-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Ascham",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Ascham 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/ascham-2013.pdf",
+      "fileName": "Ascham 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__ascham-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Ascham",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Ascham 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/ascham-2016.pdf",
+      "fileName": "Ascham 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__ascham-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Ascham",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Ascham 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/ascham-2023.pdf",
+      "fileName": "Ascham 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__ascham-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Ascham",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Ascham 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/ascham-2024.pdf",
+      "fileName": "Ascham 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Barker 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2006.pdf",
+      "fileName": "Barker 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Barker 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2007.pdf",
+      "fileName": "Barker 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Barker 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2010.pdf",
+      "fileName": "Barker 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Barker 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2011.pdf",
+      "fileName": "Barker 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Barker 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2012.pdf",
+      "fileName": "Barker 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Barker 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2014.pdf",
+      "fileName": "Barker 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Barker 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2015.pdf",
+      "fileName": "Barker 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Barker 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2016.pdf",
+      "fileName": "Barker 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Barker 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2019.pdf",
+      "fileName": "Barker 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Barker 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2020.pdf",
+      "fileName": "Barker 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Barker 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2021.pdf",
+      "fileName": "Barker 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Barker 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2022.pdf",
+      "fileName": "Barker 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__barker-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Barker",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Barker 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/barker-2023.pdf",
+      "fileName": "Barker 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Baulkham Hills 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2007.pdf",
+      "fileName": "Baulkham Hills 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Baulkham Hills 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2008.pdf",
+      "fileName": "Baulkham Hills 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Baulkham Hills 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2009.pdf",
+      "fileName": "Baulkham Hills 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Baulkham Hills 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2010.pdf",
+      "fileName": "Baulkham Hills 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Baulkham Hills 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2011.pdf",
+      "fileName": "Baulkham Hills 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Baulkham Hills 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2012.pdf",
+      "fileName": "Baulkham Hills 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Baulkham Hills 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2013.pdf",
+      "fileName": "Baulkham Hills 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Baulkham Hills 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2014.pdf",
+      "fileName": "Baulkham Hills 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Baulkham Hills 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2015.pdf",
+      "fileName": "Baulkham Hills 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Baulkham Hills 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2016.pdf",
+      "fileName": "Baulkham Hills 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Baulkham Hills 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2017.pdf",
+      "fileName": "Baulkham Hills 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Baulkham Hills 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2018.pdf",
+      "fileName": "Baulkham Hills 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Baulkham Hills 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2019.pdf",
+      "fileName": "Baulkham Hills 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Baulkham Hills 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2020.pdf",
+      "fileName": "Baulkham Hills 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Baulkham Hills 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2022.pdf",
+      "fileName": "Baulkham Hills 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Baulkham Hills 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2023.pdf",
+      "fileName": "Baulkham Hills 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Baulkham Hills 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2024.pdf",
+      "fileName": "Baulkham Hills 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__baulkham-hills-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Baulkham Hills",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Baulkham Hills 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/baulkham-hills-2025.pdf",
+      "fileName": "Baulkham Hills 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__blacktown-boys-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Blacktown Boys",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Blacktown Boys 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/blacktown-boys-2018.pdf",
+      "fileName": "Blacktown Boys 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__blacktown-boys-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Blacktown Boys",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Blacktown Boys 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/blacktown-boys-2019.pdf",
+      "fileName": "Blacktown Boys 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__blacktown-boys-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Blacktown Boys",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Blacktown Boys 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/blacktown-boys-2020.pdf",
+      "fileName": "Blacktown Boys 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__blacktown-boys-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Blacktown Boys",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Blacktown Boys 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/blacktown-boys-2022.pdf",
+      "fileName": "Blacktown Boys 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__blacktown-boys-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Blacktown Boys",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Blacktown Boys 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/blacktown-boys-2025.pdf",
+      "fileName": "Blacktown Boys 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__callaghan-jesmond-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Callaghan Jesmond",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Callaghan Jesmond 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/callaghan-jesmond-2014.pdf",
+      "fileName": "Callaghan Jesmond 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Caringbah 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2005.pdf",
+      "fileName": "Caringbah 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Caringbah 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2007.pdf",
+      "fileName": "Caringbah 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Caringbah 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2009.pdf",
+      "fileName": "Caringbah 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Caringbah 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2011.pdf",
+      "fileName": "Caringbah 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Caringbah 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2013.pdf",
+      "fileName": "Caringbah 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Caringbah 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2014.pdf",
+      "fileName": "Caringbah 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Caringbah 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2015.pdf",
+      "fileName": "Caringbah 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Caringbah 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2016.pdf",
+      "fileName": "Caringbah 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Caringbah 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2017.pdf",
+      "fileName": "Caringbah 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Caringbah 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2018.pdf",
+      "fileName": "Caringbah 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Caringbah 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2019.pdf",
+      "fileName": "Caringbah 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Caringbah 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2022.pdf",
+      "fileName": "Caringbah 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Caringbah 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2023.pdf",
+      "fileName": "Caringbah 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Caringbah 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2024.pdf",
+      "fileName": "Caringbah 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__caringbah-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Caringbah",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Caringbah 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/caringbah-2025.pdf",
+      "fileName": "Caringbah 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2005.pdf",
+      "fileName": "Cherrybrook Tech 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2006.pdf",
+      "fileName": "Cherrybrook Tech 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2007.pdf",
+      "fileName": "Cherrybrook Tech 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2008.pdf",
+      "fileName": "Cherrybrook Tech 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2009.pdf",
+      "fileName": "Cherrybrook Tech 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2010.pdf",
+      "fileName": "Cherrybrook Tech 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2011.pdf",
+      "fileName": "Cherrybrook Tech 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2012.pdf",
+      "fileName": "Cherrybrook Tech 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2013.pdf",
+      "fileName": "Cherrybrook Tech 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2014.pdf",
+      "fileName": "Cherrybrook Tech 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2015.pdf",
+      "fileName": "Cherrybrook Tech 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2018.pdf",
+      "fileName": "Cherrybrook Tech 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2020.pdf",
+      "fileName": "Cherrybrook Tech 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cherrybrook-tech-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Cherrybrook Tech",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Cherrybrook Tech 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/cherrybrook-tech-2021.pdf",
+      "fileName": "Cherrybrook Tech 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cranbrook-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Cranbrook",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Cranbrook 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/cranbrook-2007.pdf",
+      "fileName": "Cranbrook 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__cranbrook-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Cranbrook",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Cranbrook 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/cranbrook-2008.pdf",
+      "fileName": "Cranbrook 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Fort St 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2009.pdf",
+      "fileName": "Fort St 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Fort St 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2010.pdf",
+      "fileName": "Fort St 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Fort St 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2011.pdf",
+      "fileName": "Fort St 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Fort St 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2012.pdf",
+      "fileName": "Fort St 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Fort St 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2013.pdf",
+      "fileName": "Fort St 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Fort St 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2014.pdf",
+      "fileName": "Fort St 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Fort St 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2015.pdf",
+      "fileName": "Fort St 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Fort St 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2016.pdf",
+      "fileName": "Fort St 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Fort St 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2017.pdf",
+      "fileName": "Fort St 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Fort St 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2018.pdf",
+      "fileName": "Fort St 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Fort St 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2019.pdf",
+      "fileName": "Fort St 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Fort St 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2020.pdf",
+      "fileName": "Fort St 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Fort St 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2021.pdf",
+      "fileName": "Fort St 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__fort-st-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Fort St",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Fort St 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/fort-st-2025.pdf",
+      "fileName": "Fort St 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__frensham-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Frensham",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Frensham 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/frensham-2011.pdf",
+      "fileName": "Frensham 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__frensham-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Frensham",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Frensham 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/frensham-2014.pdf",
+      "fileName": "Frensham 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__frensham-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Frensham",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Frensham 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/frensham-2015.pdf",
+      "fileName": "Frensham 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Girraween 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2007.pdf",
+      "fileName": "Girraween 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Girraween 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2008.pdf",
+      "fileName": "Girraween 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Girraween 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2010.pdf",
+      "fileName": "Girraween 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Girraween 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2011.pdf",
+      "fileName": "Girraween 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Girraween 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2012.pdf",
+      "fileName": "Girraween 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Girraween 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2013.pdf",
+      "fileName": "Girraween 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Girraween 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2014.pdf",
+      "fileName": "Girraween 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Girraween 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2015.pdf",
+      "fileName": "Girraween 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Girraween 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2016.pdf",
+      "fileName": "Girraween 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Girraween 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2017.pdf",
+      "fileName": "Girraween 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Girraween 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2018.pdf",
+      "fileName": "Girraween 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Girraween 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2019.pdf",
+      "fileName": "Girraween 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Girraween 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2020.pdf",
+      "fileName": "Girraween 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Girraween 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2021.pdf",
+      "fileName": "Girraween 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Girraween 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2024.pdf",
+      "fileName": "Girraween 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__girraween-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Girraween",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Girraween 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/girraween-2025.pdf",
+      "fileName": "Girraween 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__glenwood-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Glenwood",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Glenwood 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/glenwood-2020.pdf",
+      "fileName": "Glenwood 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__glenwood-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Glenwood",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Glenwood 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/glenwood-2022.pdf",
+      "fileName": "Glenwood 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__glenwood-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Glenwood",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Glenwood 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/glenwood-2023.pdf",
+      "fileName": "Glenwood 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Gosford 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2005.pdf",
+      "fileName": "Gosford 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Gosford 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2010.pdf",
+      "fileName": "Gosford 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Gosford 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2011.pdf",
+      "fileName": "Gosford 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Gosford 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2012.pdf",
+      "fileName": "Gosford 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Gosford 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2013.pdf",
+      "fileName": "Gosford 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Gosford 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2014.pdf",
+      "fileName": "Gosford 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Gosford 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2015.pdf",
+      "fileName": "Gosford 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Gosford 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2016.pdf",
+      "fileName": "Gosford 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Gosford 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2017.pdf",
+      "fileName": "Gosford 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Gosford 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2018.pdf",
+      "fileName": "Gosford 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Gosford 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2019.pdf",
+      "fileName": "Gosford 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Gosford 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2020.pdf",
+      "fileName": "Gosford 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Gosford 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2022.pdf",
+      "fileName": "Gosford 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Gosford 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2023.pdf",
+      "fileName": "Gosford 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Gosford 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2024.pdf",
+      "fileName": "Gosford 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__gosford-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Gosford",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Gosford 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/gosford-2025.pdf",
+      "fileName": "Gosford 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hills-grammar-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Hills Grammar",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Hills Grammar 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/hills-grammar-2008.pdf",
+      "fileName": "Hills Grammar 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hills-grammar-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Hills Grammar",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Hills Grammar 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/hills-grammar-2010.pdf",
+      "fileName": "Hills Grammar 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hills-grammar-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Hills Grammar",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Hills Grammar 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/hills-grammar-2011.pdf",
+      "fileName": "Hills Grammar 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hills-grammar-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Hills Grammar",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Hills Grammar 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/hills-grammar-2013.pdf",
+      "fileName": "Hills Grammar 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hills-grammar-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Hills Grammar",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Hills Grammar 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/hills-grammar-2014.pdf",
+      "fileName": "Hills Grammar 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hills-grammar-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Hills Grammar",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Hills Grammar 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/hills-grammar-2015.pdf",
+      "fileName": "Hills Grammar 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hills-grammar-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Hills Grammar",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Hills Grammar 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/hills-grammar-2016.pdf",
+      "fileName": "Hills Grammar 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Hornsby Girls 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2007.pdf",
+      "fileName": "Hornsby Girls 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Hornsby Girls 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2008.pdf",
+      "fileName": "Hornsby Girls 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Hornsby Girls 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2009.pdf",
+      "fileName": "Hornsby Girls 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Hornsby Girls 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2010.pdf",
+      "fileName": "Hornsby Girls 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Hornsby Girls 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2011.pdf",
+      "fileName": "Hornsby Girls 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Hornsby Girls 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2013.pdf",
+      "fileName": "Hornsby Girls 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Hornsby Girls 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2016.pdf",
+      "fileName": "Hornsby Girls 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Hornsby Girls 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2017.pdf",
+      "fileName": "Hornsby Girls 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Hornsby Girls 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2018.pdf",
+      "fileName": "Hornsby Girls 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Hornsby Girls 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2019.pdf",
+      "fileName": "Hornsby Girls 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Hornsby Girls 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2020.pdf",
+      "fileName": "Hornsby Girls 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Hornsby Girls 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2021.pdf",
+      "fileName": "Hornsby Girls 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Hornsby Girls 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2022.pdf",
+      "fileName": "Hornsby Girls 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Hornsby Girls 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2023.pdf",
+      "fileName": "Hornsby Girls 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Hornsby Girls 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2024.pdf",
+      "fileName": "Hornsby Girls 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hornsby-girls-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Hornsby Girls",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Hornsby Girls 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/hornsby-girls-2025.pdf",
+      "fileName": "Hornsby Girls 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hunters-hill-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Hunters Hill",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Hunters Hill 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/hunters-hill-2016.pdf",
+      "fileName": "Hunters Hill 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hunters-hill-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Hunters Hill",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Hunters Hill 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/hunters-hill-2017.pdf",
+      "fileName": "Hunters Hill 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hunters-hill-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Hunters Hill",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Hunters Hill 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/hunters-hill-2018.pdf",
+      "fileName": "Hunters Hill 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hunters-hill-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Hunters Hill",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Hunters Hill 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/hunters-hill-2020.pdf",
+      "fileName": "Hunters Hill 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hunters-hill-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Hunters Hill",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Hunters Hill 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/hunters-hill-2022.pdf",
+      "fileName": "Hunters Hill 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hunters-hill-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Hunters Hill",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Hunters Hill 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/hunters-hill-2023.pdf",
+      "fileName": "Hunters Hill 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hunters-hill-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Hunters Hill",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Hunters Hill 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/hunters-hill-2024.pdf",
+      "fileName": "Hunters Hill 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hunters-hill-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Hunters Hill",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Hunters Hill 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/hunters-hill-2025.pdf",
+      "fileName": "Hunters Hill 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Hurlstone 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2009.pdf",
+      "fileName": "Hurlstone 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Hurlstone 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2012.pdf",
+      "fileName": "Hurlstone 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Hurlstone 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2013.pdf",
+      "fileName": "Hurlstone 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Hurlstone 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2014.pdf",
+      "fileName": "Hurlstone 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Hurlstone 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2015.pdf",
+      "fileName": "Hurlstone 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Hurlstone 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2016.pdf",
+      "fileName": "Hurlstone 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Hurlstone 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2017.pdf",
+      "fileName": "Hurlstone 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Hurlstone 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2018.pdf",
+      "fileName": "Hurlstone 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Hurlstone 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2019.pdf",
+      "fileName": "Hurlstone 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Hurlstone 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2020.pdf",
+      "fileName": "Hurlstone 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Hurlstone 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2021.pdf",
+      "fileName": "Hurlstone 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Hurlstone 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2022.pdf",
+      "fileName": "Hurlstone 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Hurlstone 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2023.pdf",
+      "fileName": "Hurlstone 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Hurlstone 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2024.pdf",
+      "fileName": "Hurlstone 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__hurlstone-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Hurlstone",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Hurlstone 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/hurlstone-2025.pdf",
+      "fileName": "Hurlstone 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__international-grammar-2008",
+      "setId": "yr12-advn-trials",
+      "school": "International Grammar",
+      "year": 2008,
+      "type": "Trials",
+      "label": "International Grammar 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/international-grammar-2008.pdf",
+      "fileName": "International Grammar 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__international-grammar-2010",
+      "setId": "yr12-advn-trials",
+      "school": "International Grammar",
+      "year": 2010,
+      "type": "Trials",
+      "label": "International Grammar 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/international-grammar-2010.pdf",
+      "fileName": "International Grammar 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__international-grammar-2011",
+      "setId": "yr12-advn-trials",
+      "school": "International Grammar",
+      "year": 2011,
+      "type": "Trials",
+      "label": "International Grammar 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/international-grammar-2011.pdf",
+      "fileName": "International Grammar 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__international-grammar-2014",
+      "setId": "yr12-advn-trials",
+      "school": "International Grammar",
+      "year": 2014,
+      "type": "Trials",
+      "label": "International Grammar 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/international-grammar-2014.pdf",
+      "fileName": "International Grammar 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__international-grammar-2015",
+      "setId": "yr12-advn-trials",
+      "school": "International Grammar",
+      "year": 2015,
+      "type": "Trials",
+      "label": "International Grammar 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/international-grammar-2015.pdf",
+      "fileName": "International Grammar 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__international-grammar-2016",
+      "setId": "yr12-advn-trials",
+      "school": "International Grammar",
+      "year": 2016,
+      "type": "Trials",
+      "label": "International Grammar 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/international-grammar-2016.pdf",
+      "fileName": "International Grammar 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2005",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2005,
+      "type": "Trials",
+      "label": "James Ruse 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2005.pdf",
+      "fileName": "James Ruse 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2006",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2006,
+      "type": "Trials",
+      "label": "James Ruse 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2006.pdf",
+      "fileName": "James Ruse 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2007",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2007,
+      "type": "Trials",
+      "label": "James Ruse 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2007.pdf",
+      "fileName": "James Ruse 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2008",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2008,
+      "type": "Trials",
+      "label": "James Ruse 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2008.pdf",
+      "fileName": "James Ruse 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2009",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2009,
+      "type": "Trials",
+      "label": "James Ruse 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2009.pdf",
+      "fileName": "James Ruse 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2010",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2010,
+      "type": "Trials",
+      "label": "James Ruse 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2010.pdf",
+      "fileName": "James Ruse 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2011",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2011,
+      "type": "Trials",
+      "label": "James Ruse 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2011.pdf",
+      "fileName": "James Ruse 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2012",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2012,
+      "type": "Trials",
+      "label": "James Ruse 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2012.pdf",
+      "fileName": "James Ruse 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2013",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2013,
+      "type": "Trials",
+      "label": "James Ruse 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2013.pdf",
+      "fileName": "James Ruse 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2014",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2014,
+      "type": "Trials",
+      "label": "James Ruse 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2014.pdf",
+      "fileName": "James Ruse 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2015",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2015,
+      "type": "Trials",
+      "label": "James Ruse 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2015.pdf",
+      "fileName": "James Ruse 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2016",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2016,
+      "type": "Trials",
+      "label": "James Ruse 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2016.pdf",
+      "fileName": "James Ruse 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2017",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2017,
+      "type": "Trials",
+      "label": "James Ruse 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2017.pdf",
+      "fileName": "James Ruse 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2018",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2018,
+      "type": "Trials",
+      "label": "James Ruse 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2018.pdf",
+      "fileName": "James Ruse 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2019",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2019,
+      "type": "Trials",
+      "label": "James Ruse 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2019.pdf",
+      "fileName": "James Ruse 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2020",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2020,
+      "type": "Trials",
+      "label": "James Ruse 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2020.pdf",
+      "fileName": "James Ruse 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2022",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2022,
+      "type": "Trials",
+      "label": "James Ruse 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2022.pdf",
+      "fileName": "James Ruse 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2023",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2023,
+      "type": "Trials",
+      "label": "James Ruse 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2023.pdf",
+      "fileName": "James Ruse 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2024",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2024,
+      "type": "Trials",
+      "label": "James Ruse 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2024.pdf",
+      "fileName": "James Ruse 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__james-ruse-2025",
+      "setId": "yr12-advn-trials",
+      "school": "James Ruse",
+      "year": 2025,
+      "type": "Trials",
+      "label": "James Ruse 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/james-ruse-2025.pdf",
+      "fileName": "James Ruse 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kambala-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Kambala",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Kambala 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/kambala-2007.pdf",
+      "fileName": "Kambala 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kambala-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Kambala",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Kambala 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/kambala-2013.pdf",
+      "fileName": "Kambala 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Killara 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2012.pdf",
+      "fileName": "Killara 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Killara 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2014.pdf",
+      "fileName": "Killara 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Killara 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2016.pdf",
+      "fileName": "Killara 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Killara 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2017.pdf",
+      "fileName": "Killara 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Killara 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2018.pdf",
+      "fileName": "Killara 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Killara 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2019.pdf",
+      "fileName": "Killara 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Killara 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2020.pdf",
+      "fileName": "Killara 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Killara 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2021.pdf",
+      "fileName": "Killara 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Killara 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2023.pdf",
+      "fileName": "Killara 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Killara 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2024.pdf",
+      "fileName": "Killara 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__killara-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Killara",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Killara 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/killara-2025.pdf",
+      "fileName": "Killara 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kincoppal-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Kincoppal",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Kincoppal 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/kincoppal-2006.pdf",
+      "fileName": "Kincoppal 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kincoppal-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Kincoppal",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Kincoppal 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/kincoppal-2008.pdf",
+      "fileName": "Kincoppal 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kings-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Kings",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Kings 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/kings-2005.pdf",
+      "fileName": "Kings 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kings-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Kings",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Kings 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/kings-2006.pdf",
+      "fileName": "Kings 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kings-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Kings",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Kings 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/kings-2007.pdf",
+      "fileName": "Kings 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kings-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Kings",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Kings 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/kings-2008.pdf",
+      "fileName": "Kings 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kings-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Kings",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Kings 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/kings-2009.pdf",
+      "fileName": "Kings 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kings-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Kings",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Kings 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/kings-2010.pdf",
+      "fileName": "Kings 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kings-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Kings",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Kings 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/kings-2011.pdf",
+      "fileName": "Kings 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kings-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Kings",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Kings 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/kings-2022.pdf",
+      "fileName": "Kings 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kinross-wolaroi-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Kinross Wolaroi",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Kinross Wolaroi 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/kinross-wolaroi-2012.pdf",
+      "fileName": "Kinross Wolaroi 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kinross-wolaroi-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Kinross Wolaroi",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Kinross Wolaroi 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/kinross-wolaroi-2014.pdf",
+      "fileName": "Kinross Wolaroi 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kinross-wolaroi-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Kinross Wolaroi",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Kinross Wolaroi 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/kinross-wolaroi-2015.pdf",
+      "fileName": "Kinross Wolaroi 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__kinross-wolaroi-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Kinross Wolaroi",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Kinross Wolaroi 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/kinross-wolaroi-2016.pdf",
+      "fileName": "Kinross Wolaroi 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__knox-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Knox",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Knox 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/knox-2005.pdf",
+      "fileName": "Knox 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__knox-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Knox",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Knox 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/knox-2008.pdf",
+      "fileName": "Knox 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__knox-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Knox",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Knox 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/knox-2013.pdf",
+      "fileName": "Knox 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__knox-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Knox",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Knox 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/knox-2014.pdf",
+      "fileName": "Knox 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__knox-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Knox",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Knox 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/knox-2015.pdf",
+      "fileName": "Knox 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__knox-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Knox",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Knox 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/knox-2016.pdf",
+      "fileName": "Knox 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__knox-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Knox",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Knox 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/knox-2021.pdf",
+      "fileName": "Knox 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Manly 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2005.pdf",
+      "fileName": "Manly 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Manly 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2011.pdf",
+      "fileName": "Manly 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Manly 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2015.pdf",
+      "fileName": "Manly 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Manly 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2016.pdf",
+      "fileName": "Manly 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Manly 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2017.pdf",
+      "fileName": "Manly 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Manly 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2018.pdf",
+      "fileName": "Manly 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Manly 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2019.pdf",
+      "fileName": "Manly 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Manly 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2020.pdf",
+      "fileName": "Manly 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Manly 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2021.pdf",
+      "fileName": "Manly 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Manly 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2022.pdf",
+      "fileName": "Manly 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Manly 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2023.pdf",
+      "fileName": "Manly 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__manly-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Manly",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Manly 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/manly-2024.pdf",
+      "fileName": "Manly 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__merewether-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Merewether",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Merewether 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/merewether-2025.pdf",
+      "fileName": "Merewether 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__mlc-2016",
+      "setId": "yr12-advn-trials",
+      "school": "MLC",
+      "year": 2016,
+      "type": "Trials",
+      "label": "MLC 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/mlc-2016.pdf",
+      "fileName": "MLC 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__moriah-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Moriah",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Moriah 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/moriah-2021.pdf",
+      "fileName": "Moriah 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__moriah-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Moriah",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Moriah 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/moriah-2023.pdf",
+      "fileName": "Moriah 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newcastle-grammar-2003",
+      "setId": "yr12-advn-trials",
+      "school": "Newcastle Grammar",
+      "year": 2003,
+      "type": "Trials",
+      "label": "Newcastle Grammar 2003 Trials",
+      "storagePath": "papers/yr12-advn-trials/newcastle-grammar-2003.pdf",
+      "fileName": "Newcastle Grammar 2003 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newcastle-grammar-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Newcastle Grammar",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Newcastle Grammar 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/newcastle-grammar-2005.pdf",
+      "fileName": "Newcastle Grammar 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newcastle-grammar-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Newcastle Grammar",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Newcastle Grammar 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/newcastle-grammar-2011.pdf",
+      "fileName": "Newcastle Grammar 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newington-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Newington",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Newington 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/newington-2005.pdf",
+      "fileName": "Newington 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newington-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Newington",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Newington 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/newington-2006.pdf",
+      "fileName": "Newington 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newington-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Newington",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Newington 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/newington-2007.pdf",
+      "fileName": "Newington 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newington-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Newington",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Newington 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/newington-2008.pdf",
+      "fileName": "Newington 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newington-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Newington",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Newington 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/newington-2009.pdf",
+      "fileName": "Newington 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newington-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Newington",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Newington 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/newington-2011.pdf",
+      "fileName": "Newington 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newington-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Newington",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Newington 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/newington-2012.pdf",
+      "fileName": "Newington 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__newington-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Newington",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Newington 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/newington-2015.pdf",
+      "fileName": "Newington 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2011.pdf",
+      "fileName": "Normanhurst Boys 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2013.pdf",
+      "fileName": "Normanhurst Boys 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2014.pdf",
+      "fileName": "Normanhurst Boys 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2015.pdf",
+      "fileName": "Normanhurst Boys 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2016.pdf",
+      "fileName": "Normanhurst Boys 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2017.pdf",
+      "fileName": "Normanhurst Boys 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2018.pdf",
+      "fileName": "Normanhurst Boys 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2019.pdf",
+      "fileName": "Normanhurst Boys 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2020.pdf",
+      "fileName": "Normanhurst Boys 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2021.pdf",
+      "fileName": "Normanhurst Boys 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2022.pdf",
+      "fileName": "Normanhurst Boys 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2023.pdf",
+      "fileName": "Normanhurst Boys 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2024.pdf",
+      "fileName": "Normanhurst Boys 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__normanhurst-boys-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Normanhurst Boys",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Normanhurst Boys 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/normanhurst-boys-2025.pdf",
+      "fileName": "Normanhurst Boys 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2006",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2006,
+      "type": "Trials",
+      "label": "North Sydney Boys 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2006.pdf",
+      "fileName": "North Sydney Boys 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2007",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2007,
+      "type": "Trials",
+      "label": "North Sydney Boys 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2007.pdf",
+      "fileName": "North Sydney Boys 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2008",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2008,
+      "type": "Trials",
+      "label": "North Sydney Boys 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2008.pdf",
+      "fileName": "North Sydney Boys 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2009",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2009,
+      "type": "Trials",
+      "label": "North Sydney Boys 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2009.pdf",
+      "fileName": "North Sydney Boys 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2010",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2010,
+      "type": "Trials",
+      "label": "North Sydney Boys 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2010.pdf",
+      "fileName": "North Sydney Boys 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2011",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2011,
+      "type": "Trials",
+      "label": "North Sydney Boys 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2011.pdf",
+      "fileName": "North Sydney Boys 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2012",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2012,
+      "type": "Trials",
+      "label": "North Sydney Boys 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2012.pdf",
+      "fileName": "North Sydney Boys 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2013",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2013,
+      "type": "Trials",
+      "label": "North Sydney Boys 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2013.pdf",
+      "fileName": "North Sydney Boys 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2015",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2015,
+      "type": "Trials",
+      "label": "North Sydney Boys 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2015.pdf",
+      "fileName": "North Sydney Boys 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2016",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2016,
+      "type": "Trials",
+      "label": "North Sydney Boys 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2016.pdf",
+      "fileName": "North Sydney Boys 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2017",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2017,
+      "type": "Trials",
+      "label": "North Sydney Boys 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2017.pdf",
+      "fileName": "North Sydney Boys 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2018",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2018,
+      "type": "Trials",
+      "label": "North Sydney Boys 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2018.pdf",
+      "fileName": "North Sydney Boys 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2019",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2019,
+      "type": "Trials",
+      "label": "North Sydney Boys 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2019.pdf",
+      "fileName": "North Sydney Boys 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2020",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2020,
+      "type": "Trials",
+      "label": "North Sydney Boys 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2020.pdf",
+      "fileName": "North Sydney Boys 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2021",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2021,
+      "type": "Trials",
+      "label": "North Sydney Boys 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2021.pdf",
+      "fileName": "North Sydney Boys 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2022",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2022,
+      "type": "Trials",
+      "label": "North Sydney Boys 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2022.pdf",
+      "fileName": "North Sydney Boys 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2023",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2023,
+      "type": "Trials",
+      "label": "North Sydney Boys 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2023.pdf",
+      "fileName": "North Sydney Boys 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-boys-2024",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Boys",
+      "year": 2024,
+      "type": "Trials",
+      "label": "North Sydney Boys 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-boys-2024.pdf",
+      "fileName": "North Sydney Boys 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2006",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2006,
+      "type": "Trials",
+      "label": "North Sydney Girls 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2006.pdf",
+      "fileName": "North Sydney Girls 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2007",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2007,
+      "type": "Trials",
+      "label": "North Sydney Girls 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2007.pdf",
+      "fileName": "North Sydney Girls 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2008",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2008,
+      "type": "Trials",
+      "label": "North Sydney Girls 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2008.pdf",
+      "fileName": "North Sydney Girls 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2009",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2009,
+      "type": "Trials",
+      "label": "North Sydney Girls 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2009.pdf",
+      "fileName": "North Sydney Girls 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2010",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2010,
+      "type": "Trials",
+      "label": "North Sydney Girls 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2010.pdf",
+      "fileName": "North Sydney Girls 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2011",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2011,
+      "type": "Trials",
+      "label": "North Sydney Girls 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2011.pdf",
+      "fileName": "North Sydney Girls 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2012",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2012,
+      "type": "Trials",
+      "label": "North Sydney Girls 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2012.pdf",
+      "fileName": "North Sydney Girls 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2013",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2013,
+      "type": "Trials",
+      "label": "North Sydney Girls 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2013.pdf",
+      "fileName": "North Sydney Girls 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2014",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2014,
+      "type": "Trials",
+      "label": "North Sydney Girls 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2014.pdf",
+      "fileName": "North Sydney Girls 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2015",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2015,
+      "type": "Trials",
+      "label": "North Sydney Girls 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2015.pdf",
+      "fileName": "North Sydney Girls 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2016",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2016,
+      "type": "Trials",
+      "label": "North Sydney Girls 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2016.pdf",
+      "fileName": "North Sydney Girls 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2017",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2017,
+      "type": "Trials",
+      "label": "North Sydney Girls 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2017.pdf",
+      "fileName": "North Sydney Girls 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2018",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2018,
+      "type": "Trials",
+      "label": "North Sydney Girls 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2018.pdf",
+      "fileName": "North Sydney Girls 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2019",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2019,
+      "type": "Trials",
+      "label": "North Sydney Girls 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2019.pdf",
+      "fileName": "North Sydney Girls 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2020",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2020,
+      "type": "Trials",
+      "label": "North Sydney Girls 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2020.pdf",
+      "fileName": "North Sydney Girls 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2022",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2022,
+      "type": "Trials",
+      "label": "North Sydney Girls 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2022.pdf",
+      "fileName": "North Sydney Girls 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2023",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2023,
+      "type": "Trials",
+      "label": "North Sydney Girls 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2023.pdf",
+      "fileName": "North Sydney Girls 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__north-sydney-girls-2025",
+      "setId": "yr12-advn-trials",
+      "school": "North Sydney Girls",
+      "year": 2025,
+      "type": "Trials",
+      "label": "North Sydney Girls 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/north-sydney-girls-2025.pdf",
+      "fileName": "North Sydney Girls 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Penrith 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2011.pdf",
+      "fileName": "Penrith 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Penrith 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2012.pdf",
+      "fileName": "Penrith 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Penrith 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2013.pdf",
+      "fileName": "Penrith 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Penrith 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2014.pdf",
+      "fileName": "Penrith 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Penrith 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2015.pdf",
+      "fileName": "Penrith 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Penrith 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2016.pdf",
+      "fileName": "Penrith 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Penrith 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2017.pdf",
+      "fileName": "Penrith 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Penrith 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2018.pdf",
+      "fileName": "Penrith 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Penrith 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2019.pdf",
+      "fileName": "Penrith 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Penrith 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2020.pdf",
+      "fileName": "Penrith 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Penrith 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2022.pdf",
+      "fileName": "Penrith 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Penrith 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2023.pdf",
+      "fileName": "Penrith 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Penrith 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2024.pdf",
+      "fileName": "Penrith 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__penrith-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Penrith",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Penrith 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/penrith-2025.pdf",
+      "fileName": "Penrith 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pittwater-house-2004",
+      "setId": "yr12-advn-trials",
+      "school": "Pittwater House",
+      "year": 2004,
+      "type": "Trials",
+      "label": "Pittwater House 2004 Trials",
+      "storagePath": "papers/yr12-advn-trials/pittwater-house-2004.pdf",
+      "fileName": "Pittwater House 2004 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__port-hacking-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Port Hacking",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Port Hacking 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/port-hacking-2014.pdf",
+      "fileName": "Port Hacking 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__presbyterian-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Presbyterian",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Presbyterian 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/presbyterian-2008.pdf",
+      "fileName": "Presbyterian 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__presbyterian-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Presbyterian",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Presbyterian 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/presbyterian-2010.pdf",
+      "fileName": "Presbyterian 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__presbyterian-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Presbyterian",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Presbyterian 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/presbyterian-2013.pdf",
+      "fileName": "Presbyterian 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__presbyterian-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Presbyterian",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Presbyterian 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/presbyterian-2014.pdf",
+      "fileName": "Presbyterian 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__presbyterian-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Presbyterian",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Presbyterian 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/presbyterian-2015.pdf",
+      "fileName": "Presbyterian 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__presbyterian-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Presbyterian",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Presbyterian 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/presbyterian-2016.pdf",
+      "fileName": "Presbyterian 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pymble-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Pymble",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Pymble 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/pymble-2005.pdf",
+      "fileName": "Pymble 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pymble-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Pymble",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Pymble 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/pymble-2006.pdf",
+      "fileName": "Pymble 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pymble-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Pymble",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Pymble 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/pymble-2008.pdf",
+      "fileName": "Pymble 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pymble-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Pymble",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Pymble 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/pymble-2011.pdf",
+      "fileName": "Pymble 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pymble-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Pymble",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Pymble 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/pymble-2013.pdf",
+      "fileName": "Pymble 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pymble-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Pymble",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Pymble 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/pymble-2014.pdf",
+      "fileName": "Pymble 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pymble-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Pymble",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Pymble 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/pymble-2015.pdf",
+      "fileName": "Pymble 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pymble-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Pymble",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Pymble 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/pymble-2016.pdf",
+      "fileName": "Pymble 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pymble-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Pymble",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Pymble 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/pymble-2022.pdf",
+      "fileName": "Pymble 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__pymble-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Pymble",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Pymble 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/pymble-2023.pdf",
+      "fileName": "Pymble 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__riverview-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Riverview",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Riverview 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/riverview-2005.pdf",
+      "fileName": "Riverview 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__riverview-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Riverview",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Riverview 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/riverview-2006.pdf",
+      "fileName": "Riverview 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__riverview-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Riverview",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Riverview 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/riverview-2007.pdf",
+      "fileName": "Riverview 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__riverview-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Riverview",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Riverview 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/riverview-2010.pdf",
+      "fileName": "Riverview 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__riverview-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Riverview",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Riverview 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/riverview-2012.pdf",
+      "fileName": "Riverview 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__riverview-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Riverview",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Riverview 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/riverview-2013.pdf",
+      "fileName": "Riverview 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__riverview-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Riverview",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Riverview 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/riverview-2021.pdf",
+      "fileName": "Riverview 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__riverview-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Riverview",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Riverview 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/riverview-2022.pdf",
+      "fileName": "Riverview 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__riverview-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Riverview",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Riverview 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/riverview-2024.pdf",
+      "fileName": "Riverview 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__roseville-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Roseville",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Roseville 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/roseville-2005.pdf",
+      "fileName": "Roseville 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__roseville-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Roseville",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Roseville 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/roseville-2022.pdf",
+      "fileName": "Roseville 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sceggs-2005",
+      "setId": "yr12-advn-trials",
+      "school": "SCEGGS",
+      "year": 2005,
+      "type": "Trials",
+      "label": "SCEGGS 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/sceggs-2005.pdf",
+      "fileName": "SCEGGS 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sceggs-2006",
+      "setId": "yr12-advn-trials",
+      "school": "SCEGGS",
+      "year": 2006,
+      "type": "Trials",
+      "label": "SCEGGS 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/sceggs-2006.pdf",
+      "fileName": "SCEGGS 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sceggs-2007",
+      "setId": "yr12-advn-trials",
+      "school": "SCEGGS",
+      "year": 2007,
+      "type": "Trials",
+      "label": "SCEGGS 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/sceggs-2007.pdf",
+      "fileName": "SCEGGS 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sceggs-2008",
+      "setId": "yr12-advn-trials",
+      "school": "SCEGGS",
+      "year": 2008,
+      "type": "Trials",
+      "label": "SCEGGS 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/sceggs-2008.pdf",
+      "fileName": "SCEGGS 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sceggs-2009",
+      "setId": "yr12-advn-trials",
+      "school": "SCEGGS",
+      "year": 2009,
+      "type": "Trials",
+      "label": "SCEGGS 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/sceggs-2009.pdf",
+      "fileName": "SCEGGS 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sceggs-2010",
+      "setId": "yr12-advn-trials",
+      "school": "SCEGGS",
+      "year": 2010,
+      "type": "Trials",
+      "label": "SCEGGS 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/sceggs-2010.pdf",
+      "fileName": "SCEGGS 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__scots-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Scots",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Scots 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/scots-2005.pdf",
+      "fileName": "Scots 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__scots-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Scots",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Scots 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/scots-2006.pdf",
+      "fileName": "Scots 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__scots-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Scots",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Scots 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/scots-2007.pdf",
+      "fileName": "Scots 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__scots-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Scots",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Scots 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/scots-2008.pdf",
+      "fileName": "Scots 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__scots-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Scots",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Scots 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/scots-2011.pdf",
+      "fileName": "Scots 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__shore-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Shore",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Shore 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/shore-2008.pdf",
+      "fileName": "Shore 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__shore-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Shore",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Shore 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/shore-2010.pdf",
+      "fileName": "Shore 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__shore-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Shore",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Shore 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/shore-2013.pdf",
+      "fileName": "Shore 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__shore-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Shore",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Shore 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/shore-2014.pdf",
+      "fileName": "Shore 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__shore-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Shore",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Shore 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/shore-2015.pdf",
+      "fileName": "Shore 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__shore-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Shore",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Shore 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/shore-2016.pdf",
+      "fileName": "Shore 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__shore-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Shore",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Shore 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/shore-2017.pdf",
+      "fileName": "Shore 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__shore-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Shore",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Shore 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/shore-2018.pdf",
+      "fileName": "Shore 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__shore-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Shore",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Shore 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/shore-2023.pdf",
+      "fileName": "Shore 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-catherines-2011",
+      "setId": "yr12-advn-trials",
+      "school": "St Catherines",
+      "year": 2011,
+      "type": "Trials",
+      "label": "St Catherines 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-catherines-2011.pdf",
+      "fileName": "St Catherines 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-catherines-2012",
+      "setId": "yr12-advn-trials",
+      "school": "St Catherines",
+      "year": 2012,
+      "type": "Trials",
+      "label": "St Catherines 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-catherines-2012.pdf",
+      "fileName": "St Catherines 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-catherines-2014",
+      "setId": "yr12-advn-trials",
+      "school": "St Catherines",
+      "year": 2014,
+      "type": "Trials",
+      "label": "St Catherines 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-catherines-2014.pdf",
+      "fileName": "St Catherines 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-catherines-2016",
+      "setId": "yr12-advn-trials",
+      "school": "St Catherines",
+      "year": 2016,
+      "type": "Trials",
+      "label": "St Catherines 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-catherines-2016.pdf",
+      "fileName": "St Catherines 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2005",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2005,
+      "type": "Trials",
+      "label": "St George Girls 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2005.pdf",
+      "fileName": "St George Girls 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2006",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2006,
+      "type": "Trials",
+      "label": "St George Girls 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2006.pdf",
+      "fileName": "St George Girls 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2007",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2007,
+      "type": "Trials",
+      "label": "St George Girls 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2007.pdf",
+      "fileName": "St George Girls 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2008",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2008,
+      "type": "Trials",
+      "label": "St George Girls 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2008.pdf",
+      "fileName": "St George Girls 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2009",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2009,
+      "type": "Trials",
+      "label": "St George Girls 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2009.pdf",
+      "fileName": "St George Girls 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2010",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2010,
+      "type": "Trials",
+      "label": "St George Girls 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2010.pdf",
+      "fileName": "St George Girls 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2011",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2011,
+      "type": "Trials",
+      "label": "St George Girls 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2011.pdf",
+      "fileName": "St George Girls 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2012",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2012,
+      "type": "Trials",
+      "label": "St George Girls 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2012.pdf",
+      "fileName": "St George Girls 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2013",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2013,
+      "type": "Trials",
+      "label": "St George Girls 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2013.pdf",
+      "fileName": "St George Girls 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2014",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2014,
+      "type": "Trials",
+      "label": "St George Girls 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2014.pdf",
+      "fileName": "St George Girls 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2015",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2015,
+      "type": "Trials",
+      "label": "St George Girls 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2015.pdf",
+      "fileName": "St George Girls 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2016",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2016,
+      "type": "Trials",
+      "label": "St George Girls 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2016.pdf",
+      "fileName": "St George Girls 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2017",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2017,
+      "type": "Trials",
+      "label": "St George Girls 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2017.pdf",
+      "fileName": "St George Girls 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2018",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2018,
+      "type": "Trials",
+      "label": "St George Girls 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2018.pdf",
+      "fileName": "St George Girls 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2019",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2019,
+      "type": "Trials",
+      "label": "St George Girls 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2019.pdf",
+      "fileName": "St George Girls 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2020",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2020,
+      "type": "Trials",
+      "label": "St George Girls 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2020.pdf",
+      "fileName": "St George Girls 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2021",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2021,
+      "type": "Trials",
+      "label": "St George Girls 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2021.pdf",
+      "fileName": "St George Girls 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2022",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2022,
+      "type": "Trials",
+      "label": "St George Girls 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2022.pdf",
+      "fileName": "St George Girls 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2023",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2023,
+      "type": "Trials",
+      "label": "St George Girls 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2023.pdf",
+      "fileName": "St George Girls 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2024",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2024,
+      "type": "Trials",
+      "label": "St George Girls 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2024.pdf",
+      "fileName": "St George Girls 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__st-george-girls-2025",
+      "setId": "yr12-advn-trials",
+      "school": "St George Girls",
+      "year": 2025,
+      "type": "Trials",
+      "label": "St George Girls 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/st-george-girls-2025.pdf",
+      "fileName": "St George Girls 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__stella-maris-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Stella Maris",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Stella Maris 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/stella-maris-2008.pdf",
+      "fileName": "Stella Maris 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Sydney Boys 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2005.pdf",
+      "fileName": "Sydney Boys 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Sydney Boys 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2006.pdf",
+      "fileName": "Sydney Boys 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Sydney Boys 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2007.pdf",
+      "fileName": "Sydney Boys 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Sydney Boys 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2008.pdf",
+      "fileName": "Sydney Boys 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Sydney Boys 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2009.pdf",
+      "fileName": "Sydney Boys 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Sydney Boys 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2010.pdf",
+      "fileName": "Sydney Boys 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Sydney Boys 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2011.pdf",
+      "fileName": "Sydney Boys 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Sydney Boys 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2012.pdf",
+      "fileName": "Sydney Boys 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Sydney Boys 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2013.pdf",
+      "fileName": "Sydney Boys 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Sydney Boys 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2014.pdf",
+      "fileName": "Sydney Boys 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Sydney Boys 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2015.pdf",
+      "fileName": "Sydney Boys 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Sydney Boys 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2016.pdf",
+      "fileName": "Sydney Boys 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Sydney Boys 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2017.pdf",
+      "fileName": "Sydney Boys 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Sydney Boys 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2018.pdf",
+      "fileName": "Sydney Boys 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Sydney Boys 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2019.pdf",
+      "fileName": "Sydney Boys 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Sydney Boys 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2020.pdf",
+      "fileName": "Sydney Boys 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Sydney Boys 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2022.pdf",
+      "fileName": "Sydney Boys 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Sydney Boys 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2023.pdf",
+      "fileName": "Sydney Boys 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Sydney Boys 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2024.pdf",
+      "fileName": "Sydney Boys 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-boys-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Boys",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Sydney Boys 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-boys-2025.pdf",
+      "fileName": "Sydney Boys 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Sydney Girls 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2006.pdf",
+      "fileName": "Sydney Girls 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Sydney Girls 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2011.pdf",
+      "fileName": "Sydney Girls 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Sydney Girls 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2012.pdf",
+      "fileName": "Sydney Girls 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Sydney Girls 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2013.pdf",
+      "fileName": "Sydney Girls 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Sydney Girls 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2014.pdf",
+      "fileName": "Sydney Girls 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Sydney Girls 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2015.pdf",
+      "fileName": "Sydney Girls 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Sydney Girls 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2016.pdf",
+      "fileName": "Sydney Girls 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Sydney Girls 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2017.pdf",
+      "fileName": "Sydney Girls 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Sydney Girls 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2018.pdf",
+      "fileName": "Sydney Girls 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Sydney Girls 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2019.pdf",
+      "fileName": "Sydney Girls 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Sydney Girls 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2020.pdf",
+      "fileName": "Sydney Girls 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Sydney Girls 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2021.pdf",
+      "fileName": "Sydney Girls 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Sydney Girls 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2022.pdf",
+      "fileName": "Sydney Girls 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Sydney Girls 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2023.pdf",
+      "fileName": "Sydney Girls 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Sydney Girls 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2024.pdf",
+      "fileName": "Sydney Girls 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-girls-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Girls",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Sydney Girls 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-girls-2025.pdf",
+      "fileName": "Sydney Girls 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Sydney Grammar 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2005.pdf",
+      "fileName": "Sydney Grammar 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Sydney Grammar 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2006.pdf",
+      "fileName": "Sydney Grammar 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Sydney Grammar 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2007.pdf",
+      "fileName": "Sydney Grammar 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Sydney Grammar 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2008.pdf",
+      "fileName": "Sydney Grammar 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Sydney Grammar 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2009.pdf",
+      "fileName": "Sydney Grammar 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Sydney Grammar 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2010.pdf",
+      "fileName": "Sydney Grammar 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Sydney Grammar 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2011.pdf",
+      "fileName": "Sydney Grammar 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Sydney Grammar 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2012.pdf",
+      "fileName": "Sydney Grammar 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Sydney Grammar 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2013.pdf",
+      "fileName": "Sydney Grammar 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Sydney Grammar 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2014.pdf",
+      "fileName": "Sydney Grammar 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Sydney Grammar 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2015.pdf",
+      "fileName": "Sydney Grammar 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Sydney Grammar 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2016.pdf",
+      "fileName": "Sydney Grammar 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Sydney Grammar 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2017.pdf",
+      "fileName": "Sydney Grammar 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Sydney Grammar 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2018.pdf",
+      "fileName": "Sydney Grammar 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Sydney Grammar 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2019.pdf",
+      "fileName": "Sydney Grammar 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Sydney Grammar 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2020.pdf",
+      "fileName": "Sydney Grammar 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Sydney Grammar 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2021.pdf",
+      "fileName": "Sydney Grammar 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Sydney Grammar 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2022.pdf",
+      "fileName": "Sydney Grammar 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Sydney Grammar 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2023.pdf",
+      "fileName": "Sydney Grammar 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Sydney Grammar 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2024.pdf",
+      "fileName": "Sydney Grammar 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-grammar-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Grammar",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Sydney Grammar 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-grammar-2025.pdf",
+      "fileName": "Sydney Grammar 2025 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2005",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2005,
+      "type": "Trials",
+      "label": "Sydney Tech 2005 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2005.pdf",
+      "fileName": "Sydney Tech 2005 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2006",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2006,
+      "type": "Trials",
+      "label": "Sydney Tech 2006 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2006.pdf",
+      "fileName": "Sydney Tech 2006 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2007",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2007,
+      "type": "Trials",
+      "label": "Sydney Tech 2007 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2007.pdf",
+      "fileName": "Sydney Tech 2007 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2008",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2008,
+      "type": "Trials",
+      "label": "Sydney Tech 2008 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2008.pdf",
+      "fileName": "Sydney Tech 2008 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2009",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2009,
+      "type": "Trials",
+      "label": "Sydney Tech 2009 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2009.pdf",
+      "fileName": "Sydney Tech 2009 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2010",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2010,
+      "type": "Trials",
+      "label": "Sydney Tech 2010 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2010.pdf",
+      "fileName": "Sydney Tech 2010 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2011",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2011,
+      "type": "Trials",
+      "label": "Sydney Tech 2011 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2011.pdf",
+      "fileName": "Sydney Tech 2011 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2012",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2012,
+      "type": "Trials",
+      "label": "Sydney Tech 2012 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2012.pdf",
+      "fileName": "Sydney Tech 2012 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2013",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2013,
+      "type": "Trials",
+      "label": "Sydney Tech 2013 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2013.pdf",
+      "fileName": "Sydney Tech 2013 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2014",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2014,
+      "type": "Trials",
+      "label": "Sydney Tech 2014 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2014.pdf",
+      "fileName": "Sydney Tech 2014 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2015",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2015,
+      "type": "Trials",
+      "label": "Sydney Tech 2015 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2015.pdf",
+      "fileName": "Sydney Tech 2015 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2016",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2016,
+      "type": "Trials",
+      "label": "Sydney Tech 2016 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2016.pdf",
+      "fileName": "Sydney Tech 2016 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2017",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2017,
+      "type": "Trials",
+      "label": "Sydney Tech 2017 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2017.pdf",
+      "fileName": "Sydney Tech 2017 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2018",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2018,
+      "type": "Trials",
+      "label": "Sydney Tech 2018 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2018.pdf",
+      "fileName": "Sydney Tech 2018 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2019",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2019,
+      "type": "Trials",
+      "label": "Sydney Tech 2019 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2019.pdf",
+      "fileName": "Sydney Tech 2019 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2020",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2020,
+      "type": "Trials",
+      "label": "Sydney Tech 2020 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2020.pdf",
+      "fileName": "Sydney Tech 2020 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2021",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2021,
+      "type": "Trials",
+      "label": "Sydney Tech 2021 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2021.pdf",
+      "fileName": "Sydney Tech 2021 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2022",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2022,
+      "type": "Trials",
+      "label": "Sydney Tech 2022 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2022.pdf",
+      "fileName": "Sydney Tech 2022 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2023",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2023,
+      "type": "Trials",
+      "label": "Sydney Tech 2023 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2023.pdf",
+      "fileName": "Sydney Tech 2023 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2024",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2024,
+      "type": "Trials",
+      "label": "Sydney Tech 2024 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2024.pdf",
+      "fileName": "Sydney Tech 2024 2U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-advn-trials__sydney-tech-2025",
+      "setId": "yr12-advn-trials",
+      "school": "Sydney Tech",
+      "year": 2025,
+      "type": "Trials",
+      "label": "Sydney Tech 2025 Trials",
+      "storagePath": "papers/yr12-advn-trials/sydney-tech-2025.pdf",
+      "fileName": "Sydney Tech 2025 2U Trials & Solutions.pdf"
+    }
+  ]
+}
