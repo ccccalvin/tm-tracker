@@ -28,15 +28,10 @@ import {
 } from '@/components/ui';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
 import { ScoreNotesEditor } from '@/components/tracker/ScoreNotesEditor';
-import {
-  markComplete,
-  unmarkComplete,
-  removeTodo,
-  reorderTodos,
-} from '@/lib/db';
+import { removeTodo, reorderTodos } from '@/lib/db';
 import { getPaper } from '@/lib/catalog';
 import { cn } from '@/lib/cn';
-import type { Completion, TodoItem } from '@/types';
+import type { Completion, Paper, TodoItem } from '@/types';
 
 /**
  * The personal to-do queue (top of the Tracker). Drag-to-reorder via @dnd-kit;
@@ -48,12 +43,15 @@ export function TodoList({
   todos,
   completedIds,
   completionsById,
+  onSetCompleted,
 }: {
   uid: string;
   todos: TodoItem[];
   completedIds: Set<string>;
   /** Completion records keyed by paperId, for the inline score/notes editor. */
   completionsById: Map<string, Completion>;
+  /** Optimistic complete/incomplete toggle (instant tick, background write). */
+  onSetCompleted: (paper: Paper, desired: boolean) => void;
 }) {
   // Local order for optimistic, snappy drag UX; kept in sync with the live list.
   const [order, setOrder] = useState<string[]>(() => todos.map((t) => t.paperId));
@@ -135,6 +133,7 @@ export function TodoList({
                     todo={todo}
                     completed={completedIds.has(todo.paperId)}
                     completion={completionsById.get(todo.paperId)}
+                    onSetCompleted={onSetCompleted}
                   />
                 ))}
               </ul>
@@ -151,16 +150,18 @@ function TodoRow({
   todo,
   completed,
   completion,
+  onSetCompleted,
 }: {
   uid: string;
   todo: TodoItem;
   completed: boolean;
   /** The existing completion record (for the inline editor), if any. */
   completion: Completion | undefined;
+  /** Optimistic complete/incomplete toggle (instant tick, background write). */
+  onSetCompleted: (paper: Paper, desired: boolean) => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: todo.paperId });
-  const [toggling, setToggling] = useState(false);
   const [removing, setRemoving] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
@@ -171,22 +172,11 @@ function TodoRow({
     transition,
   };
 
-  async function toggleComplete() {
-    if (toggling || !paper) return;
-    setToggling(true);
-    try {
-      if (completed) {
-        await unmarkComplete(uid, todo.paperId);
-      } else {
-        await markComplete(uid, paper);
-        setExpanded(true); // reveal score/notes editor right after completing
-      }
-    } catch (err) {
-      console.error('[tm-tracker] failed to toggle completion', err);
-      toast.error("Couldn't update that paper. Please try again.");
-    } finally {
-      setToggling(false);
-    }
+  function toggleComplete() {
+    if (!paper) return;
+    const desired = !completed;
+    onSetCompleted(paper, desired);
+    if (desired) setExpanded(true); // reveal score/notes editor right after completing
   }
 
   async function remove() {
@@ -229,20 +219,16 @@ function TodoRow({
           aria-checked={completed}
           aria-label={completed ? `Mark ${todo.paperLabel} not done` : `Mark ${todo.paperLabel} done`}
           onClick={toggleComplete}
-          disabled={toggling || !paper}
+          disabled={!paper}
           className={cn(
             'flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-colors',
             completed
               ? 'border-transparent bg-primary text-primary-foreground'
               : 'border-input hover:border-primary',
-            (toggling || !paper) && 'opacity-50',
+            !paper && 'opacity-50',
           )}
         >
-          {toggling ? (
-            <Loader2 className="h-3.5 w-3.5 animate-spin" />
-          ) : completed ? (
-            <Check className="h-3.5 w-3.5" />
-          ) : null}
+          {completed ? <Check className="h-3.5 w-3.5" /> : null}
         </button>
 
         <span className="flex-1 truncate text-sm font-medium">{todo.paperLabel}</span>

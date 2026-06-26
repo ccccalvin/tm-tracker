@@ -18,7 +18,7 @@ import { formatCount } from '@/lib/format';
 export function TrackerPage() {
   const uid = useAuthStore((s) => s.firebaseUser?.uid);
   const { todos, loading: todosLoading } = useTodos(uid);
-  const { completedIds, byId, loading: completionsLoading } = useCompletions(uid);
+  const { completedIds, byId, loading: completionsLoading, setCompleted } = useCompletions(uid);
 
   // Filter state lives here and is passed down to PaperFilters (controlled).
   const [search, setSearch] = useState('');
@@ -91,6 +91,7 @@ export function TrackerPage() {
           todos={todos}
           completedIds={completedIds}
           completionsById={byId}
+          onSetCompleted={setCompleted}
         />
       )}
 
@@ -135,6 +136,7 @@ export function TrackerPage() {
                   completed={completedIds.has(paper.id)}
                   completion={byId.get(paper.id)}
                   inTodo={todoIds.has(paper.id)}
+                  onSetCompleted={setCompleted}
                 />
               ))}
             </ul>

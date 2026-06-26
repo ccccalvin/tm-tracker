@@ -4,7 +4,7 @@ import { Check, ChevronDown, Loader2, Plus } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
 import { ScoreNotesEditor } from '@/components/tracker/ScoreNotesEditor';
-import { markComplete, unmarkComplete, addTodo, removeTodo } from '@/lib/db';
+import { addTodo, removeTodo } from '@/lib/db';
 import { cn } from '@/lib/cn';
 import type { Completion, Paper } from '@/types';
 
@@ -19,6 +19,7 @@ export function PaperRow({
   completed,
   completion,
   inTodo,
+  onSetCompleted,
 }: {
   uid: string;
   paper: Paper;
@@ -26,27 +27,16 @@ export function PaperRow({
   /** The existing completion record (for the inline editor), if any. */
   completion: Completion | undefined;
   inTodo: boolean;
+  /** Optimistic complete/incomplete toggle (instant tick, background write). */
+  onSetCompleted: (paper: Paper, desired: boolean) => void;
 }) {
-  const [toggling, setToggling] = useState(false);
   const [todoBusy, setTodoBusy] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
-  async function toggleComplete() {
-    if (toggling) return;
-    setToggling(true);
-    try {
-      if (completed) {
-        await unmarkComplete(uid, paper.id);
-      } else {
-        await markComplete(uid, paper);
-        setExpanded(true); // reveal score/notes editor right after completing
-      }
-    } catch (err) {
-      console.error('[tm-tracker] failed to toggle completion', err);
-      toast.error("Couldn't update that paper. Please try again.");
-    } finally {
-      setToggling(false);
-    }
+  function toggleComplete() {
+    const desired = !completed;
+    onSetCompleted(paper, desired);
+    if (desired) setExpanded(true); // reveal score/notes editor right after completing
   }
 
   async function toggleTodo() {
@@ -80,20 +70,14 @@ export function PaperRow({
           aria-checked={completed}
           aria-label={completed ? `Mark ${paper.label} not done` : `Mark ${paper.label} done`}
           onClick={toggleComplete}
-          disabled={toggling}
           className={cn(
             'flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-colors',
             completed
               ? 'border-transparent bg-primary text-primary-foreground'
               : 'border-input hover:border-primary',
-            toggling && 'opacity-50',
           )}
         >
-          {toggling ? (
-            <Loader2 className="h-3.5 w-3.5 animate-spin" />
-          ) : completed ? (
-            <Check className="h-3.5 w-3.5" />
-          ) : null}
+          {completed ? <Check className="h-3.5 w-3.5" /> : null}
         </button>
 
         <span className="flex-1 truncate text-sm font-medium">{paper.label}</span>

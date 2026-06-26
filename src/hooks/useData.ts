@@ -3,7 +3,8 @@
  * re-render in real time (the leaderboard updates the moment anyone logs a
  * paper — DESIGN.md §2).
  */
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { toast } from 'sonner';
 import {
   collection,
   collectionGroup,
@@ -13,9 +14,9 @@ import {
   query,
 } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { mapUser, mapCompletion, mapTodo, mapClass } from '@/lib/db';
+import { mapUser, mapCompletion, mapTodo, mapClass, markComplete, unmarkComplete } from '@/lib/db';
 import { DEFAULT_CLASSES } from '@/lib/config';
-import type { AppUser, ClassInfo, Completion, TodoItem } from '@/types';
+import type { AppUser, ClassInfo, Completion, Paper, TodoItem } from '@/types';
 
 /** All user profiles — powers the leaderboard + admin users table. */
 export function useAllUsers(): { users: AppUser[]; loading: boolean } {
@@ -72,12 +73,23 @@ export function useCompletions(uid: string | undefined): {
   completedIds: Set<string>;
   byId: Map<string, Completion>;
   loading: boolean;
+  /**
+   * Optimistically mark a paper complete/incomplete. The tick flips instantly
+   * and the Firestore write runs in the background; on failure the change rolls
+   * back and a toast is shown. The optimistic override is cleared once the live
+   * snapshot confirms the new state.
+   */
+  setCompleted: (paper: Paper, desired: boolean) => void;
 } {
   const [completions, setCompletions] = useState<Completion[]>([]);
   const [loading, setLoading] = useState(true);
+  // paperId → desired completed state, held only while a write is in flight (or
+  // until the live snapshot catches up). This is what makes the tick instant.
+  const [overrides, setOverrides] = useState<Map<string, boolean>>(new Map());
   useEffect(() => {
     if (!uid) {
       setCompletions([]);
+      setOverrides(new Map());
       setLoading(false);
       return;
     }
@@ -97,9 +109,54 @@ export function useCompletions(uid: string | undefined): {
     return unsub;
   }, [uid]);
 
-  const completedIds = useMemo(() => new Set(completions.map((c) => c.paperId)), [completions]);
+  const serverIds = useMemo(() => new Set(completions.map((c) => c.paperId)), [completions]);
+
+  // Drop overrides the live snapshot has now caught up to, so server truth
+  // resumes (and a later real change — e.g. from another device — is respected).
+  useEffect(() => {
+    setOverrides((prev) => {
+      if (prev.size === 0) return prev;
+      let changed = false;
+      const next = new Map(prev);
+      for (const [pid, desired] of prev) {
+        if (serverIds.has(pid) === desired) {
+          next.delete(pid);
+          changed = true;
+        }
+      }
+      return changed ? next : prev;
+    });
+  }, [serverIds]);
+
+  const setCompleted = useCallback(
+    (paper: Paper, desired: boolean) => {
+      if (!uid) return;
+      setOverrides((prev) => new Map(prev).set(paper.id, desired));
+      const write = desired ? markComplete(uid, paper) : unmarkComplete(uid, paper.id);
+      write.catch((err) => {
+        console.error('[tm-tracker] failed to toggle completion', err);
+        toast.error("Couldn't update that paper. Please try again.");
+        // Roll back: drop the override so the tick reverts to server truth.
+        setOverrides((prev) => {
+          const next = new Map(prev);
+          next.delete(paper.id);
+          return next;
+        });
+      });
+    },
+    [uid],
+  );
+
+  const completedIds = useMemo(() => {
+    const set = new Set(serverIds);
+    for (const [pid, desired] of overrides) {
+      if (desired) set.add(pid);
+      else set.delete(pid);
+    }
+    return set;
+  }, [serverIds, overrides]);
   const byId = useMemo(() => new Map(completions.map((c) => [c.paperId, c])), [completions]);
-  return { completions, completedIds, byId, loading };
+  return { completions, completedIds, byId, loading, setCompleted };
 }
 
 /** A user's to-do queue, ordered by manual drag-order. */
