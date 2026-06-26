@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui';
 import { Skeleton } from '@/components/ui';
 import { TodoList } from '@/components/tracker/TodoList';
+import { CompletionProgress } from '@/components/tracker/CompletionProgress';
 import { PaperFilters } from '@/components/tracker/PaperFilters';
 import { PaperRow } from '@/components/tracker/PaperRow';
 import { useAuthStore } from '@/store/useAuthStore';
@@ -27,6 +28,18 @@ export function TrackerPage() {
 
   const todoIds = useMemo(() => new Set(todos.map((t) => t.paperId)), [todos]);
 
+  // Progress against the in-scope (recent, year >= DEFAULT_MIN_YEAR) papers —
+  // the same set the list shows by default. Counting only recent completions
+  // keeps the numerator from exceeding the total.
+  const recentPapers = useMemo(
+    () => PAPERS.filter((p) => p.year >= DEFAULT_MIN_YEAR),
+    [],
+  );
+  const completedRecent = useMemo(
+    () => recentPapers.filter((p) => completedIds.has(p.id)).length,
+    [recentPapers, completedIds],
+  );
+
   const rows = useMemo(
     () =>
       filterPapers(
@@ -46,7 +59,18 @@ export function TrackerPage() {
 
   return (
     <div className="space-y-8">
-      {/* TOP — to-do queue */}
+      {/* TOP — overall progress */}
+      {completionsLoading ? (
+        <Card>
+          <CardContent className="pt-6">
+            <Skeleton className="h-12 w-full" />
+          </CardContent>
+        </Card>
+      ) : (
+        <CompletionProgress completed={completedRecent} total={recentPapers.length} />
+      )}
+
+      {/* to-do queue */}
       {todosLoading || completionsLoading ? (
         <Card>
           <CardHeader>
