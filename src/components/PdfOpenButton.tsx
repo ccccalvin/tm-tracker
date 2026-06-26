@@ -24,11 +24,27 @@ export function PdfOpenButton({
     e.stopPropagation();
     if (loading) return;
     setLoading(true);
-    const tab = window.open('', '_blank', 'noopener,noreferrer');
+    // Open a blank tab synchronously, inside the click gesture, so popup blockers
+    // let it through. Do NOT pass 'noopener'/'noreferrer' here — that makes
+    // window.open return null and we'd lose the handle (forcing a same-tab
+    // navigation). We sever the opener link manually instead.
+    const tab = window.open('about:blank', '_blank');
+    if (tab) tab.opener = null;
     try {
       const url = await getPaperUrl(storagePath);
-      if (tab) tab.location.href = url;
-      else window.location.href = url; // popup blocked — navigate current tab
+      if (tab) {
+        tab.location.href = url;
+      } else {
+        // Popup was blocked — open via a transient anchor rather than hijacking
+        // the current tab.
+        const a = document.createElement('a');
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
     } catch (err) {
       if (tab) tab.close();
       // eslint-disable-next-line no-console
