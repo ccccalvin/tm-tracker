@@ -42,6 +42,7 @@ export function rankEntries(
       classId: u.classId,
       paperCount: u.paperCount,
       lastCompletedAt: u.lastCompletedAt,
+      photoURL: u.photoURL,
       rank,
       isYou: u.uid === currentUid,
     };

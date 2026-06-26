@@ -108,9 +108,9 @@ export function TodoList({
     <Card>
       <CardHeader>
         <CardTitle className="text-lg">To-do</CardTitle>
-        <CardDescription>
-          Your personal queue of papers to work through. Drag to reorder, and
-          tick them off as you go.
+        <CardDescription className="italic">
+          “If I quit now, I will soon be back to where I started. And when I
+          started, I was desperately wishing to be where I am now.”
         </CardDescription>
       </CardHeader>
       <CardContent>

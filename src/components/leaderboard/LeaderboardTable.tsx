@@ -3,6 +3,7 @@ import { rankEntries, topPositions } from '@/lib/ranking';
 import { LEADERBOARD_TOP_POSITIONS } from '@/lib/config';
 import { formatCount } from '@/lib/format';
 import { ClassBadge } from '@/components/ClassBadge';
+import { Avatar } from '@/components/Avatar';
 import { Skeleton } from '@/components/ui';
 import { cn } from '@/lib/cn';
 
@@ -40,9 +41,10 @@ export function LeaderboardRow({
         className,
       )}
     >
-      <span className="w-6 shrink-0 text-center tabular-nums text-muted-foreground">
-        {entry.rank}
+      <span className="w-8 shrink-0 text-center font-semibold tabular-nums text-muted-foreground">
+        #{entry.rank}
       </span>
+      <Avatar src={entry.photoURL} name={entry.displayName} className="h-7 w-7" />
       <span className="flex min-w-0 flex-1 items-center gap-2">
         <span className="truncate">{entry.displayName || 'Unnamed'}</span>
         <ClassBadge badge={classMap.get(entry.classId)?.badge ?? ''} />

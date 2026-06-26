@@ -3,14 +3,24 @@ rules_version = '2';
 // tm-tracker Storage rules.
 //  - Any signed-in user can READ papers (the PDFs are login-gated like the rest
 //    of the app — DESIGN.md §9/§27).
-//  - Clients never WRITE: PDFs are uploaded out-of-band with privileged
-//    credentials (scripts/upload-pdfs.mjs or the Firebase console), which bypass
-//    these rules. There is no in-app upload (DESIGN.md §14).
+//  - PDFs are never written by clients: uploaded out-of-band with privileged
+//    credentials (scripts/upload-pdfs.mjs or the Firebase console).
+//  - Avatars: any signed-in user can READ (they show on the shared leaderboard);
+//    a user may only WRITE their own (`avatars/{uid}`), limited to a small image.
 service firebase.storage {
   match /b/{bucket}/o {
     match /papers/{allPaths=**} {
       allow read: if request.auth != null;
       allow write: if false;
+    }
+    match /avatars/{uid} {
+      allow read: if request.auth != null;
+      // Owner may upload an image (<2 MB) or delete it (delete has no resource).
+      allow write: if request.auth != null
+        && request.auth.uid == uid
+        && (request.resource == null
+            || (request.resource.size < 2 * 1024 * 1024
+                && request.resource.contentType.matches('image/.*')));
     }
     match /{allPaths=**} {
       allow read, write: if false;

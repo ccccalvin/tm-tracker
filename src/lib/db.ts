@@ -24,7 +24,7 @@ import {
   type QueryDocumentSnapshot,
   type Timestamp,
 } from 'firebase/firestore';
-import { ref, getDownloadURL } from 'firebase/storage';
+import { ref, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
 import type { User as FirebaseUser } from 'firebase/auth';
 import { db, storage } from './firebase';
 import { BOOTSTRAP_ADMIN_EMAIL, DEFAULT_CLASSES } from './config';
@@ -51,6 +51,9 @@ export function mapUser(snap: QueryDocumentSnapshot<DocumentData>): AppUser {
     lastCompletedAt: toMillis(d.lastCompletedAt),
     createdAt: toMillis(d.createdAt) ?? 0,
     onboarded: Boolean(d.onboarded),
+    photoURL: typeof d.photoURL === 'string' && d.photoURL ? d.photoURL : null,
+    showTrialsCountdown: Boolean(d.showTrialsCountdown),
+    trialsDate: typeof d.trialsDate === 'string' && d.trialsDate ? d.trialsDate : null,
   };
 }
 
@@ -122,6 +125,9 @@ export async function ensureUserDoc(fbUser: FirebaseUser): Promise<void> {
     lastCompletedAt: null,
     onboarded: isBootstrapAdmin, // admin skips student onboarding
     createdAt: serverTimestamp(),
+    photoURL: null,
+    showTrialsCountdown: false,
+    trialsDate: null,
   });
 
   if (isBootstrapAdmin) {
@@ -143,6 +149,45 @@ export async function completeOnboarding(
 
 export async function updateDisplayName(uid: string, displayName: string): Promise<void> {
   await updateDoc(userRef(uid), { displayName: displayName.trim() });
+}
+
+// ── profile picture ──────────────────────────────────────────────────────────
+/** Storage path for a user's avatar (one per user; new uploads overwrite it). */
+const avatarRef = (uid: string) => ref(storage, `avatars/${uid}`);
+
+/**
+ * Upload a cropped avatar image and point the profile at its download URL. The
+ * blob is already a small (~256px) square produced client-side. Returns the new
+ * URL (which carries a fresh token, so it busts any cached copy).
+ */
+export async function uploadAvatar(uid: string, blob: Blob): Promise<string> {
+  await uploadBytes(avatarRef(uid), blob, { contentType: blob.type || 'image/jpeg' });
+  const url = await getDownloadURL(avatarRef(uid));
+  await updateDoc(userRef(uid), { photoURL: url });
+  return url;
+}
+
+/** Remove the avatar image and revert the profile to the default icon. */
+export async function removeAvatar(uid: string): Promise<void> {
+  await updateDoc(userRef(uid), { photoURL: null });
+  try {
+    await deleteObject(avatarRef(uid));
+  } catch {
+    // The object may already be gone (e.g. never uploaded) — the profile is the
+    // source of truth, so a missing storage object is not an error here.
+  }
+}
+
+// ── personal countdown settings ──────────────────────────────────────────────
+/** Save the student's "days until trials" countdown toggle + date. */
+export async function updateTrialsCountdown(
+  uid: string,
+  settings: { showTrialsCountdown: boolean; trialsDate: string | null },
+): Promise<void> {
+  await updateDoc(userRef(uid), {
+    showTrialsCountdown: settings.showTrialsCountdown,
+    trialsDate: settings.trialsDate,
+  });
 }
 
 // ── completions (instant-tick logging) ───────────────────────────────────────

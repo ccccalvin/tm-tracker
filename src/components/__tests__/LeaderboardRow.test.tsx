@@ -15,6 +15,7 @@ function entry(over: Partial<LeaderboardEntry> = {}): LeaderboardEntry {
     classId: 'mon-advn',
     paperCount: 37,
     lastCompletedAt: null,
+    photoURL: null,
     rank: 1,
     isYou: false,
     ...over,
@@ -24,7 +25,7 @@ function entry(over: Partial<LeaderboardEntry> = {}): LeaderboardEntry {
 describe('LeaderboardRow', () => {
   it('renders rank, name, class badge and paper count', () => {
     const { getByText } = render(<LeaderboardRow entry={entry()} classMap={classMap} />);
-    expect(getByText('1')).toBeInTheDocument();
+    expect(getByText('#1')).toBeInTheDocument();
     expect(getByText('Alice')).toBeInTheDocument();
     expect(getByText('MON ADVN')).toBeInTheDocument();
     expect(getByText('37 papers')).toBeInTheDocument();

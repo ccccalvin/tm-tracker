@@ -22,3 +22,7 @@ export const LEADERBOARD_TOP_POSITIONS = 5;
 
 /** Recently-completed papers shown on Home (DESIGN.md §6.2). */
 export const RECENT_COMPLETED_COUNT = 5;
+
+/** First day of the HSC exam period, as `YYYY-MM-DD`. Drives the "DAYS UNTIL
+ * HSC" countdown on Home — update this once a year. (19 Oct 2026.) */
+export const HSC_EXAM_DATE = '2026-10-19';

@@ -4,6 +4,7 @@ import { Trophy, ListChecks, Users, Shield, Sun, Moon, Settings } from 'lucide-r
 import { useAuthStore } from '@/store/useAuthStore';
 import { useThemeStore } from '@/store/useThemeStore';
 import { OptionsModal } from '@/components/OptionsModal';
+import { Avatar } from '@/components/Avatar';
 import { cn } from '@/lib/cn';
 
 const studentNav = [
@@ -26,7 +27,7 @@ export function Layout() {
   const navItems = isAdmin ? adminNav : studentNav;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex h-14 w-full max-w-3xl items-center px-4 sm:px-6">
           <div className="mr-4 flex items-center">
@@ -61,6 +62,11 @@ export function Layout() {
             >
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
+            <Avatar
+              src={profile?.photoURL}
+              name={profile?.displayName}
+              className="h-7 w-7"
+            />
             <span className="hidden sm:inline text-sm text-muted-foreground max-w-[10rem] truncate">
               {profile?.displayName || 'You'}
             </span>

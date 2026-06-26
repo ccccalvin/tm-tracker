@@ -14,6 +14,9 @@ function mk(uid: string, over: Partial<AppUser> = {}): AppUser {
     lastCompletedAt: null,
     createdAt: 0,
     onboarded: true,
+    photoURL: null,
+    showTrialsCountdown: false,
+    trialsDate: null,
     ...over,
   };
 }

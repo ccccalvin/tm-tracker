@@ -26,6 +26,12 @@ export interface AppUser {
   createdAt: number;
   /** True once the user has set display name + class. */
   onboarded: boolean;
+  /** Storage download URL for the profile picture, or null for the default icon. */
+  photoURL: string | null;
+  /** Whether to show the personal "days until trials" countdown on Home. */
+  showTrialsCountdown: boolean;
+  /** The student's trials date as `YYYY-MM-DD`, or null if unset. */
+  trialsDate: string | null;
 }
 
 /** A class/cohort, stored at `classes/{classId}`. */
@@ -92,6 +98,8 @@ export interface LeaderboardEntry {
   classId: string;
   paperCount: number;
   lastCompletedAt: number | null;
+  /** Profile picture URL, or null for the default icon. */
+  photoURL: string | null;
   /** Shared, 1-based rank (ties share a number). Assigned during ranking. */
   rank: number;
   /** True if this row is the signed-in user. */

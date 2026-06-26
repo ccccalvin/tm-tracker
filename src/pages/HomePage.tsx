@@ -13,6 +13,7 @@ import {
 } from '@/components/leaderboard/LeaderboardTable';
 import { StatStrip } from '@/components/StatStrip';
 import { RecentList } from '@/components/RecentList';
+import { CountdownBoxes } from '@/components/CountdownBoxes';
 import { useAllUsers, useClassMap, useCompletions } from '@/hooks/useData';
 import { useAuthStore, useProfile } from '@/store/useAuthStore';
 import { rankEntries, findYou } from '@/lib/ranking';
@@ -37,6 +38,12 @@ export function HomePage() {
 
   return (
     <div className="space-y-6">
+      {/* ── Countdown(s) ────────────────────────────────────────────────── */}
+      <CountdownBoxes
+        showTrials={profile?.showTrialsCountdown ?? false}
+        trialsDate={profile?.trialsDate ?? null}
+      />
+
       {/* ── Leaderboard ─────────────────────────────────────────────────── */}
       <Card>
         <CardHeader>
@@ -44,8 +51,8 @@ export function HomePage() {
             <Trophy className="h-5 w-5 text-primary" />
             Leaderboard
           </CardTitle>
-          <CardDescription>
-            See how you stack up — students ranked by total papers completed.
+          <CardDescription className="italic">
+            “Do so much volume that it would be unreasonable to be unsuccessful.”
           </CardDescription>
         </CardHeader>
         <CardContent>

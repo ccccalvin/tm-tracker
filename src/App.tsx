@@ -4,6 +4,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { useThemeStore } from '@/store/useThemeStore';
 import { FullPageSpinner } from '@/components/Spinner';
 import { Layout } from '@/components/Layout';
+import { MarqueeBackground } from '@/components/MarqueeBackground';
 import { LoginPage } from '@/pages/LoginPage';
 import { OnboardingPage } from '@/pages/OnboardingPage';
 import { HomePage } from '@/pages/HomePage';
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <>
+      <MarqueeBackground />
       <Toaster
         position="bottom-right"
         richColors
