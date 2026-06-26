@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui';
 import { Skeleton } from '@/components/ui';
 import { TodoList } from '@/components/tracker/TodoList';
 import { PaperFilters } from '@/components/tracker/PaperFilters';
@@ -48,13 +48,26 @@ export function TrackerPage() {
     <div className="space-y-8">
       {/* TOP — to-do queue */}
       {todosLoading || completionsLoading ? (
-        <section className="space-y-3">
-          <h2 className="text-lg font-semibold">To-do</h2>
-          <Skeleton className="h-12 w-full" />
-          <Skeleton className="h-12 w-full" />
-        </section>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">To-do</CardTitle>
+            <CardDescription>
+              Your personal queue of papers to work through. Drag to reorder, and
+              tick them off as you go.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-1.5">
+            <Skeleton className="h-10 w-full" />
+            <Skeleton className="h-10 w-full" />
+          </CardContent>
+        </Card>
       ) : (
-        <TodoList uid={uid} todos={todos} completedIds={completedIds} />
+        <TodoList
+          uid={uid}
+          todos={todos}
+          completedIds={completedIds}
+          completionsById={byId}
+        />
       )}
 
       {/* BOTTOM — full paper list */}
@@ -79,9 +92,9 @@ export function TrackerPage() {
           </p>
 
           {completionsLoading ? (
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               {Array.from({ length: 6 }).map((_, i) => (
-                <Skeleton key={i} className="h-12 w-full" />
+                <Skeleton key={i} className="h-10 w-full" />
               ))}
             </div>
           ) : rows.length === 0 ? (
@@ -89,7 +102,7 @@ export function TrackerPage() {
               No papers match your filters.
             </p>
           ) : (
-            <ul className="space-y-2">
+            <ul className="space-y-1.5">
               {rows.map((paper) => (
                 <PaperRow
                   key={paper.id}

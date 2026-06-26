@@ -73,7 +73,7 @@ export function PaperRow({
         completed ? 'bg-completed text-completed-foreground border-transparent' : 'bg-card',
       )}
     >
-      <div className="flex items-center gap-3 p-2 sm:p-3">
+      <div className="flex items-center gap-2 px-2 py-1 sm:px-3">
         <button
           type="button"
           role="checkbox"
@@ -105,7 +105,7 @@ export function PaperRow({
             size="sm"
             onClick={() => setExpanded((v) => !v)}
             aria-expanded={expanded}
-            className="hidden h-8 px-2 text-xs sm:inline-flex"
+            className="hidden h-6 px-2 text-xs sm:inline-flex"
           >
             Score / notes
             <ChevronDown
@@ -120,7 +120,7 @@ export function PaperRow({
           size="sm"
           onClick={toggleTodo}
           disabled={todoBusy}
-          className="h-8 shrink-0 px-2 text-xs"
+          className="h-6 shrink-0 px-2 text-xs"
         >
           {todoBusy ? (
             <Loader2 className="h-3.5 w-3.5 animate-spin" />

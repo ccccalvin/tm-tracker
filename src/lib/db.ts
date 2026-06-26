@@ -153,13 +153,20 @@ export async function markComplete(uid: string, paper: Paper): Promise<void> {
     const tRef = todoRef(uid, paper.id);
     const cSnap = await tx.get(cRef);
     const tSnap = await tx.get(tRef);
-    if (cSnap.exists()) return; // already complete
-    tx.set(cRef, {
-      paperLabel: paper.label,
-      completedAt: serverTimestamp(),
-      score: null,
-      notes: null,
-    });
+    if (cSnap.exists() && cSnap.data().completed !== false) return; // already complete
+    if (cSnap.exists()) {
+      // Re-completing a paper that was previously un-completed: keep the score
+      // and notes that were preserved on the doc, just flag it complete again.
+      tx.update(cRef, { completed: true, completedAt: serverTimestamp() });
+    } else {
+      tx.set(cRef, {
+        paperLabel: paper.label,
+        completedAt: serverTimestamp(),
+        completed: true,
+        score: null,
+        notes: null,
+      });
+    }
     tx.update(userRef(uid), {
       paperCount: increment(1),
       lastCompletedAt: serverTimestamp(),
@@ -168,15 +175,21 @@ export async function markComplete(uid: string, paper: Paper): Promise<void> {
   });
 }
 
-/** Un-mark a paper (idempotent). Decrements paperCount + un-dones any todo. */
+/**
+ * Un-mark a paper (idempotent). Decrements paperCount + un-dones any todo.
+ *
+ * We keep the completion doc (flagging it `completed: false`) rather than
+ * deleting it, so an accidental un-complete doesn't throw away the private
+ * score/notes the user recorded. Re-completing restores them (see markComplete).
+ */
 export async function unmarkComplete(uid: string, paperId: string): Promise<void> {
   await runTransaction(db, async (tx) => {
     const cRef = completionRef(uid, paperId);
     const tRef = todoRef(uid, paperId);
     const cSnap = await tx.get(cRef);
     const tSnap = await tx.get(tRef);
-    if (!cSnap.exists()) return;
-    tx.delete(cRef);
+    if (!cSnap.exists() || cSnap.data().completed === false) return; // already not complete
+    tx.update(cRef, { completed: false });
     tx.update(userRef(uid), { paperCount: increment(-1) });
     if (tSnap.exists()) tx.update(tRef, { done: false });
   });

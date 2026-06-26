@@ -1,26 +1,23 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Trophy } from 'lucide-react';
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui';
-import { Tabs, type TabOption } from '@/components/leaderboard/Tabs';
 import {
   LeaderboardRow,
   LeaderboardTable,
 } from '@/components/leaderboard/LeaderboardTable';
 import { StatStrip } from '@/components/StatStrip';
 import { RecentList } from '@/components/RecentList';
-import { useAllUsers, useClasses, useClassMap, useCompletions } from '@/hooks/useData';
+import { useAllUsers, useClassMap, useCompletions } from '@/hooks/useData';
 import { useAuthStore, useProfile } from '@/store/useAuthStore';
 import { rankEntries, findYou } from '@/lib/ranking';
 import { studentStats, recentCompletions } from '@/lib/stats';
 import { RECENT_COMPLETED_COUNT } from '@/lib/config';
-
-/** Sentinel value for the "All" (global) tab — distinct from any classId. */
-const ALL = '';
 
 export function HomePage() {
   const myUid = useAuthStore((s) => s.firebaseUser?.uid);
@@ -28,32 +25,15 @@ export function HomePage() {
   const isAdmin = profile?.role === 'admin';
 
   const { users, loading: usersLoading } = useAllUsers();
-  const { classes } = useClasses();
   const classMap = useClassMap();
   const { completions: myCompletions, loading: completionsLoading } = useCompletions(myUid);
 
-  const [tab, setTab] = useState<string>(ALL);
-
-  // Tabs: "All" + one per non-archived class (label = its badge).
-  const tabOptions = useMemo<TabOption[]>(
-    () => [
-      { value: ALL, label: 'All' },
-      ...classes
-        .filter((c) => !c.archived)
-        .map((c) => ({ value: c.id, label: c.badge })),
-    ],
-    [classes],
-  );
-
-  // The classId scope for the current tab (undefined ⇒ global "All").
-  const scopeClassId = tab === ALL ? undefined : tab;
-
-  // Full ranking for the current scope — used to find the signed-in user's own
-  // entry (even if outside the top positions shown in the table).
+  // Full global ranking — used to find the signed-in user's own entry (even if
+  // outside the top positions shown in the table).
   const youEntry = useMemo(() => {
     if (!myUid) return undefined;
-    return findYou(rankEntries(users, myUid, scopeClassId));
-  }, [users, myUid, scopeClassId]);
+    return findYou(rankEntries(users, myUid));
+  }, [users, myUid]);
 
   return (
     <div className="space-y-6">
@@ -64,13 +44,14 @@ export function HomePage() {
             <Trophy className="h-5 w-5 text-primary" />
             Leaderboard
           </CardTitle>
-          <Tabs value={tab} onChange={setTab} options={tabOptions} className="pt-2" />
+          <CardDescription>
+            See how you stack up — students ranked by total papers completed.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <LeaderboardTable
             users={users}
             myUid={myUid ?? ''}
-            classId={scopeClassId}
             classMap={classMap}
             loading={usersLoading}
           />

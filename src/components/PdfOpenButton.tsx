@@ -46,7 +46,7 @@ export function PdfOpenButton({
       title={title}
       aria-label={title}
       className={cn(
-        'inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors',
+        'inline-flex h-6 w-6 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors',
         className,
       )}
     >

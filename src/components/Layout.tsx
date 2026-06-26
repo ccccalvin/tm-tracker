@@ -28,7 +28,7 @@ export function Layout() {
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="flex h-14 items-center px-4 sm:px-6">
+        <div className="mx-auto flex h-14 w-full max-w-3xl items-center px-4 sm:px-6">
           <div className="mr-4 flex items-center">
             <Link to="/" className="mr-4 sm:mr-6 flex items-center">
               <span className="font-bold">tm-tracker</span>
@@ -75,7 +75,7 @@ export function Layout() {
         </div>
       </header>
 
-      <main className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6">
+      <main className="w-full max-w-3xl mx-auto px-4 sm:px-6 py-6">
         <Outlet />
       </main>
 

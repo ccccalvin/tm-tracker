@@ -74,7 +74,7 @@ export function ScoreNotesEditor({
 
   return (
     <div className="space-y-3 rounded-md border bg-background/60 p-3">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
         <div className="space-y-1.5 sm:w-32">
           <Label htmlFor={`score-${paperId}`}>Score (%)</Label>
           <Input

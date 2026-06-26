@@ -17,8 +17,17 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Check, GripVertical, Loader2, X } from 'lucide-react';
+import { Check, ChevronDown, GripVertical, Loader2, X } from 'lucide-react';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
+import { ScoreNotesEditor } from '@/components/tracker/ScoreNotesEditor';
 import {
   markComplete,
   unmarkComplete,
@@ -27,7 +36,7 @@ import {
 } from '@/lib/db';
 import { getPaper } from '@/lib/catalog';
 import { cn } from '@/lib/cn';
-import type { TodoItem } from '@/types';
+import type { Completion, TodoItem } from '@/types';
 
 /**
  * The personal to-do queue (top of the Tracker). Drag-to-reorder via @dnd-kit;
@@ -38,10 +47,13 @@ export function TodoList({
   uid,
   todos,
   completedIds,
+  completionsById,
 }: {
   uid: string;
   todos: TodoItem[];
   completedIds: Set<string>;
+  /** Completion records keyed by paperId, for the inline score/notes editor. */
+  completionsById: Map<string, Completion>;
 }) {
   // Local order for optimistic, snappy drag UX; kept in sync with the live list.
   const [order, setOrder] = useState<string[]>(() => todos.map((t) => t.paperId));
@@ -95,34 +107,42 @@ export function TodoList({
   }
 
   return (
-    <section className="space-y-3">
-      <h2 className="text-lg font-semibold">To-do</h2>
-
-      {ordered.length === 0 ? (
-        <p className="rounded-md border border-dashed bg-card p-6 text-center text-sm text-muted-foreground">
-          Your to-do list is empty — add papers from the list below.
-        </p>
-      ) : (
-        <DndContext
-          sensors={sensors}
-          collisionDetection={closestCenter}
-          onDragEnd={handleDragEnd}
-        >
-          <SortableContext items={order} strategy={verticalListSortingStrategy}>
-            <ul className="space-y-2">
-              {ordered.map((todo) => (
-                <TodoRow
-                  key={todo.paperId}
-                  uid={uid}
-                  todo={todo}
-                  completed={completedIds.has(todo.paperId)}
-                />
-              ))}
-            </ul>
-          </SortableContext>
-        </DndContext>
-      )}
-    </section>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-lg">To-do</CardTitle>
+        <CardDescription>
+          Your personal queue of papers to work through. Drag to reorder, and
+          tick them off as you go.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        {ordered.length === 0 ? (
+          <p className="rounded-md border border-dashed p-6 text-center text-sm text-muted-foreground">
+            Your to-do list is empty — add papers from the list below.
+          </p>
+        ) : (
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+          >
+            <SortableContext items={order} strategy={verticalListSortingStrategy}>
+              <ul className="space-y-1.5">
+                {ordered.map((todo) => (
+                  <TodoRow
+                    key={todo.paperId}
+                    uid={uid}
+                    todo={todo}
+                    completed={completedIds.has(todo.paperId)}
+                    completion={completionsById.get(todo.paperId)}
+                  />
+                ))}
+              </ul>
+            </SortableContext>
+          </DndContext>
+        )}
+      </CardContent>
+    </Card>
   );
 }
 
@@ -130,15 +150,19 @@ function TodoRow({
   uid,
   todo,
   completed,
+  completion,
 }: {
   uid: string;
   todo: TodoItem;
   completed: boolean;
+  /** The existing completion record (for the inline editor), if any. */
+  completion: Completion | undefined;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: todo.paperId });
   const [toggling, setToggling] = useState(false);
   const [removing, setRemoving] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const paper = getPaper(todo.paperId);
 
@@ -155,6 +179,7 @@ function TodoRow({
         await unmarkComplete(uid, todo.paperId);
       } else {
         await markComplete(uid, paper);
+        setExpanded(true); // reveal score/notes editor right after completing
       }
     } catch (err) {
       console.error('[tm-tracker] failed to toggle completion', err);
@@ -182,57 +207,94 @@ function TodoRow({
       ref={setNodeRef}
       style={style}
       className={cn(
-        'flex items-center gap-2 rounded-md border p-2 sm:gap-3 sm:p-3',
+        'rounded-md border transition-colors',
         completed ? 'bg-completed text-completed-foreground border-transparent' : 'bg-card',
         isDragging && 'relative z-10 shadow-md',
       )}
     >
-      <button
-        type="button"
-        aria-label="Drag to reorder"
-        className="cursor-grab touch-none text-muted-foreground hover:text-foreground active:cursor-grabbing"
-        {...attributes}
-        {...listeners}
-      >
-        <GripVertical className="h-4 w-4" />
-      </button>
+      <div className="flex items-center gap-2 px-2 py-1.5 sm:px-3">
+        <button
+          type="button"
+          aria-label="Drag to reorder"
+          className="cursor-grab touch-none text-muted-foreground hover:text-foreground active:cursor-grabbing"
+          {...attributes}
+          {...listeners}
+        >
+          <GripVertical className="h-4 w-4" />
+        </button>
 
-      <button
-        type="button"
-        role="checkbox"
-        aria-checked={completed}
-        aria-label={completed ? `Mark ${todo.paperLabel} not done` : `Mark ${todo.paperLabel} done`}
-        onClick={toggleComplete}
-        disabled={toggling || !paper}
-        className={cn(
-          'flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-colors',
-          completed
-            ? 'border-transparent bg-primary text-primary-foreground'
-            : 'border-input hover:border-primary',
-          (toggling || !paper) && 'opacity-50',
+        <button
+          type="button"
+          role="checkbox"
+          aria-checked={completed}
+          aria-label={completed ? `Mark ${todo.paperLabel} not done` : `Mark ${todo.paperLabel} done`}
+          onClick={toggleComplete}
+          disabled={toggling || !paper}
+          className={cn(
+            'flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-colors',
+            completed
+              ? 'border-transparent bg-primary text-primary-foreground'
+              : 'border-input hover:border-primary',
+            (toggling || !paper) && 'opacity-50',
+          )}
+        >
+          {toggling ? (
+            <Loader2 className="h-3.5 w-3.5 animate-spin" />
+          ) : completed ? (
+            <Check className="h-3.5 w-3.5" />
+          ) : null}
+        </button>
+
+        <span className="flex-1 truncate text-sm font-medium">{todo.paperLabel}</span>
+
+        {completed && (
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={() => setExpanded((v) => !v)}
+            aria-expanded={expanded}
+            className="hidden h-7 px-2 text-xs sm:inline-flex"
+          >
+            Score / notes
+            <ChevronDown
+              className={cn('ml-1 h-3.5 w-3.5 transition-transform', expanded && 'rotate-180')}
+            />
+          </Button>
         )}
-      >
-        {toggling ? (
-          <Loader2 className="h-3.5 w-3.5 animate-spin" />
-        ) : completed ? (
-          <Check className="h-3.5 w-3.5" />
-        ) : null}
-      </button>
 
-      <span className="flex-1 truncate text-sm font-medium">{todo.paperLabel}</span>
+        {paper && <PdfOpenButton storagePath={paper.storagePath} />}
 
-      {paper && <PdfOpenButton storagePath={paper.storagePath} />}
+        <button
+          type="button"
+          onClick={remove}
+          disabled={removing}
+          aria-label={`Remove ${todo.paperLabel} from to-do`}
+          title="Remove from to-do"
+          className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
+        >
+          {removing ? <Loader2 className="h-4 w-4 animate-spin" /> : <X className="h-4 w-4" />}
+        </button>
+      </div>
 
-      <button
-        type="button"
-        onClick={remove}
-        disabled={removing}
-        aria-label={`Remove ${todo.paperLabel} from to-do`}
-        title="Remove from to-do"
-        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
-      >
-        {removing ? <Loader2 className="h-4 w-4 animate-spin" /> : <X className="h-4 w-4" />}
-      </button>
+      {/* On mobile the score/notes toggle gets its own full-width row. */}
+      {completed && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          className="flex w-full items-center justify-center gap-1 border-t border-border/40 px-3 py-1.5 text-xs font-medium sm:hidden"
+        >
+          Score / notes
+          <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', expanded && 'rotate-180')} />
+        </button>
+      )}
+
+      {completed && expanded && (
+        <div className="px-2 pb-2 sm:px-3 sm:pb-3">
+          <ScoreNotesEditor uid={uid} paperId={todo.paperId} completion={completion} />
+        </div>
+      )}
     </li>
   );
 }

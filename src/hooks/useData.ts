@@ -85,7 +85,11 @@ export function useCompletions(uid: string | undefined): {
     const unsub = onSnapshot(
       collection(db, 'users', uid, 'completions'),
       (snap) => {
-        setCompletions(snap.docs.map(mapCompletion));
+        // Un-completed papers keep their doc (to preserve score/notes) flagged
+        // `completed: false` — exclude them so they don't count as completed.
+        setCompletions(
+          snap.docs.filter((d) => d.data().completed !== false).map(mapCompletion),
+        );
         setLoading(false);
       },
       () => setLoading(false),
@@ -145,15 +149,18 @@ export function useActivityFeed(max = 50): { items: FeedItem[]; loading: boolean
       q,
       (snap) => {
         setItems(
-          snap.docs.map((d) => ({
-            uid: d.ref.parent.parent?.id ?? '',
-            paperId: d.id,
-            paperLabel: (d.data().paperLabel as string) ?? '',
-            completedAt:
-              d.data().completedAt && typeof d.data().completedAt.toMillis === 'function'
-                ? d.data().completedAt.toMillis()
-                : 0,
-          })),
+          snap.docs
+            // Exclude un-completed papers (kept only to preserve score/notes).
+            .filter((d) => d.data().completed !== false)
+            .map((d) => ({
+              uid: d.ref.parent.parent?.id ?? '',
+              paperId: d.id,
+              paperLabel: (d.data().paperLabel as string) ?? '',
+              completedAt:
+                d.data().completedAt && typeof d.data().completedAt.toMillis === 'function'
+                  ? d.data().completedAt.toMillis()
+                  : 0,
+            })),
         );
         setLoading(false);
       },
