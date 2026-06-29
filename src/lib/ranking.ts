@@ -6,10 +6,15 @@
  *  - Rank by total completed papers, descending.
  *  - Ties SHARE a rank, using DENSE ranking: 1, 2, 3, 3, 4, 5
  *    (two tied at #3 → next distinct count is #4, not #5).
- *  - "Top N positions" shows every entry whose rank ≤ N, so a tie can surface
- *    more than N people.
- *  - Display order within a tie: earlier-reached first (lastCompletedAt asc),
- *    then name — purely cosmetic, the shared rank number is identical.
+ *  - The board shows at most a fixed number of PEOPLE (see topN): exactly N
+ *    rows, even when a tie would otherwise spill past N.
+ *  - Order within a tie (decides who appears, and in what order):
+ *      1. earlier-reached first (lastCompletedAt asc — whoever hit the count
+ *         first ranks higher),
+ *      2. earlier account first (createdAt asc — the decider when nobody has a
+ *         completion yet, e.g. everyone on 0 papers),
+ *      3. name (final stable fallback).
+ *    The shared dense rank NUMBER is still identical for tied people.
  */
 import type { AppUser, LeaderboardEntry } from '@/types';
 
@@ -26,6 +31,7 @@ export function rankEntries(
     (a, b) =>
       b.paperCount - a.paperCount ||
       (a.lastCompletedAt ?? Infinity) - (b.lastCompletedAt ?? Infinity) ||
+      a.createdAt - b.createdAt ||
       a.displayName.localeCompare(b.displayName),
   );
 
@@ -49,9 +55,13 @@ export function rankEntries(
   });
 }
 
-/** Entries whose rank ≤ maxRank (the "top 5 positions" view). */
-export function topPositions(entries: LeaderboardEntry[], maxRank: number): LeaderboardEntry[] {
-  return entries.filter((e) => e.rank <= maxRank);
+/**
+ * The first `n` people on the board — a hard cap on rows, NOT on rank numbers.
+ * Entries are already in display order, so a tie that straddles the cut-off is
+ * truncated mid-tie: exactly `n` rows show, never more (DESIGN.md §10).
+ */
+export function topN(entries: LeaderboardEntry[], n: number): LeaderboardEntry[] {
+  return entries.slice(0, n);
 }
 
 /** The signed-in user's own entry, if they're ranked. */

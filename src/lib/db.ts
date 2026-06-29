@@ -137,6 +137,9 @@ function mapBountyResult(raw: unknown): BountyResult | null {
 // ── refs ────────────────────────────────────────────────────────────────────
 export const usersCol = () => collection(db, 'users');
 export const userRef = (uid: string) => doc(db, 'users', uid);
+/** A user's one-shot admin-claim doc. Its mere existence (gated by the secret
+ * token in firestore.rules) is what authorises self-promotion to admin. */
+export const adminClaimRef = (uid: string) => doc(db, 'adminClaims', uid);
 export const completionsCol = (uid: string) => collection(db, 'users', uid, 'completions');
 export const completionRef = (uid: string, paperId: string) =>
   doc(db, 'users', uid, 'completions', paperId);
@@ -203,6 +206,36 @@ export async function completeOnboarding(
 
 export async function updateDisplayName(uid: string, displayName: string): Promise<void> {
   await updateDoc(userRef(uid), { displayName: displayName.trim() });
+}
+
+/**
+ * Self-service admin sign-up via a shared secret token (DESIGN.md §3).
+ *
+ * The token is NEVER trusted client-side: step 1 writes it into the user's
+ * `adminClaims/{uid}` doc, which firestore.rules only permit when it matches the
+ * locked `config/adminSecret` doc (a wrong token throws permission-denied here).
+ * Step 2 self-promotes — the rules allow role→'admin' only because the claim doc
+ * now exists. Admins carry NO class, so classId is cleared. Step 3 tidies up the
+ * (now spent) claim doc; best-effort, since promotion has already succeeded.
+ *
+ * Throws on an invalid token — callers should surface that as "incorrect token".
+ */
+export async function claimAdmin(
+  uid: string,
+  displayName: string,
+  token: string,
+): Promise<void> {
+  await setDoc(adminClaimRef(uid), { token, createdAt: serverTimestamp() });
+  await updateDoc(userRef(uid), {
+    displayName: displayName.trim(),
+    role: 'admin',
+    isTMStudent: false,
+    classId: '',
+    onboarded: true,
+  });
+  await deleteDoc(adminClaimRef(uid)).catch(() => {
+    /* claim is spent; a lingering doc is harmless (unreadable, admin-deletable) */
+  });
 }
 
 // ── profile picture ──────────────────────────────────────────────────────────

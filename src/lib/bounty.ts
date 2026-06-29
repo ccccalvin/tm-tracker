@@ -118,7 +118,8 @@ export function formatBountyRange(startDate: string, endDate: string): string {
  * students, dense ranking with shared ties (1,2,3,3,4). Students with zero
  * completions in the window are omitted — a bounty only lists contenders.
  * Tie-break: whoever reached the count first (earliest last-in-window
- * completion) ranks higher; then name. Purely cosmetic — the rank is shared.
+ * completion) ranks higher; then earlier account (createdAt asc); then name.
+ * Purely cosmetic — the rank is shared.
  */
 export function rankBountyEntries(
   counts: Map<string, { count: number; lastInRange: number }>,
@@ -139,6 +140,7 @@ export function rankBountyEntries(
         count: c?.count ?? 0,
         lastInRange: c?.lastInRange ?? null,
         photoURL: u.photoURL,
+        createdAt: u.createdAt, // sort-only; stripped before return
       };
     })
     .filter((e) => e.count > 0);
@@ -147,12 +149,13 @@ export function rankBountyEntries(
     (a, b) =>
       b.count - a.count ||
       (a.lastInRange ?? Infinity) - (b.lastInRange ?? Infinity) ||
+      a.createdAt - b.createdAt ||
       a.displayName.localeCompare(b.displayName),
   );
 
   let lastCount = Number.POSITIVE_INFINITY;
   let rank = 0;
-  return contenders.map((e) => {
+  return contenders.map(({ createdAt: _createdAt, ...e }) => {
     if (e.count < lastCount) {
       rank += 1; // dense ranking — advance only on a new distinct count
       lastCount = e.count;

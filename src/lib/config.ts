@@ -17,8 +17,9 @@ export const DEFAULT_CLASSES = [
  * older ones (DESIGN.md §2, Q28b). */
 export const DEFAULT_MIN_YEAR = 2018;
 
-/** How many leaderboard rank positions to show per scope (DESIGN.md §10). */
-export const LEADERBOARD_TOP_POSITIONS = 5;
+/** How many people the leaderboard shows per scope — a hard row cap, ties
+ * included (so exactly this many rows, never more) (DESIGN.md §10). */
+export const LEADERBOARD_SIZE = 5;
 
 /** Recently-completed papers shown on Home (DESIGN.md §6.2). */
 export const RECENT_COMPLETED_COUNT = 5;

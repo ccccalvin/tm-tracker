@@ -14,7 +14,7 @@ import {
 } from '@/lib/bounty';
 import { lockBountyResult } from '@/lib/db';
 import { formatCount } from '@/lib/format';
-import { LEADERBOARD_TOP_POSITIONS } from '@/lib/config';
+import { LEADERBOARD_SIZE } from '@/lib/config';
 import { cn } from '@/lib/cn';
 import type { AppUser, Bounty, BountyResultEntry, ClassInfo } from '@/types';
 
@@ -148,7 +148,7 @@ export function BountyBoard({
     return liveEntries;
   }, [locked, liveEntries, myUid]);
 
-  const rows = displayRows.filter((r) => r.rank <= LEADERBOARD_TOP_POSITIONS);
+  const rows = displayRows.slice(0, LEADERBOARD_SIZE);
   const winners = displayRows.filter((r) => r.rank === 1);
 
   const target = bountyCountdownTarget(bounty.startDate, bounty.endDate);

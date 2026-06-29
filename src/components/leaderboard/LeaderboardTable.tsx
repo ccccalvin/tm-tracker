@@ -1,6 +1,6 @@
 import type { AppUser, ClassInfo, LeaderboardEntry } from '@/types';
-import { rankEntries, topPositions } from '@/lib/ranking';
-import { LEADERBOARD_TOP_POSITIONS } from '@/lib/config';
+import { rankEntries, topN } from '@/lib/ranking';
+import { LEADERBOARD_SIZE } from '@/lib/config';
 import { formatCount } from '@/lib/format';
 import { ClassBadge } from '@/components/ClassBadge';
 import { Avatar } from '@/components/Avatar';
@@ -58,8 +58,9 @@ export function LeaderboardRow({
 
 /**
  * The ranked leaderboard for one scope. Pass `classId` undefined for the global
- * "All" board, or a classId to filter to that class. Shows the top
- * LEADERBOARD_TOP_POSITIONS rank positions (ties can surface more than that).
+ * "All" board, or a classId to filter to that class. Shows at most
+ * LEADERBOARD_SIZE people — a hard row cap, so a tie at the cut-off is
+ * truncated rather than allowed to spill past it.
  */
 export function LeaderboardTable({
   users,
@@ -85,7 +86,7 @@ export function LeaderboardTable({
   }
 
   const entries = rankEntries(users, myUid, classId);
-  const rows = topPositions(entries, LEADERBOARD_TOP_POSITIONS);
+  const rows = topN(entries, LEADERBOARD_SIZE);
 
   if (rows.length === 0) {
     return <p className="py-6 text-center text-sm text-muted-foreground">No ranked students yet.</p>;

@@ -49,6 +49,10 @@ service cloud.firestore {
       //  - role / isTMStudent / email / createdAt are frozen,
       //  - paperCount may change by at most ±1 (honor-system logging),
       //  - classId is frozen once onboarded.
+      // PLUS a one-shot self-promotion to admin: allowed only when the owner
+      // holds a valid adminClaims doc (proof they entered the secret token —
+      // see /adminClaims below). Such a promotion must drop them to no class
+      // and leave email/createdAt/paperCount untouched.
       allow update: if isAdmin()
         || (isOwner(uid)
             && request.resource.data.role == resource.data.role
@@ -58,7 +62,15 @@ service cloud.firestore {
             && request.resource.data.paperCount >= resource.data.paperCount - 1
             && request.resource.data.paperCount <= resource.data.paperCount + 1
             && (request.resource.data.classId == resource.data.classId
-                || resource.data.onboarded == false));
+                || resource.data.onboarded == false))
+        || (isOwner(uid)
+            && exists(/databases/$(database)/documents/adminClaims/$(uid))
+            && request.resource.data.role == 'admin'
+            && request.resource.data.isTMStudent == false
+            && request.resource.data.classId == ''
+            && request.resource.data.email == resource.data.email
+            && request.resource.data.createdAt == resource.data.createdAt
+            && request.resource.data.paperCount == resource.data.paperCount);
 
       allow delete: if isAdmin();
 
@@ -103,6 +115,27 @@ service cloud.firestore {
         && request.resource.data.uid == request.auth.uid;
       allow delete: if (isSignedIn() && resource.data.uid == request.auth.uid)
         || isAdmin();
+    }
+
+    // The shared admin-signup secret, validated ONLY inside these rules — never
+    // readable or writable by any client (rule-side get() still sees it). Seed
+    // `config/adminSecret = { token: "<secret>" }` out-of-band: Firebase console
+    // or an admin-SDK script. Keep in sync with the token you hand to admins.
+    match /config/{doc} {
+      allow read, write: if false;
+    }
+
+    // One-shot admin claim. Creating `adminClaims/{uid}` requires the caller to
+    // present the secret token (matched server-side against config/adminSecret);
+    // its existence is what authorises self-promotion to admin in the users
+    // rule above. Never client-readable — the token only lives here transiently
+    // and the client deletes it right after promoting.
+    match /adminClaims/{uid} {
+      allow read: if false;
+      allow create: if isOwner(uid)
+        && request.resource.data.token ==
+           get(/databases/$(database)/documents/config/adminSecret).data.token;
+      allow delete: if isOwner(uid) || isAdmin();
     }
 
     // Default deny.
