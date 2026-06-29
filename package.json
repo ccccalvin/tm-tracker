@@ -14,6 +14,7 @@
     "catalog:check": "node scripts/generate-catalog.mjs --check",
     "upload-pdfs": "node scripts/upload-pdfs.mjs",
     "seed": "node scripts/seed.mjs",
+    "seed-auth": "node scripts/seed-auth.mjs",
     "emulators": "firebase emulators:start --import=.emulator-data --export-on-exit=.emulator-data"
   },
   "dependencies": {

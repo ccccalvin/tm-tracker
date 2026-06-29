@@ -22,6 +22,11 @@ firebase-debug.log
 firestore-debug.log
 ui-debug.log
 
+# Design-sync tooling (local working dirs: caches, node_modules, built bundles)
+.design-sync/
+.ds-sync/
+ds-bundle/
+
 # Editor / OS
 .DS_Store
 *.tsbuildinfo
