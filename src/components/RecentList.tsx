@@ -10,10 +10,12 @@ import { PdfOpenButton } from '@/components/PdfOpenButton';
 export function RecentList({
   completions,
   showScore = true,
+  showPdf = true,
   emptyText = 'No papers completed yet.',
 }: {
   completions: Completion[];
   showScore?: boolean;
+  showPdf?: boolean;
   emptyText?: string;
 }) {
   if (completions.length === 0) {
@@ -34,7 +36,7 @@ export function RecentList({
                 {formatScore(c.score)}
               </span>
             )}
-            {paper && <PdfOpenButton storagePath={paper.storagePath} />}
+            {showPdf && paper && <PdfOpenButton storagePath={paper.storagePath} />}
           </li>
         );
       })}

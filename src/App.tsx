@@ -9,6 +9,7 @@ import { LoginPage } from '@/pages/LoginPage';
 import { OnboardingPage } from '@/pages/OnboardingPage';
 import { HomePage } from '@/pages/HomePage';
 import { TrackerPage } from '@/pages/TrackerPage';
+import { BountiesPage } from '@/pages/BountiesPage';
 import { AdminPage } from '@/pages/AdminPage';
 import { StudentTrackerPage } from '@/pages/StudentTrackerPage';
 
@@ -71,6 +72,7 @@ function App() {
         >
           <Route index element={<HomePage />} />
           <Route path="tracker" element={<TrackerPage />} />
+          <Route path="bounties" element={<BountiesPage />} />
           {/* Admin-only */}
           <Route
             path="admin"

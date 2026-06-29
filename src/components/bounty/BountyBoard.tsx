@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useRef } from 'react';
-import { Gift, Crown, CalendarDays, PartyPopper } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
+import { Gift, Crown, CalendarDays, PartyPopper, Trophy } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, Badge, Skeleton } from '@/components/ui';
 import { Avatar } from '@/components/Avatar';
 import { ClassBadge } from '@/components/ClassBadge';
@@ -118,11 +119,14 @@ export function BountyBoard({
   users,
   myUid,
   classMap,
+  selector,
 }: {
   bounty: Bounty;
   users: AppUser[];
   myUid: string;
   classMap: Map<string, ClassInfo>;
+  /** Optional toggle strip rendered at the top of the header (multi-bounty switch). */
+  selector?: ReactNode;
 }) {
   const isAdmin = useIsAdmin();
   const status = bountyStatus(bounty.startDate, bounty.endDate);
@@ -175,38 +179,71 @@ export function BountyBoard({
   }, [ended, locked, isAdmin, loading, liveEntries, bounty.id]);
 
   return (
-    <Card className="border-primary/30">
-      <CardHeader className="space-y-2">
-        <div className="flex flex-wrap items-center gap-2">
-          <CardTitle className="flex items-center gap-2 text-xl">
-            <Gift className="h-5 w-5 text-primary" />
-            {bounty.title || 'Bounty'}
+    <Card className="rainbow-border flex h-full flex-col border-transparent">
+      <CardHeader className="shrink-0 space-y-3">
+        {selector}
+
+        {/* Identity — title is the anchor; status sits quietly to the right. */}
+        <div className="flex items-start gap-2">
+          <CardTitle className="flex min-w-0 flex-1 items-center gap-2 text-xl sm:text-2xl">
+            <Gift className="h-6 w-6 shrink-0 text-primary" />
+            <span className="truncate">{bounty.title || 'Bounty'}</span>
           </CardTitle>
-          {bounty.prize && (
-            <Badge variant="warning" className="text-sm">
-              {bounty.prize}
-            </Badge>
-          )}
-          <Badge variant={statusVariant[status]}>
+          <Badge variant={statusVariant[status]} className="mt-1 shrink-0">
             {status === 'active' ? 'Active' : status === 'upcoming' ? 'Upcoming' : 'Ended'}
           </Badge>
         </div>
-        <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
-          <CalendarDays className="h-3.5 w-3.5" />
-          {formatBountyRange(bounty.startDate, bounty.endDate)}
-        </p>
+
+        {/* The pitch. */}
         {bounty.message && (
-          <p className="whitespace-pre-wrap text-sm text-muted-foreground">{bounty.message}</p>
+          <p className="line-clamp-3 whitespace-pre-wrap text-sm text-muted-foreground">
+            {bounty.message}
+          </p>
         )}
-        {target !== null && (
-          <div className="pt-1">
+
+        {/* The stakes — what you win and how long you have, grouped as one unit
+            so the eye reads "prize + deadline" together instead of hunting. */}
+        <div className="flex flex-col gap-3 rounded-xl border bg-muted/40 p-3 sm:flex-row sm:items-center sm:justify-between">
+          {bounty.prize && (
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-100 dark:bg-yellow-900/40">
+                <Trophy className="h-5 w-5 text-yellow-600 dark:text-yellow-400" />
+              </span>
+              <div className="leading-tight">
+                <p className="text-[0.7rem] font-semibold uppercase tracking-wide text-muted-foreground">
+                  Prize
+                </p>
+                <p className="text-lg font-bold">{bounty.prize}</p>
+              </div>
+            </div>
+          )}
+          {target !== null ? (
             <BountyCountdown target={target} label={countdownLabel} />
-          </div>
+          ) : (
+            <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <CalendarDays className="h-3.5 w-3.5 shrink-0" />
+              {formatBountyRange(bounty.startDate, bounty.endDate)}
+            </p>
+          )}
+        </div>
+
+        {/* Window footnote — only when a countdown already occupies the band. */}
+        {target !== null && (
+          <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <CalendarDays className="h-3.5 w-3.5 shrink-0" />
+            {formatBountyRange(bounty.startDate, bounty.endDate)}
+          </p>
         )}
       </CardHeader>
-      <CardContent>
+      <CardContent className="min-h-0 flex-1 overflow-y-auto">
         {ended && winners.length > 0 && (
           <WinnerBanner winners={winners} prize={bounty.prize} />
+        )}
+        {!loading && rows.length > 0 && (
+          <div className="mb-2 flex items-center justify-between px-3 text-[0.7rem] font-semibold uppercase tracking-wide text-muted-foreground">
+            <span>Standings</span>
+            <span>Papers</span>
+          </div>
         )}
         {loading && !locked ? (
           <div className="space-y-2">
@@ -227,5 +264,58 @@ export function BountyBoard({
         )}
       </CardContent>
     </Card>
+  );
+}
+
+/**
+ * Wraps one or more bounties into a single card. With multiple bounties a pill
+ * toggle in the header switches between them; with one, it renders plainly.
+ */
+export function BountyPanel({
+  bounties,
+  users,
+  myUid,
+  classMap,
+}: {
+  bounties: Bounty[];
+  users: AppUser[];
+  myUid: string;
+  classMap: Map<string, ClassInfo>;
+}) {
+  const [selected, setSelected] = useState(0);
+  const idx = Math.min(selected, bounties.length - 1);
+  const bounty = bounties[idx];
+  if (!bounty) return null;
+
+  const selector =
+    bounties.length > 1 ? (
+      <div className="-mx-1 flex flex-wrap gap-1.5">
+        {bounties.map((b, i) => (
+          <button
+            key={b.id}
+            type="button"
+            onClick={() => setSelected(i)}
+            className={cn(
+              'rounded-full px-3 py-1 text-xs font-medium transition-colors',
+              i === idx
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-muted text-muted-foreground hover:bg-muted/80',
+            )}
+          >
+            {b.title || 'Bounty'}
+          </button>
+        ))}
+      </div>
+    ) : null;
+
+  return (
+    <BountyBoard
+      key={bounty.id}
+      bounty={bounty}
+      users={users}
+      myUid={myUid}
+      classMap={classMap}
+      selector={selector}
+    />
   );
 }

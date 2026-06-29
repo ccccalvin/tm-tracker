@@ -1,27 +1,31 @@
-import { useState } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
-import { Trophy, ListChecks, Users, Shield, Sun, Moon, Settings } from 'lucide-react';
+import { Trophy, ListChecks, Gift, Users, Shield, Sun, Moon, Settings } from 'lucide-react';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useThemeStore } from '@/store/useThemeStore';
+import { useUIStore } from '@/store/useUIStore';
 import { OptionsModal } from '@/components/OptionsModal';
+import { CountdownBoxes } from '@/components/CountdownBoxes';
 import { Avatar } from '@/components/Avatar';
 import { cn } from '@/lib/cn';
 
 const studentNav = [
   { path: '/', label: 'Home', icon: Trophy, end: true },
   { path: '/tracker', label: 'Tracker', icon: ListChecks, end: false },
+  { path: '/bounties', label: 'Bounties', icon: Gift, end: false },
 ];
 
 const adminNav = [
   { path: '/', label: 'Home', icon: Trophy, end: true },
   { path: '/students', label: 'Student Tracker', icon: Users, end: false },
+  { path: '/bounties', label: 'Bounties', icon: Gift, end: false },
   { path: '/admin', label: 'Admin', icon: Shield, end: false },
 ];
 
 export function Layout() {
   const profile = useAuthStore((s) => s.profile);
   const { theme, toggleTheme } = useThemeStore();
-  const [optionsOpen, setOptionsOpen] = useState(false);
+  const optionsOpen = useUIStore((s) => s.optionsOpen);
+  const setOptionsOpen = useUIStore((s) => s.setOptionsOpen);
 
   const isAdmin = profile?.role === 'admin';
   const navItems = isAdmin ? adminNav : studentNav;
@@ -29,7 +33,7 @@ export function Layout() {
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="mx-auto flex h-14 w-full max-w-3xl items-center px-4 sm:px-6">
+        <div className="flex h-14 w-full items-center px-4 sm:px-6">
           <div className="mr-4 flex items-center">
             <Link to="/" className="mr-4 sm:mr-6 flex items-center">
               <span className="font-bold">tm-tracker</span>
@@ -55,6 +59,12 @@ export function Layout() {
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-2 sm:gap-3">
+            <div className="hidden sm:block">
+              <CountdownBoxes
+                showTrials={profile?.showTrialsCountdown ?? false}
+                trialsDate={profile?.trialsDate ?? null}
+              />
+            </div>
             <button
               onClick={toggleTheme}
               title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}

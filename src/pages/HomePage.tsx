@@ -1,44 +1,56 @@
 import { useMemo } from 'react';
-import { Trophy } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Trophy, ListChecks, Gift, Settings } from 'lucide-react';
 import {
+  Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
+  Skeleton,
 } from '@/components/ui';
 import {
   LeaderboardRow,
   LeaderboardTable,
 } from '@/components/leaderboard/LeaderboardTable';
-import { StatStrip } from '@/components/StatStrip';
+import { CompletionProgress } from '@/components/tracker/CompletionProgress';
 import { RecentList } from '@/components/RecentList';
-import { CountdownBoxes } from '@/components/CountdownBoxes';
-import { BountyBoard } from '@/components/bounty/BountyBoard';
-import { useAllUsers, useBounties, useClassMap, useCompletions } from '@/hooks/useData';
+import { useAllUsers, useClassMap, useCompletions } from '@/hooks/useData';
 import { useAuthStore, useProfile } from '@/store/useAuthStore';
+import { useUIStore } from '@/store/useUIStore';
 import { rankEntries, findYou } from '@/lib/ranking';
-import { bountySortRank } from '@/lib/bounty';
-import { studentStats, recentCompletions } from '@/lib/stats';
-import { RECENT_COMPLETED_COUNT } from '@/lib/config';
+import { recentCompletions } from '@/lib/stats';
+import { PAPERS } from '@/lib/catalog';
+import { DEFAULT_MIN_YEAR } from '@/lib/config';
+
+/** How many recent completions to list in the (taller) right-hand box. */
+const RECENT_SHOWN = 20;
 
 export function HomePage() {
+  const navigate = useNavigate();
   const myUid = useAuthStore((s) => s.firebaseUser?.uid);
   const profile = useProfile();
   const isAdmin = profile?.role === 'admin';
+  const setOptionsOpen = useUIStore((s) => s.setOptionsOpen);
 
   const { users, loading: usersLoading } = useAllUsers();
   const classMap = useClassMap();
-  const { completions: myCompletions, loading: completionsLoading } = useCompletions(myUid);
-  const { bounties } = useBounties();
+  const {
+    completions: myCompletions,
+    completedIds,
+    loading: completionsLoading,
+  } = useCompletions(myUid);
 
-  // Published bounties only, active ones first (then upcoming, then ended).
-  const visibleBounties = useMemo(
-    () =>
-      bounties
-        .filter((b) => b.published)
-        .sort((a, b) => bountySortRank(a) - bountySortRank(b)),
-    [bounties],
+  // Personal "papers completed" progress — same in-scope set as the Tracker page
+  // (recent papers, year >= DEFAULT_MIN_YEAR) so the numbers line up exactly.
+  const recentPapers = useMemo(
+    () => PAPERS.filter((p) => p.year >= DEFAULT_MIN_YEAR),
+    [],
+  );
+  const completedRecent = useMemo(
+    () => recentPapers.filter((p) => completedIds.has(p.id)).length,
+    [recentPapers, completedIds],
   );
 
   // Full global ranking — used to find the signed-in user's own entry (even if
@@ -48,119 +60,133 @@ export function HomePage() {
     return findYou(rankEntries(users, myUid));
   }, [users, myUid]);
 
-  return (
-    <div className="space-y-6">
-      {/* ── Countdown(s) ────────────────────────────────────────────────── */}
-      <CountdownBoxes
-        showTrials={profile?.showTrialsCountdown ?? false}
-        trialsDate={profile?.trialsDate ?? null}
-      />
+  // Personal stats only make sense for students; admins see the board alone.
+  const showStats = !isAdmin;
 
-      {/* ── Leaderboard ─────────────────────────────────────────────────── */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-xl">
-            <Trophy className="h-5 w-5 text-primary" />
-            Leaderboard
-          </CardTitle>
-          <CardDescription className="italic">
-            “Do so much volume that it would be unreasonable to be unsuccessful.”
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <LeaderboardTable
-            users={users}
-            myUid={myUid ?? ''}
-            classMap={classMap}
-            loading={usersLoading}
-          />
-
-          {/* ── Personal "You" entry (non-admins only) ──────────────────── */}
-          {!isAdmin && !usersLoading && (
-            <div className="mt-4 border-t pt-4">
-              {youEntry ? (
-                <div className="space-y-1.5">
-                  <p className="px-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                    You
-                  </p>
-                  <LeaderboardRow entry={youEntry} classMap={classMap} medal={false} />
-                </div>
-              ) : (
-                <div className="rounded-md bg-muted px-4 py-3 text-sm text-muted-foreground">
-                  You&apos;re tracking privately — ask Calvin to add you to the leaderboard.
-                </div>
-              )}
-            </div>
-          )}
-        </CardContent>
-      </Card>
-
-      {/* ── Bounties ─────────────────────────────────────────────────────── */}
-      {visibleBounties.map((bounty) => (
-        <BountyBoard
-          key={bounty.id}
-          bounty={bounty}
+  const leaderboardCard = (
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2 text-xl">
+          <Trophy className="h-5 w-5 text-primary" />
+          Leaderboard
+        </CardTitle>
+        <CardDescription className="italic">
+          “Do so much volume that it would be unreasonable to be unsuccessful.”
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <LeaderboardTable
           users={users}
           myUid={myUid ?? ''}
           classMap={classMap}
+          loading={usersLoading}
         />
-      ))}
 
-      {/* ── Personal stats (non-admins only) ──────────────────────────────── */}
-      {!isAdmin && (
-        <div className="grid gap-6 sm:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-base">Your stats</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {completionsLoading ? (
-                <StatStripSkeleton />
-              ) : (
-                <StatStrip stats={studentStats(myCompletions)} />
-              )}
-            </CardContent>
-          </Card>
+        {/* ── Personal "You" entry (non-admins only) ──────────────────── */}
+        {!isAdmin && !usersLoading && (
+          <div className="mt-4 border-t pt-4">
+            {youEntry ? (
+              <div className="space-y-1.5">
+                <p className="px-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  You
+                </p>
+                <LeaderboardRow entry={youEntry} classMap={classMap} medal={false} />
+              </div>
+            ) : (
+              <div className="rounded-md bg-muted px-4 py-3 text-sm text-muted-foreground">
+                You&apos;re tracking privately — ask Calvin to add you to the leaderboard.
+              </div>
+            )}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-base">Recently completed</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {completionsLoading ? (
-                <RecentListSkeleton />
-              ) : (
-                <RecentList
-                  completions={recentCompletions(myCompletions, RECENT_COMPLETED_COUNT)}
-                />
-              )}
-            </CardContent>
-          </Card>
+  const actions = (
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <Button
+        variant="outline"
+        className="h-auto py-3"
+        onClick={() => navigate(isAdmin ? '/students' : '/tracker')}
+      >
+        <ListChecks className="mr-2 h-4 w-4" />
+        Tracker
+      </Button>
+      <Button
+        variant="outline"
+        className="rainbow-border h-auto border-transparent py-3"
+        onClick={() => navigate('/bounties')}
+      >
+        <Gift className="mr-2 h-4 w-4" />
+        Bounties
+      </Button>
+      <Button
+        variant="outline"
+        className="h-auto py-3"
+        onClick={() => setOptionsOpen(true)}
+      >
+        <Settings className="mr-2 h-4 w-4" />
+        Settings
+      </Button>
+    </div>
+  );
+
+  return (
+    // Vertically center the content in the viewport (minus the sticky header
+    // and the main's vertical padding).
+    <div className="flex min-h-[calc(100vh-6.5rem)] flex-col justify-center">
+      {showStats ? (
+        <div className="grid items-stretch gap-6 lg:relative lg:left-1/2 lg:w-screen lg:-translate-x-1/2 lg:grid-cols-[450px_296px] lg:justify-center">
+          {/* Left — leaderboard + actions, at a reduced width */}
+          <div className="space-y-6">
+            {leaderboardCard}
+            {actions}
+          </div>
+
+          {/* Right — personal stats: progress on top, taller recent list below */}
+          <div className="flex flex-col gap-6">
+            {completionsLoading ? (
+              <Card>
+                <CardContent className="pt-6">
+                  <Skeleton className="h-12 w-full" />
+                </CardContent>
+              </Card>
+            ) : (
+              <CompletionProgress
+                completed={completedRecent}
+                total={recentPapers.length}
+              />
+            )}
+
+            <Card className="flex flex-1 flex-col">
+              <CardHeader>
+                <CardTitle className="text-base">Recently completed</CardTitle>
+              </CardHeader>
+              <CardContent className="min-h-0 flex-1 overflow-y-auto">
+                {completionsLoading ? (
+                  <div className="space-y-2">
+                    {Array.from({ length: 4 }).map((_, i) => (
+                      <Skeleton key={i} className="h-5 w-full" />
+                    ))}
+                  </div>
+                ) : (
+                  <RecentList
+                    completions={recentCompletions(myCompletions, RECENT_SHOWN)}
+                    showScore={false}
+                    showPdf={false}
+                  />
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      ) : (
+        <div className="space-y-6">
+          {leaderboardCard}
+          {actions}
         </div>
       )}
-    </div>
-  );
-}
-
-function StatStripSkeleton() {
-  return (
-    <div className="flex gap-8">
-      {Array.from({ length: 3 }).map((_, i) => (
-        <div key={i} className="flex flex-col gap-1.5">
-          <div className="h-7 w-12 animate-pulse rounded-md bg-muted" />
-          <div className="h-3 w-16 animate-pulse rounded-md bg-muted" />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function RecentListSkeleton() {
-  return (
-    <div className="space-y-2">
-      {Array.from({ length: 3 }).map((_, i) => (
-        <div key={i} className="h-5 w-full animate-pulse rounded-md bg-muted" />
-      ))}
     </div>
   );
 }

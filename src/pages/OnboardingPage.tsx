@@ -103,7 +103,7 @@ function ChooseStep({ onPick }: { onPick: (step: Step) => void }) {
           <span className="space-y-0.5">
             <span className="block font-medium">I&apos;m an admin</span>
             <span className="block text-sm text-muted-foreground">
-              Manage classes, students and bounties (secret token required).
+              Secret token required.
             </span>
           </span>
         </button>

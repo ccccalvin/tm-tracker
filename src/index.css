@@ -134,6 +134,54 @@
   }
 }
 
+/* Animated rainbow gradient border (e.g. the Home "Bounties" button). A conic
+   rainbow lives on a ::before ring that's masked to the border area only, and
+   rotating its start angle makes the colours spin around the button's edge. */
+@property --rainbow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+.rainbow-border {
+  position: relative;
+  isolation: isolate;
+}
+.rainbow-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px; /* border thickness */
+  background: conic-gradient(
+    from var(--rainbow-angle),
+    #ff0000,
+    #ff8a00,
+    #ffee00,
+    #00ff4c,
+    #00e0ff,
+    #2a5bff,
+    #b000ff,
+    #ff0000
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rainbow-border-spin 3s linear infinite;
+  pointer-events: none;
+}
+@keyframes rainbow-border-spin {
+  to {
+    --rainbow-angle: 360deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rainbow-border::before {
+    animation: none;
+  }
+}
+
 /* Scrollbar styling (matches tmpdf) */
 ::-webkit-scrollbar {
   width: 8px;

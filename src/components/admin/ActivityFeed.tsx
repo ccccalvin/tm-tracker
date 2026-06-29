@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Activity } from 'lucide-react';
+import { Activity, AlertTriangle } from 'lucide-react';
 import { useActivityFeed, useAllUsers } from '@/hooks/useData';
 import { relativeTime } from '@/lib/format';
 import { Skeleton } from '@/components/ui';
@@ -10,7 +10,7 @@ import { Skeleton } from '@/components/ui';
  * an admin spot anomalies (e.g. 40 ticks in a minute). Admin-only by rules.
  */
 export function ActivityFeed() {
-  const { items, loading } = useActivityFeed(50);
+  const { items, loading, error } = useActivityFeed(50);
   const { users } = useAllUsers();
 
   const nameByUid = useMemo(
@@ -27,6 +27,24 @@ export function ActivityFeed() {
           </li>
         ))}
       </ul>
+    );
+  }
+
+  if (error) {
+    // Distinct from the empty state so a real failure isn't mistaken for "no
+    // completions". The hint maps the Firestore error code to a likely cause.
+    const hint =
+      error.code === 'permission-denied'
+        ? 'This account may not have admin access in the database.'
+        : error.code === 'failed-precondition'
+          ? 'The activity index may still be building — try again shortly.'
+          : 'Something went wrong loading recent completions.';
+    return (
+      <div className="flex flex-col items-center justify-center gap-2 py-10 text-center text-muted-foreground">
+        <AlertTriangle className="h-6 w-6 text-destructive" />
+        <p className="text-sm font-medium text-foreground">Couldn't load activity.</p>
+        <p className="text-xs">{hint}</p>
+      </div>
     );
   }
 

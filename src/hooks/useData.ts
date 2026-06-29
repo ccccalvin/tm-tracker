@@ -14,6 +14,7 @@ import {
   query,
   where,
   Timestamp,
+  type FirestoreError,
 } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import {
@@ -286,14 +287,22 @@ export interface FeedItem {
 /** Recent completions across all students, for the admin activity feed. Joined
  * with names client-side in the Admin page (DESIGN.md §8.1). Admin-only by
  * security rules. */
-export function useActivityFeed(max = 50): { items: FeedItem[]; loading: boolean } {
+export function useActivityFeed(
+  max = 50,
+): { items: FeedItem[]; loading: boolean; error: FirestoreError | null } {
   const [items, setItems] = useState<FeedItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<FirestoreError | null>(null);
   useEffect(() => {
+    setLoading(true);
+    setError(null);
+    // Over-fetch, then filter + slice client-side. Un-marked papers keep their
+    // doc (flagged `completed: false`) to preserve score/notes, so filtering
+    // exactly `max` rows would under-fill the feed — pull a buffer instead.
     const q = query(
       collectionGroup(db, 'completions'),
       orderBy('completedAt', 'desc'),
-      limit(max),
+      limit(max * 3),
     );
     const unsub = onSnapshot(
       q,
@@ -302,6 +311,7 @@ export function useActivityFeed(max = 50): { items: FeedItem[]; loading: boolean
           snap.docs
             // Exclude un-completed papers (kept only to preserve score/notes).
             .filter((d) => d.data().completed !== false)
+            .slice(0, max)
             .map((d) => ({
               uid: d.ref.parent.parent?.id ?? '',
               paperId: d.id,
@@ -312,11 +322,19 @@ export function useActivityFeed(max = 50): { items: FeedItem[]; loading: boolean
                   : 0,
             })),
         );
+        setError(null);
         setLoading(false);
       },
-      () => setLoading(false),
+      (err) => {
+        // Surface the failure instead of silently rendering an empty feed: a
+        // swallowed permission-denied / missing-index error is otherwise
+        // indistinguishable from "no completions yet".
+        console.error('[tm-tracker] activity feed query failed', err);
+        setError(err);
+        setLoading(false);
+      },
     );
     return unsub;
   }, [max]);
-  return { items, loading };
+  return { items, loading, error };
 }
