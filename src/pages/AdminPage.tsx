@@ -9,6 +9,7 @@ import { useIsAdmin } from '@/store/useAuthStore';
 import { UsersTable } from '@/components/admin/UsersTable';
 import { ClassesManager } from '@/components/admin/ClassesManager';
 import { ActivityFeed } from '@/components/admin/ActivityFeed';
+import { BountyManager } from '@/components/admin/BountyManager';
 
 /**
  * Admin page (DESIGN.md §8.1) — about people, not papers. Three stacked Card
@@ -62,6 +63,19 @@ export function AdminPage() {
         </CardHeader>
         <CardContent>
           <ClassesManager />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">Bounties</CardTitle>
+          <CardDescription>
+            Run a prize competition: students are ranked by how many papers they
+            complete inside the date range. Published bounties show on Home.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <BountyManager />
         </CardContent>
       </Card>
 

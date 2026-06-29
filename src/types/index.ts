@@ -106,6 +106,67 @@ export interface LeaderboardEntry {
   isYou: boolean;
 }
 
+/**
+ * A bounty: a prize competition over a date range, ranked by how many papers
+ * each TM student completes within `[startDate, endDate]`. Stored at
+ * `bounties/{id}`; admin-created, readable by everyone.
+ */
+export interface Bounty {
+  id: string;
+  /** e.g. "Bounty: Holiday Edition". */
+  title: string;
+  /** Free text for the prize, e.g. "$100". */
+  prize: string;
+  /** The pitch shown to students, e.g. "Most papers over the holidays wins…". */
+  message: string;
+  /** Inclusive window start, as `YYYY-MM-DD` (local calendar day). */
+  startDate: string;
+  /** Inclusive window end, as `YYYY-MM-DD` (local calendar day). */
+  endDate: string;
+  /** Only published bounties show on Home; admins can keep one hidden as a draft. */
+  published: boolean;
+  createdAt: number;
+  /**
+   * Final standings, frozen once the bounty has ended (set by an admin client
+   * the first time it loads a finished, unlocked bounty). Null while the bounty
+   * is still upcoming/active or has not been locked yet.
+   */
+  result: BountyResult | null;
+}
+
+/** A single frozen row in a locked bounty's final standings. */
+export interface BountyResultEntry {
+  uid: string;
+  displayName: string;
+  classId: string;
+  photoURL: string | null;
+  count: number;
+  rank: number;
+}
+
+/** The frozen outcome of a finished bounty. */
+export interface BountyResult {
+  /** Millis when the result was locked in. */
+  lockedAt: number;
+  /** Every ranked contender at lock time (rank 1 = winner; ties share rank 1). */
+  standings: BountyResultEntry[];
+}
+
+/** A row in a rendered bounty leaderboard (computed client-side). */
+export interface BountyEntry {
+  uid: string;
+  displayName: string;
+  classId: string;
+  /** Papers this student completed inside the bounty window. */
+  count: number;
+  /** Millis of their latest in-window completion (tie-break: earlier reached = higher). */
+  lastInRange: number | null;
+  photoURL: string | null;
+  /** Shared, 1-based dense rank (ties share a number). */
+  rank: number;
+  isYou: boolean;
+}
+
 /** An activity-feed entry for the admin oversight view. */
 export interface ActivityItem {
   id: string;

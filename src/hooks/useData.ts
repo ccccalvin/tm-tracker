@@ -12,11 +12,22 @@ import {
   onSnapshot,
   orderBy,
   query,
+  where,
+  Timestamp,
 } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { mapUser, mapCompletion, mapTodo, mapClass, markComplete, unmarkComplete } from '@/lib/db';
+import {
+  mapUser,
+  mapCompletion,
+  mapTodo,
+  mapClass,
+  mapBounty,
+  markComplete,
+  unmarkComplete,
+} from '@/lib/db';
 import { DEFAULT_CLASSES } from '@/lib/config';
-import type { AppUser, ClassInfo, Completion, Paper, TodoItem } from '@/types';
+import { bountyRangeMillis } from '@/lib/bounty';
+import type { AppUser, Bounty, ClassInfo, Completion, Paper, TodoItem } from '@/types';
 
 /** All user profiles — powers the leaderboard + admin users table. */
 export function useAllUsers(): { users: AppUser[]; loading: boolean } {
@@ -65,6 +76,88 @@ export function useClasses(): { classes: ClassInfo[]; loading: boolean } {
 export function useClassMap(): Map<string, ClassInfo> {
   const { classes } = useClasses();
   return useMemo(() => new Map(classes.map((c) => [c.id, c])), [classes]);
+}
+
+/** All bounties (admin-created), newest first. Readable by everyone. */
+export function useBounties(): { bounties: Bounty[]; loading: boolean } {
+  const [bounties, setBounties] = useState<Bounty[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const unsub = onSnapshot(
+      collection(db, 'bounties'),
+      (snap) => {
+        const list = snap.docs.map(mapBounty);
+        list.sort((a, b) => b.startDate.localeCompare(a.startDate));
+        setBounties(list);
+        setLoading(false);
+      },
+      () => setLoading(false),
+    );
+    return unsub;
+  }, []);
+  return { bounties, loading };
+}
+
+/**
+ * Live per-student completion counts inside a bounty's date window, from the
+ * public `completionEvents` mirror. Returns a uid → {count, lastInRange} map;
+ * pair it with the user list via `rankBountyEntries` to render standings.
+ *
+ * The query is a single-field range on `completedAt` (no composite index); the
+ * `completed === true` filter is applied client-side so un-completed papers
+ * stop counting.
+ */
+export function useBountyStandings(
+  startDate: string,
+  endDate: string,
+  enabled = true,
+): { counts: Map<string, { count: number; lastInRange: number }>; loading: boolean } {
+  const [counts, setCounts] = useState<Map<string, { count: number; lastInRange: number }>>(
+    new Map(),
+  );
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const range = enabled ? bountyRangeMillis(startDate, endDate) : null;
+    if (!range) {
+      setCounts(new Map());
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+    const q = query(
+      collection(db, 'completionEvents'),
+      where('completedAt', '>=', Timestamp.fromMillis(range.start)),
+      where('completedAt', '<=', Timestamp.fromMillis(range.end)),
+    );
+    const unsub = onSnapshot(
+      q,
+      (snap) => {
+        const map = new Map<string, { count: number; lastInRange: number }>();
+        for (const d of snap.docs) {
+          const data = d.data();
+          if (data.completed === false) continue; // un-completed → doesn't count
+          const uid = typeof data.uid === 'string' ? data.uid : '';
+          if (!uid) continue;
+          const ms =
+            data.completedAt && typeof data.completedAt.toMillis === 'function'
+              ? data.completedAt.toMillis()
+              : 0;
+          const prev = map.get(uid);
+          if (prev) {
+            prev.count += 1;
+            prev.lastInRange = Math.max(prev.lastInRange, ms);
+          } else {
+            map.set(uid, { count: 1, lastInRange: ms });
+          }
+        }
+        setCounts(map);
+        setLoading(false);
+      },
+      () => setLoading(false),
+    );
+    return unsub;
+  }, [startDate, endDate, enabled]);
+  return { counts, loading };
 }
 
 /** A user's completions (private). Pass undefined to get an empty result. */

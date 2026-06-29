@@ -84,6 +84,27 @@ service cloud.firestore {
       allow write: if isAdmin() || isBootstrapAdmin();
     }
 
+    // Bounties: admin-created prize competitions. Everyone signed in can read
+    // them (they show on Home); only admins create/edit/delete.
+    match /bounties/{bountyId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin() || isBootstrapAdmin();
+    }
+
+    // Public, non-sensitive mirror of completions — timestamp + completed flag
+    // only, NEVER score/notes (those stay in the private completions
+    // subcollection). This lets any signed-in student see live bounty standings
+    // (paper counts within a date range) without exposing private data. A user
+    // may only write their own events (doc id is `{uid}__{paperId}`); admins may
+    // delete (e.g. when removing a sign-up).
+    match /completionEvents/{eventId} {
+      allow read: if isSignedIn();
+      allow create, update: if isSignedIn()
+        && request.resource.data.uid == request.auth.uid;
+      allow delete: if (isSignedIn() && resource.data.uid == request.auth.uid)
+        || isAdmin();
+    }
+
     // Default deny.
     match /{document=**} {
       allow read, write: if false;

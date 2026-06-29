@@ -12,6 +12,7 @@
 import {
   collection,
   doc,
+  addDoc,
   getDoc,
   setDoc,
   updateDoc,
@@ -28,7 +29,16 @@ import { ref, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage
 import type { User as FirebaseUser } from 'firebase/auth';
 import { db, storage } from './firebase';
 import { BOOTSTRAP_ADMIN_EMAIL, DEFAULT_CLASSES } from './config';
-import type { AppUser, ClassInfo, Completion, Paper, TodoItem } from '@/types';
+import type {
+  AppUser,
+  Bounty,
+  BountyResult,
+  BountyResultEntry,
+  ClassInfo,
+  Completion,
+  Paper,
+  TodoItem,
+} from '@/types';
 
 // ── timestamp helpers ───────────────────────────────────────────────────────
 /** Firestore Timestamp | null → epoch millis | null (handles pending writes). */
@@ -90,6 +100,40 @@ export function mapClass(snap: QueryDocumentSnapshot<DocumentData>): ClassInfo {
   };
 }
 
+export function mapBounty(snap: QueryDocumentSnapshot<DocumentData>): Bounty {
+  const d = snap.data();
+  return {
+    id: snap.id,
+    title: d.title ?? '',
+    prize: d.prize ?? '',
+    message: d.message ?? '',
+    startDate: d.startDate ?? '',
+    endDate: d.endDate ?? '',
+    published: Boolean(d.published),
+    createdAt: toMillis(d.createdAt) ?? 0,
+    result: mapBountyResult(d.result),
+  };
+}
+
+function mapBountyResult(raw: unknown): BountyResult | null {
+  if (!raw || typeof raw !== 'object') return null;
+  const r = raw as { lockedAt?: unknown; standings?: unknown };
+  const standings = Array.isArray(r.standings)
+    ? (r.standings as Record<string, unknown>[]).map((e) => ({
+        uid: typeof e.uid === 'string' ? e.uid : '',
+        displayName: typeof e.displayName === 'string' ? e.displayName : '',
+        classId: typeof e.classId === 'string' ? e.classId : '',
+        photoURL: typeof e.photoURL === 'string' && e.photoURL ? e.photoURL : null,
+        count: typeof e.count === 'number' ? e.count : 0,
+        rank: typeof e.rank === 'number' ? e.rank : 0,
+      }))
+    : [];
+  return {
+    lockedAt: typeof r.lockedAt === 'number' ? r.lockedAt : 0,
+    standings,
+  };
+}
+
 // ── refs ────────────────────────────────────────────────────────────────────
 export const usersCol = () => collection(db, 'users');
 export const userRef = (uid: string) => doc(db, 'users', uid);
@@ -100,6 +144,16 @@ export const todosCol = (uid: string) => collection(db, 'users', uid, 'todos');
 export const todoRef = (uid: string, paperId: string) =>
   doc(db, 'users', uid, 'todos', paperId);
 export const classesCol = () => collection(db, 'classes');
+export const bountiesCol = () => collection(db, 'bounties');
+export const bountyRef = (id: string) => doc(db, 'bounties', id);
+/**
+ * Public, non-sensitive mirror of a completion (no score/notes) used to power
+ * bounty standings for every signed-in user. Deterministic id keeps it 1:1 with
+ * the private completion at `users/{uid}/completions/{paperId}`.
+ */
+export const completionEventsCol = () => collection(db, 'completionEvents');
+export const completionEventRef = (uid: string, paperId: string) =>
+  doc(db, 'completionEvents', `${uid}__${paperId}`);
 
 // ── auth / onboarding ────────────────────────────────────────────────────────
 /**
@@ -196,6 +250,7 @@ export async function markComplete(uid: string, paper: Paper): Promise<void> {
   await runTransaction(db, async (tx) => {
     const cRef = completionRef(uid, paper.id);
     const tRef = todoRef(uid, paper.id);
+    const eRef = completionEventRef(uid, paper.id);
     const cSnap = await tx.get(cRef);
     const tSnap = await tx.get(tRef);
     if (cSnap.exists() && cSnap.data().completed !== false) return; // already complete
@@ -217,6 +272,13 @@ export async function markComplete(uid: string, paper: Paper): Promise<void> {
       lastCompletedAt: serverTimestamp(),
     });
     if (tSnap.exists()) tx.update(tRef, { done: true });
+    // Public mirror for bounty standings — timestamp only, never score/notes.
+    tx.set(eRef, {
+      uid,
+      paperId: paper.id,
+      completedAt: serverTimestamp(),
+      completed: true,
+    });
   });
 }
 
@@ -231,12 +293,16 @@ export async function unmarkComplete(uid: string, paperId: string): Promise<void
   await runTransaction(db, async (tx) => {
     const cRef = completionRef(uid, paperId);
     const tRef = todoRef(uid, paperId);
+    const eRef = completionEventRef(uid, paperId);
     const cSnap = await tx.get(cRef);
     const tSnap = await tx.get(tRef);
     if (!cSnap.exists() || cSnap.data().completed === false) return; // already not complete
     tx.update(cRef, { completed: false });
     tx.update(userRef(uid), { paperCount: increment(-1) });
     if (tSnap.exists()) tx.update(tRef, { done: false });
+    // Mirror the un-complete so it stops counting toward bounties. Merge keeps
+    // uid/paperId present so the security rule's owner check still passes.
+    tx.set(eRef, { uid, paperId, completed: false }, { merge: true });
   });
 }
 
@@ -310,6 +376,59 @@ export async function updateClass(
   patch: Partial<Pick<ClassInfo, 'name' | 'badge' | 'archived' | 'order'>>,
 ): Promise<void> {
   await updateDoc(doc(db, 'classes', id), patch);
+}
+
+// ── bounties (admin) ──────────────────────────────────────────────────────────
+export interface BountyInput {
+  title: string;
+  prize: string;
+  message: string;
+  startDate: string;
+  endDate: string;
+}
+
+/** Create a bounty. Published immediately by default; admins can hide it later. */
+export async function createBounty(
+  input: BountyInput,
+  published = true,
+): Promise<void> {
+  await addDoc(bountiesCol(), {
+    title: input.title.trim(),
+    prize: input.prize.trim(),
+    message: input.message.trim(),
+    startDate: input.startDate,
+    endDate: input.endDate,
+    published,
+    createdAt: serverTimestamp(),
+  });
+}
+
+export async function updateBounty(
+  id: string,
+  patch: Partial<BountyInput & { published: boolean; result: BountyResult | null }>,
+): Promise<void> {
+  const clean: Record<string, unknown> = { ...patch };
+  for (const key of ['title', 'prize', 'message'] as const) {
+    if (typeof clean[key] === 'string') clean[key] = (clean[key] as string).trim();
+  }
+  await updateDoc(bountyRef(id), clean);
+}
+
+export async function deleteBounty(id: string): Promise<void> {
+  await deleteDoc(bountyRef(id));
+}
+
+/**
+ * Freeze a finished bounty's final standings so first place can never change
+ * afterwards. Admin-only (security rules). Write-once: callers check that
+ * `bounty.result` is still null before calling.
+ */
+export async function lockBountyResult(
+  id: string,
+  standings: BountyResultEntry[],
+): Promise<void> {
+  const result: BountyResult = { lockedAt: Date.now(), standings };
+  await updateDoc(bountyRef(id), { result });
 }
 
 // ── admin: user management ────────────────────────────────────────────────────

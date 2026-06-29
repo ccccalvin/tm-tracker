@@ -14,9 +14,11 @@ import {
 import { StatStrip } from '@/components/StatStrip';
 import { RecentList } from '@/components/RecentList';
 import { CountdownBoxes } from '@/components/CountdownBoxes';
-import { useAllUsers, useClassMap, useCompletions } from '@/hooks/useData';
+import { BountyBoard } from '@/components/bounty/BountyBoard';
+import { useAllUsers, useBounties, useClassMap, useCompletions } from '@/hooks/useData';
 import { useAuthStore, useProfile } from '@/store/useAuthStore';
 import { rankEntries, findYou } from '@/lib/ranking';
+import { bountySortRank } from '@/lib/bounty';
 import { studentStats, recentCompletions } from '@/lib/stats';
 import { RECENT_COMPLETED_COUNT } from '@/lib/config';
 
@@ -28,6 +30,16 @@ export function HomePage() {
   const { users, loading: usersLoading } = useAllUsers();
   const classMap = useClassMap();
   const { completions: myCompletions, loading: completionsLoading } = useCompletions(myUid);
+  const { bounties } = useBounties();
+
+  // Published bounties only, active ones first (then upcoming, then ended).
+  const visibleBounties = useMemo(
+    () =>
+      bounties
+        .filter((b) => b.published)
+        .sort((a, b) => bountySortRank(a) - bountySortRank(b)),
+    [bounties],
+  );
 
   // Full global ranking — used to find the signed-in user's own entry (even if
   // outside the top positions shown in the table).
@@ -82,6 +94,17 @@ export function HomePage() {
           )}
         </CardContent>
       </Card>
+
+      {/* ── Bounties ─────────────────────────────────────────────────────── */}
+      {visibleBounties.map((bounty) => (
+        <BountyBoard
+          key={bounty.id}
+          bounty={bounty}
+          users={users}
+          myUid={myUid ?? ''}
+          classMap={classMap}
+        />
+      ))}
 
       {/* ── Personal stats (non-admins only) ──────────────────────────────── */}
       {!isAdmin && (
