@@ -46,6 +46,7 @@ export function rankEntries(
       uid: u.uid,
       displayName: u.displayName,
       classId: u.classId,
+      mathLevel: u.mathLevel,
       paperCount: u.paperCount,
       lastCompletedAt: u.lastCompletedAt,
       photoURL: u.photoURL,

@@ -38,6 +38,11 @@ const STUDENTS = [
   'Felix Chen', 'Grace Patel', 'Hugo Smith',
 ];
 
+// Math levels for the demo students — a mix of all three colours plus a couple
+// left null, to exercise both the coloured badges and the admin "assign a level
+// to an unset student" flow.
+const MATH_LEVELS = ['ADVN', 'EXT1', 'EXT2', null, 'ADVN', 'EXT1', 'EXT2', null];
+
 function pick(arr, n) {
   const copy = [...arr];
   const out = [];
@@ -109,10 +114,12 @@ async function main() {
         completed: true,
       });
     }
+    const mathLevel = MATH_LEVELS[i % MATH_LEVELS.length];
     cbatch.set(db.doc(`users/${uid}`), {
       email: `${uid}@example.com`,
       displayName: STUDENTS[i],
       classId,
+      mathLevel,
       role: 'student',
       isTMStudent: true,
       paperCount: chosen.length,
@@ -121,7 +128,7 @@ async function main() {
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     });
     await cbatch.commit();
-    console.log(`✓ ${STUDENTS[i]} — ${chosen.length} papers (${classId})`);
+    console.log(`✓ ${STUDENTS[i]} — ${chosen.length} papers (${classId}, ${mathLevel ?? 'no level'})`);
   }
 
   // Sample bounties in each state, with fixed ids so re-seeding doesn't pile up

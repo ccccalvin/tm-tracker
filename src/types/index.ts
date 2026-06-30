@@ -9,13 +9,19 @@
 
 export type Role = 'student' | 'admin';
 
+/** The student's math level — chosen at onboarding, shown as a coloured badge. */
+export type MathLevel = 'ADVN' | 'EXT1' | 'EXT2';
+
 /** A signed-in user's profile, stored at `users/{uid}`. */
 export interface AppUser {
   uid: string;
   email: string;
   displayName: string;
-  /** Class they belong to (`classes/{classId}`). Empty string until onboarding. */
+  /** Class they belong to (`classes/{classId}`). Admin-assigned; hidden from
+   * students. Empty string until an admin assigns one. */
   classId: string;
+  /** Math level the student picked at onboarding. Null for admins / not-yet-set. */
+  mathLevel: MathLevel | null;
   role: Role;
   /** Only TM students appear on the leaderboard (DESIGN.md §3). */
   isTMStudent: boolean;
@@ -96,6 +102,7 @@ export interface LeaderboardEntry {
   uid: string;
   displayName: string;
   classId: string;
+  mathLevel: MathLevel | null;
   paperCount: number;
   lastCompletedAt: number | null;
   /** Profile picture URL, or null for the default icon. */
@@ -139,6 +146,7 @@ export interface BountyResultEntry {
   uid: string;
   displayName: string;
   classId: string;
+  mathLevel: MathLevel | null;
   photoURL: string | null;
   count: number;
   rank: number;
@@ -157,6 +165,7 @@ export interface BountyEntry {
   uid: string;
   displayName: string;
   classId: string;
+  mathLevel: MathLevel | null;
   /** Papers this student completed inside the bounty window. */
   count: number;
   /** Millis of their latest in-window completion (tie-break: earlier reached = higher). */

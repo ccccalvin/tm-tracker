@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { Activity, GraduationCap, Trophy, Users } from 'lucide-react';
 import {
   Card,
   CardContent,
@@ -10,14 +12,55 @@ import { UsersTable } from '@/components/admin/UsersTable';
 import { ClassesManager } from '@/components/admin/ClassesManager';
 import { ActivityFeed } from '@/components/admin/ActivityFeed';
 import { BountyManager } from '@/components/admin/BountyManager';
+import { cn } from '@/lib/cn';
 
 /**
- * Admin page (DESIGN.md §8.1) — about people, not papers. Three stacked Card
- * sections: a filterable users table, a classes manager, and an activity feed.
+ * The four admin sections, surfaced as tabs (DESIGN.md §8.1). Each renders one
+ * at a time so switching is a single click instead of a long scroll.
+ */
+const TABS = [
+  {
+    id: 'users',
+    label: 'Users',
+    icon: Users,
+    description:
+      'Toggle leaderboard (TM) status, promote admins, reassign classes, or remove a sign-up.',
+    Body: UsersTable,
+  },
+  {
+    id: 'classes',
+    label: 'Classes',
+    icon: GraduationCap,
+    description: 'Add, rename, re-badge, or archive the classes students can join.',
+    Body: ClassesManager,
+  },
+  {
+    id: 'bounties',
+    label: 'Bounties',
+    icon: Trophy,
+    description:
+      'Run a prize competition: students are ranked by how many papers they complete inside the date range. Published bounties show on Home.',
+    Body: BountyManager,
+  },
+  {
+    id: 'activity',
+    label: 'Activity',
+    icon: Activity,
+    description: 'Recent completions across all students — newest first.',
+    Body: ActivityFeed,
+  },
+] as const;
+
+type TabId = (typeof TABS)[number]['id'];
+
+/**
+ * Admin page (DESIGN.md §8.1) — about people, not papers. A tab bar switches
+ * between the users table, classes manager, bounties, and activity feed.
  * Routing already gates this to admins; we double-check defensively.
  */
 export function AdminPage() {
   const isAdmin = useIsAdmin();
+  const [active, setActive] = useState<TabId>('users');
 
   if (!isAdmin) {
     return (
@@ -32,6 +75,9 @@ export function AdminPage() {
     );
   }
 
+  const current = TABS.find((t) => t.id === active) ?? TABS[0];
+  const Body = current.Body;
+
   return (
     <div className="space-y-6">
       <div className="space-y-1">
@@ -41,53 +87,39 @@ export function AdminPage() {
         </p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-xl">Users</CardTitle>
-          <CardDescription>
-            Toggle leaderboard (TM) status, promote admins, reassign classes, or
-            remove a sign-up.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <UsersTable />
-        </CardContent>
-      </Card>
+      <div className="border-b">
+        <nav className="-mb-px flex gap-1 overflow-x-auto" aria-label="Admin sections">
+          {TABS.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = tab.id === active;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActive(tab.id)}
+                aria-current={isActive ? 'page' : undefined}
+                className={cn(
+                  'inline-flex items-center gap-2 whitespace-nowrap border-b-2 px-4 py-2.5 text-sm font-medium transition-colors',
+                  isActive
+                    ? 'border-primary text-foreground'
+                    : 'border-transparent text-muted-foreground hover:border-muted-foreground/30 hover:text-foreground',
+                )}
+              >
+                <Icon className="h-4 w-4" />
+                {tab.label}
+              </button>
+            );
+          })}
+        </nav>
+      </div>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl">Classes</CardTitle>
-          <CardDescription>
-            Add, rename, re-badge, or archive the classes students can join.
-          </CardDescription>
+          <CardTitle className="text-xl">{current.label}</CardTitle>
+          <CardDescription>{current.description}</CardDescription>
         </CardHeader>
         <CardContent>
-          <ClassesManager />
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-xl">Bounties</CardTitle>
-          <CardDescription>
-            Run a prize competition: students are ranked by how many papers they
-            complete inside the date range. Published bounties show on Home.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <BountyManager />
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-xl">Activity</CardTitle>
-          <CardDescription>
-            Recent completions across all students — newest first.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <ActivityFeed />
+          <Body />
         </CardContent>
       </Card>
     </div>

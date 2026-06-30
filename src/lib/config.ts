@@ -13,6 +13,15 @@ export const DEFAULT_CLASSES = [
   { id: 'fri-advn', name: "Calvin's Friday ADVN", badge: 'FRI ADVN', order: 1 },
 ] as const;
 
+/** The math levels a student can pick at onboarding. The `value` is what's
+ * stored on the profile and shown on the (coloured) level badge; colours live
+ * in src/components/LevelBadge.tsx. */
+export const MATH_LEVELS = [
+  { value: 'ADVN', label: 'Mathematics Advanced' },
+  { value: 'EXT1', label: 'Mathematics Extension 1' },
+  { value: 'EXT2', label: 'Mathematics Extension 2' },
+] as const;
+
 /** Default catalog view shows papers from this year onward; a toggle reveals
  * older ones (DESIGN.md §2, Q28b). */
 export const DEFAULT_MIN_YEAR = 2018;

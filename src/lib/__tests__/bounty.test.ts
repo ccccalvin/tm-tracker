@@ -15,6 +15,7 @@ function mk(uid: string, over: Partial<AppUser> = {}): AppUser {
     email: `${uid}@x.com`,
     displayName: uid.toUpperCase(),
     classId: 'mon-advn',
+    mathLevel: 'ADVN',
     role: 'student',
     isTMStudent: true,
     paperCount: 0,

@@ -16,7 +16,7 @@ import {
 } from '@/components/leaderboard/LeaderboardTable';
 import { CompletionProgress } from '@/components/tracker/CompletionProgress';
 import { RecentList } from '@/components/RecentList';
-import { useAllUsers, useClassMap, useCompletions } from '@/hooks/useData';
+import { useAllUsers, useCompletions } from '@/hooks/useData';
 import { useAuthStore, useProfile } from '@/store/useAuthStore';
 import { useUIStore } from '@/store/useUIStore';
 import { rankEntries, findYou } from '@/lib/ranking';
@@ -35,7 +35,6 @@ export function HomePage() {
   const setOptionsOpen = useUIStore((s) => s.setOptionsOpen);
 
   const { users, loading: usersLoading } = useAllUsers();
-  const classMap = useClassMap();
   const {
     completions: myCompletions,
     completedIds,
@@ -78,7 +77,6 @@ export function HomePage() {
         <LeaderboardTable
           users={users}
           myUid={myUid ?? ''}
-          classMap={classMap}
           loading={usersLoading}
         />
 
@@ -90,7 +88,7 @@ export function HomePage() {
                 <p className="px-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
                   You
                 </p>
-                <LeaderboardRow entry={youEntry} classMap={classMap} medal={false} />
+                <LeaderboardRow entry={youEntry} medal={false} />
               </div>
             ) : (
               <div className="rounded-md bg-muted px-4 py-3 text-sm text-muted-foreground">

@@ -36,6 +36,7 @@ import type {
   BountyResultEntry,
   ClassInfo,
   Completion,
+  MathLevel,
   Paper,
   TodoItem,
 } from '@/types';
@@ -47,6 +48,11 @@ export function toMillis(v: unknown): number | null {
   return null;
 }
 
+/** A stored value → MathLevel, or null when missing/invalid. */
+function toMathLevel(v: unknown): MathLevel | null {
+  return v === 'ADVN' || v === 'EXT1' || v === 'EXT2' ? v : null;
+}
+
 // ── mappers (Firestore doc → domain type) ───────────────────────────────────
 export function mapUser(snap: QueryDocumentSnapshot<DocumentData>): AppUser {
   const d = snap.data();
@@ -55,6 +61,7 @@ export function mapUser(snap: QueryDocumentSnapshot<DocumentData>): AppUser {
     email: d.email ?? '',
     displayName: d.displayName ?? '',
     classId: d.classId ?? '',
+    mathLevel: toMathLevel(d.mathLevel),
     role: d.role === 'admin' ? 'admin' : 'student',
     isTMStudent: Boolean(d.isTMStudent),
     paperCount: typeof d.paperCount === 'number' ? d.paperCount : 0,
@@ -123,6 +130,7 @@ function mapBountyResult(raw: unknown): BountyResult | null {
         uid: typeof e.uid === 'string' ? e.uid : '',
         displayName: typeof e.displayName === 'string' ? e.displayName : '',
         classId: typeof e.classId === 'string' ? e.classId : '',
+        mathLevel: toMathLevel(e.mathLevel),
         photoURL: typeof e.photoURL === 'string' && e.photoURL ? e.photoURL : null,
         count: typeof e.count === 'number' ? e.count : 0,
         rank: typeof e.rank === 'number' ? e.rank : 0,
@@ -176,6 +184,7 @@ export async function ensureUserDoc(fbUser: FirebaseUser): Promise<void> {
     email: fbUser.email ?? '',
     displayName: isBootstrapAdmin ? fbUser.displayName ?? 'Admin' : '',
     classId: '',
+    mathLevel: null,
     role: isBootstrapAdmin ? 'admin' : 'student',
     isTMStudent: false,
     paperCount: 0,
@@ -192,14 +201,19 @@ export async function ensureUserDoc(fbUser: FirebaseUser): Promise<void> {
   }
 }
 
+/**
+ * Finish student onboarding: set the display name and chosen math level. The
+ * class is NOT set here — it's hidden from students and assigned later by an
+ * admin, so the profile stays class-less (classId '') until then.
+ */
 export async function completeOnboarding(
   uid: string,
   displayName: string,
-  classId: string,
+  mathLevel: MathLevel,
 ): Promise<void> {
   await updateDoc(userRef(uid), {
     displayName: displayName.trim(),
-    classId,
+    mathLevel,
     onboarded: true,
   });
 }
@@ -231,6 +245,7 @@ export async function claimAdmin(
     role: 'admin',
     isTMStudent: false,
     classId: '',
+    mathLevel: null,
     onboarded: true,
   });
   await deleteDoc(adminClaimRef(uid)).catch(() => {
@@ -475,6 +490,11 @@ export async function setRole(uid: string, role: AppUser['role']): Promise<void>
 
 export async function reassignClass(uid: string, classId: string): Promise<void> {
   await updateDoc(userRef(uid), { classId });
+}
+
+/** Admin: change a student's math level (the coloured badge). */
+export async function setMathLevel(uid: string, mathLevel: MathLevel): Promise<void> {
+  await updateDoc(userRef(uid), { mathLevel });
 }
 
 export async function removeUser(uid: string): Promise<void> {

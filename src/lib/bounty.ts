@@ -137,6 +137,7 @@ export function rankBountyEntries(
         uid: u.uid,
         displayName: u.displayName,
         classId: u.classId,
+        mathLevel: u.mathLevel,
         count: c?.count ?? 0,
         lastInRange: c?.lastInRange ?? null,
         photoURL: u.photoURL,
