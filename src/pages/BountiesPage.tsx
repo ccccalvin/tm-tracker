@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Gift, Home, ListChecks } from 'lucide-react';
 import { Button, Card, CardContent, CardHeader, Skeleton } from '@/components/ui';
 import { BountyPanel } from '@/components/bounty/BountyBoard';
-import { useAllUsers, useBounties, useClassMap } from '@/hooks/useData';
+import { useAllUsers, useBounties } from '@/hooks/useData';
 import { useAuthStore, useProfile } from '@/store/useAuthStore';
 import { bountySortRank } from '@/lib/bounty';
 
@@ -16,7 +16,6 @@ export function BountiesPage() {
   const myUid = useAuthStore((s) => s.firebaseUser?.uid);
   const isAdmin = useProfile()?.role === 'admin';
   const { users } = useAllUsers();
-  const classMap = useClassMap();
   const { bounties, loading } = useBounties();
 
   // Published bounties only, active ones first (then upcoming, then ended).
@@ -62,7 +61,6 @@ export function BountiesPage() {
                 bounties={visibleBounties}
                 users={users}
                 myUid={myUid ?? ''}
-                classMap={classMap}
               />
             )}
           </div>

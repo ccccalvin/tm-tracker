@@ -3,10 +3,11 @@ import { Loader2, Trash2, Users as UsersIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAllUsers, useClasses } from '@/hooks/useData';
 import { useAuthStore } from '@/store/useAuthStore';
-import { BOOTSTRAP_ADMIN_EMAIL } from '@/lib/config';
+import { BOOTSTRAP_ADMIN_EMAIL, MATH_LEVELS } from '@/lib/config';
 import {
   reassignClass,
   removeUser,
+  setMathLevel,
   setRole,
   setTMStudent,
 } from '@/lib/db';
@@ -17,8 +18,9 @@ import {
   Select,
   Skeleton,
 } from '@/components/ui';
+import { LevelBadge } from '@/components/LevelBadge';
 import { relativeTime } from '@/lib/format';
-import type { AppUser, ClassInfo } from '@/types';
+import type { AppUser, ClassInfo, MathLevel } from '@/types';
 import { cn } from '@/lib/cn';
 
 type TMFilter = 'all' | 'tm' | 'not-tm';
@@ -87,12 +89,12 @@ export function UsersTable() {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[720px] border-collapse text-sm">
+          <table className="w-full min-w-[680px] border-collapse text-sm">
             <thead>
               <tr className="border-b text-left text-xs uppercase tracking-wide text-muted-foreground">
                 <th className="py-2 pr-4 font-medium">Name</th>
+                <th className="py-2 pr-4 font-medium">Level</th>
                 <th className="py-2 pr-4 font-medium">Class</th>
-                <th className="py-2 pr-4 font-medium">Papers</th>
                 <th className="py-2 pr-4 font-medium">Last active</th>
                 <th className="py-2 pr-4 font-medium">TM</th>
                 <th className="py-2 pr-4 font-medium">Admin</th>
@@ -125,7 +127,7 @@ function UserRow({
   classes: ClassInfo[];
   currentUid: string | undefined;
 }) {
-  const [busy, setBusy] = useState<null | 'class' | 'tm' | 'admin'>(null);
+  const [busy, setBusy] = useState<null | 'level' | 'class' | 'tm' | 'admin'>(null);
   const [confirmRemove, setConfirmRemove] = useState(false);
   const [removing, setRemoving] = useState(false);
 
@@ -135,6 +137,18 @@ function UserRow({
   const isBootstrap =
     !!user.email && user.email.toLowerCase() === BOOTSTRAP_ADMIN_EMAIL.toLowerCase();
   const adminLocked = isSelf || isBootstrap;
+
+  async function handleSetLevel(level: MathLevel) {
+    setBusy('level');
+    try {
+      await setMathLevel(user.uid, level);
+      toast.success('Math level updated.');
+    } catch {
+      toast.error('Could not update the math level.');
+    } finally {
+      setBusy(null);
+    }
+  }
 
   async function handleReassign(classId: string) {
     setBusy('class');
@@ -189,7 +203,7 @@ function UserRow({
 
   return (
     <tr className="border-b last:border-0 align-middle">
-      <td className="py-3 pr-4">
+      <td className="py-2 pr-4">
         <div className="flex items-center gap-2">
           <div className="flex flex-col">
             <span className="font-medium">{displayName}</span>
@@ -210,7 +224,28 @@ function UserRow({
         </div>
       </td>
 
-      <td className="py-3 pr-4">
+      <td className="py-2 pr-4">
+        <div className="flex items-center gap-2">
+          <LevelBadge level={user.mathLevel} />
+          <Select
+            value={user.mathLevel ?? ''}
+            disabled={busy === 'level'}
+            onChange={(e) => handleSetLevel(e.target.value as MathLevel)}
+            className="h-8 w-28"
+            aria-label={`Math level for ${displayName}`}
+          >
+            {/* No level yet — admin assigns one (existing students start blank). */}
+            {!user.mathLevel && <option value="" disabled>— none —</option>}
+            {MATH_LEVELS.map((m) => (
+              <option key={m.value} value={m.value}>
+                {m.value}
+              </option>
+            ))}
+          </Select>
+        </div>
+      </td>
+
+      <td className="py-2 pr-4">
         <Select
           value={user.classId}
           disabled={busy === 'class'}
@@ -229,13 +264,11 @@ function UserRow({
         </Select>
       </td>
 
-      <td className="py-3 pr-4 tabular-nums">{user.paperCount}</td>
-
-      <td className="py-3 pr-4 whitespace-nowrap text-muted-foreground">
+      <td className="py-2 pr-4 whitespace-nowrap text-muted-foreground">
         {relativeTime(user.lastCompletedAt)}
       </td>
 
-      <td className="py-3 pr-4">
+      <td className="py-2 pr-4">
         <Toggle
           checked={user.isTMStudent}
           disabled={busy === 'tm'}
@@ -244,7 +277,7 @@ function UserRow({
         />
       </td>
 
-      <td className="py-3 pr-4">
+      <td className="py-2 pr-4">
         <Toggle
           checked={user.role === 'admin'}
           disabled={busy === 'admin' || adminLocked}
@@ -257,7 +290,7 @@ function UserRow({
         />
       </td>
 
-      <td className="py-3 text-right">
+      <td className="py-2 text-right">
         <Button
           variant="ghost"
           size="icon"

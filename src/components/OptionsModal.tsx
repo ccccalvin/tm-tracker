@@ -11,11 +11,10 @@ import {
   Input,
   Label,
 } from '@/components/ui';
-import { ClassBadge } from '@/components/ClassBadge';
+import { LevelBadge } from '@/components/LevelBadge';
 import { Avatar } from '@/components/Avatar';
 import { AvatarCropper } from '@/components/AvatarCropper';
 import { useAuthStore, useProfile } from '@/store/useAuthStore';
-import { useClassMap } from '@/hooks/useData';
 import {
   updateDisplayName,
   uploadAvatar,
@@ -25,7 +24,7 @@ import {
 
 /**
  * Options modal (DESIGN.md §5): profile photo · editable display name ·
- * (locked) class · personal countdown settings · "Signed in as" email ·
+ * math level · personal countdown settings · "Signed in as" email ·
  * Sign out. Rendered by Layout; dark/light lives in the navbar so it is
  * intentionally not duplicated here.
  */
@@ -39,7 +38,6 @@ export function OptionsModal({
   const profile = useProfile();
   const uid = useAuthStore((s) => s.firebaseUser?.uid);
   const signOutUser = useAuthStore((s) => s.signOutUser);
-  const classMap = useClassMap();
 
   const [name, setName] = useState(profile?.displayName ?? '');
   const [saving, setSaving] = useState(false);
@@ -67,8 +65,7 @@ export function OptionsModal({
   if (!profile) return null;
 
   const isAdmin = profile.role === 'admin';
-  const classInfo = profile.classId ? classMap.get(profile.classId) : undefined;
-  const showClassRow = !isAdmin && Boolean(profile.classId);
+  const showLevelRow = !isAdmin && profile.mathLevel !== null;
 
   const trimmed = name.trim();
   const canSave = !saving && trimmed.length > 0 && trimmed !== profile.displayName;
@@ -250,18 +247,15 @@ export function OptionsModal({
             </p>
           </div>
 
-          {/* Class — read-only */}
-          {showClassRow && (
+          {/* Math level — read-only */}
+          {showLevelRow && (
             <div className="space-y-2">
-              <Label>Class</Label>
+              <Label>Math level</Label>
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium">
-                  {classInfo?.name ?? profile.classId}
-                </span>
-                {classInfo?.badge && <ClassBadge badge={classInfo.badge} />}
+                <LevelBadge level={profile.mathLevel} />
               </div>
               <p className="text-xs text-muted-foreground">
-                Class is set by your teacher — ask Calvin to change it.
+                Set when you joined — ask Calvin to change it.
               </p>
             </div>
           )}

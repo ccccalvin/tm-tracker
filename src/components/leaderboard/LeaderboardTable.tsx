@@ -1,8 +1,8 @@
-import type { AppUser, ClassInfo, LeaderboardEntry } from '@/types';
+import type { AppUser, LeaderboardEntry } from '@/types';
 import { rankEntries, topN } from '@/lib/ranking';
 import { LEADERBOARD_SIZE } from '@/lib/config';
 import { formatCount } from '@/lib/format';
-import { ClassBadge } from '@/components/ClassBadge';
+import { LevelBadge } from '@/components/LevelBadge';
 import { Avatar } from '@/components/Avatar';
 import { Skeleton } from '@/components/ui';
 import { cn } from '@/lib/cn';
@@ -16,17 +16,15 @@ function medalClass(rank: number): string {
 }
 
 /**
- * One leaderboard row: plain rank · name + class badge · paper count.
+ * One leaderboard row: plain rank · name + level badge · paper count.
  * Used by the table and (with the same layout) the standalone "You" panel.
  */
 export function LeaderboardRow({
   entry,
-  classMap,
   className,
   medal = true,
 }: {
   entry: LeaderboardEntry;
-  classMap: Map<string, ClassInfo>;
   className?: string;
   /** Whether to apply the top-3 gold/silver/bronze tint. The standalone "You"
    * panel passes false so it never reads as a second medal area (DESIGN §6.2). */
@@ -47,7 +45,7 @@ export function LeaderboardRow({
       <Avatar src={entry.photoURL} name={entry.displayName} className="h-7 w-7" />
       <span className="flex min-w-0 flex-1 items-center gap-2">
         <span className="truncate">{entry.displayName || 'Unnamed'}</span>
-        <ClassBadge badge={classMap.get(entry.classId)?.badge ?? ''} />
+        <LevelBadge level={entry.mathLevel} />
       </span>
       <span className="shrink-0 whitespace-nowrap tabular-nums text-muted-foreground">
         {formatCount(entry.paperCount)}
@@ -66,13 +64,11 @@ export function LeaderboardTable({
   users,
   myUid,
   classId,
-  classMap,
   loading,
 }: {
   users: AppUser[];
   myUid: string;
   classId?: string;
-  classMap: Map<string, ClassInfo>;
   loading: boolean;
 }) {
   if (loading) {
@@ -95,7 +91,7 @@ export function LeaderboardTable({
   return (
     <div className="space-y-1">
       {rows.map((entry) => (
-        <LeaderboardRow key={entry.uid} entry={entry} classMap={classMap} />
+        <LeaderboardRow key={entry.uid} entry={entry} />
       ))}
     </div>
   );

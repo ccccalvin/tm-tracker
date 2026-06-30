@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { Gift, Crown, CalendarDays, PartyPopper, Trophy } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, Badge, Skeleton } from '@/components/ui';
 import { Avatar } from '@/components/Avatar';
-import { ClassBadge } from '@/components/ClassBadge';
+import { LevelBadge } from '@/components/LevelBadge';
 import { BountyCountdown } from '@/components/bounty/BountyCountdown';
 import { useBountyStandings } from '@/hooks/useData';
 import { useIsAdmin } from '@/store/useAuthStore';
@@ -17,7 +17,7 @@ import { lockBountyResult } from '@/lib/db';
 import { formatCount } from '@/lib/format';
 import { LEADERBOARD_SIZE } from '@/lib/config';
 import { cn } from '@/lib/cn';
-import type { AppUser, Bounty, BountyResultEntry, ClassInfo } from '@/types';
+import type { AppUser, Bounty, BountyResultEntry } from '@/types';
 
 /** A unified standings row, whether computed live or read from a locked result. */
 interface DisplayRow extends BountyResultEntry {
@@ -40,11 +40,9 @@ const statusVariant = {
 
 function BountyRow({
   entry,
-  classMap,
   ended,
 }: {
   entry: DisplayRow;
-  classMap: Map<string, ClassInfo>;
   ended: boolean;
 }) {
   return (
@@ -61,7 +59,7 @@ function BountyRow({
       <Avatar src={entry.photoURL} name={entry.displayName} className="h-7 w-7" />
       <span className="flex min-w-0 flex-1 items-center gap-2">
         <span className="truncate">{entry.displayName || 'Unnamed'}</span>
-        <ClassBadge badge={classMap.get(entry.classId)?.badge ?? ''} />
+        <LevelBadge level={entry.mathLevel} />
         {ended && entry.rank === 1 && (
           <Crown className="h-3.5 w-3.5 shrink-0 text-yellow-500" aria-label="Winner" />
         )}
@@ -118,13 +116,11 @@ export function BountyBoard({
   bounty,
   users,
   myUid,
-  classMap,
   selector,
 }: {
   bounty: Bounty;
   users: AppUser[];
   myUid: string;
-  classMap: Map<string, ClassInfo>;
   /** Optional toggle strip rendered at the top of the header (multi-bounty switch). */
   selector?: ReactNode;
 }) {
@@ -168,6 +164,7 @@ export function BountyBoard({
       uid: e.uid,
       displayName: e.displayName,
       classId: e.classId,
+      mathLevel: e.mathLevel,
       photoURL: e.photoURL,
       count: e.count,
       rank: e.rank,
@@ -258,7 +255,7 @@ export function BountyBoard({
         ) : (
           <div className="space-y-1">
             {rows.map((entry) => (
-              <BountyRow key={entry.uid} entry={entry} classMap={classMap} ended={ended} />
+              <BountyRow key={entry.uid} entry={entry} ended={ended} />
             ))}
           </div>
         )}
@@ -275,12 +272,10 @@ export function BountyPanel({
   bounties,
   users,
   myUid,
-  classMap,
 }: {
   bounties: Bounty[];
   users: AppUser[];
   myUid: string;
-  classMap: Map<string, ClassInfo>;
 }) {
   const [selected, setSelected] = useState(0);
   const idx = Math.min(selected, bounties.length - 1);
@@ -314,7 +309,6 @@ export function BountyPanel({
       bounty={bounty}
       users={users}
       myUid={myUid}
-      classMap={classMap}
       selector={selector}
     />
   );

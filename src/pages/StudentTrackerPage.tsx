@@ -11,16 +11,16 @@ import {
   Select,
   Skeleton,
 } from '@/components/ui';
-import { ClassBadge } from '@/components/ClassBadge';
+import { LevelBadge } from '@/components/LevelBadge';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
 import { StatStrip } from '@/components/StatStrip';
 import { RecentList } from '@/components/RecentList';
-import { useAllUsers, useClassMap, useCompletions, useTodos } from '@/hooks/useData';
+import { useAllUsers, useCompletions, useTodos } from '@/hooks/useData';
 import { studentStats, recentCompletions } from '@/lib/stats';
 import { getPaper } from '@/lib/catalog';
 import { relativeTime, formatScore } from '@/lib/format';
 import { cn } from '@/lib/cn';
-import type { AppUser, ClassInfo, Completion, TodoItem } from '@/types';
+import type { AppUser, Completion, TodoItem } from '@/types';
 
 /**
  * Admin Student-Tracker page (DESIGN.md §8.2). Pick any onboarded student from
@@ -30,7 +30,6 @@ import type { AppUser, ClassInfo, Completion, TodoItem } from '@/types';
  */
 export function StudentTrackerPage() {
   const { users, loading: usersLoading } = useAllUsers();
-  const classMap = useClassMap();
   const [selectedUid, setSelectedUid] = useState('');
 
   // Onboarded students only, alphabetised for a stable, scannable picker.
@@ -50,7 +49,16 @@ export function StudentTrackerPage() {
   );
 
   return (
-    <div className="space-y-6">
+    <div
+      className={cn(
+        'space-y-6',
+        // No student picked yet → little content, so center it in the leftover
+        // viewport like Home/Bounties. Once a student is selected the page turns
+        // into a tall, scrolling document, so it stays top-aligned.
+        !selectedUser &&
+          'flex min-h-[calc(100vh-6.5rem)] flex-col justify-center',
+      )}
+    >
       <header className="space-y-1">
         <h1 className="flex items-center gap-2 text-2xl font-semibold tracking-tight">
           <Users className="h-6 w-6 text-primary" />
@@ -75,14 +83,11 @@ export function StudentTrackerPage() {
                 onChange={(e) => setSelectedUid(e.target.value)}
               >
                 <option value="">Select a student…</option>
-                {pickableUsers.map((u) => {
-                  const badge = classMap.get(u.classId)?.badge;
-                  return (
-                    <option key={u.uid} value={u.uid}>
-                      {(u.displayName || u.email) + (badge ? ` · ${badge}` : '')}
-                    </option>
-                  );
-                })}
+                {pickableUsers.map((u) => (
+                  <option key={u.uid} value={u.uid}>
+                    {(u.displayName || u.email) + (u.mathLevel ? ` · ${u.mathLevel}` : '')}
+                  </option>
+                ))}
               </Select>
             )}
           </div>
@@ -90,7 +95,7 @@ export function StudentTrackerPage() {
       </Card>
 
       {selectedUser ? (
-        <StudentView user={selectedUser} classInfo={classMap.get(selectedUser.classId)} />
+        <StudentView user={selectedUser} />
       ) : (
         <Card>
           <CardContent className="flex flex-col items-center justify-center gap-2 py-16 text-center">
@@ -106,7 +111,7 @@ export function StudentTrackerPage() {
 }
 
 /** Read-only tracker for a single selected student. */
-function StudentView({ user, classInfo }: { user: AppUser; classInfo?: ClassInfo }) {
+function StudentView({ user }: { user: AppUser }) {
   const { completions, loading: completionsLoading } = useCompletions(user.uid);
   const { todos, loading: todosLoading } = useTodos(user.uid);
 
@@ -123,7 +128,7 @@ function StudentView({ user, classInfo }: { user: AppUser; classInfo?: ClassInfo
         <CardHeader>
           <div className="flex flex-wrap items-center gap-2">
             <CardTitle className="text-xl">{user.displayName || user.email}</CardTitle>
-            {classInfo && <ClassBadge badge={classInfo.badge} />}
+            <LevelBadge level={user.mathLevel} />
             {user.isTMStudent && <Badge variant="info">TM student</Badge>}
           </div>
           <CardDescription className="truncate">{user.email}</CardDescription>

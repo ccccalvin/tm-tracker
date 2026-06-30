@@ -1,4 +1,4 @@
-import { useMemo, useState, type FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { ArrowLeft, GraduationCap, ShieldCheck } from 'lucide-react';
@@ -12,11 +12,13 @@ import {
   CardTitle,
   Input,
   Label,
-  Select,
 } from '@/components/ui';
-import { useClasses } from '@/hooks/useData';
+import { LevelBadge } from '@/components/LevelBadge';
+import { MATH_LEVELS } from '@/lib/config';
 import { claimAdmin, completeOnboarding } from '@/lib/db';
 import { useAuthStore } from '@/store/useAuthStore';
+import { cn } from '@/lib/cn';
+import type { MathLevel } from '@/types';
 
 const MAX_NAME_LENGTH = 40;
 
@@ -33,8 +35,9 @@ function isPermissionDenied(err: unknown): boolean {
 
 /**
  * First-run onboarding (DESIGN.md §3/§4.2). New users pick how they're joining:
- * as a student (display name + class) or as an admin (display name + a shared
- * secret token). Students lock their class here; admins carry no class.
+ * as a student (display name + math level) or as an admin (display name + a
+ * shared secret token). Students pick their level here; their class is assigned
+ * later by an admin.
  */
 export function OnboardingPage() {
   const navigate = useNavigate();
@@ -112,7 +115,7 @@ function ChooseStep({ onPick }: { onPick: (step: Step) => void }) {
   );
 }
 
-/** Step 2a — student: display name + class. */
+/** Step 2a — student: display name + math level. */
 function StudentStep({
   uid,
   initialName,
@@ -124,26 +127,19 @@ function StudentStep({
   onBack: () => void;
   onDone: () => void;
 }) {
-  const { classes, loading: classesLoading } = useClasses();
   const [displayName, setDisplayName] = useState(initialName);
-  const [classId, setClassId] = useState('');
+  const [level, setLevel] = useState<MathLevel | ''>('');
   const [saving, setSaving] = useState(false);
 
-  // Only non-archived classes are selectable; useClasses() already sorts them.
-  const selectableClasses = useMemo(
-    () => classes.filter((c) => !c.archived),
-    [classes],
-  );
-
   const trimmedName = displayName.trim();
-  const canSubmit = Boolean(uid) && trimmedName.length > 0 && classId !== '' && !saving;
+  const canSubmit = Boolean(uid) && trimmedName.length > 0 && level !== '' && !saving;
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!uid || trimmedName.length === 0 || classId === '' || saving) return;
+    if (!uid || trimmedName.length === 0 || level === '' || saving) return;
     setSaving(true);
     try {
-      await completeOnboarding(uid, trimmedName, classId);
+      await completeOnboarding(uid, trimmedName, level);
       onDone();
     } catch (err) {
       // eslint-disable-next-line no-console
@@ -158,7 +154,7 @@ function StudentStep({
       <CardHeader className="space-y-2 text-center">
         <CardTitle>Set up your profile</CardTitle>
         <CardDescription>
-          Set your display name and pick your class to get started.
+          Set your display name and pick your math level to get started.
         </CardDescription>
       </CardHeader>
 
@@ -181,24 +177,30 @@ function StudentStep({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="classId">Class</Label>
-            <Select
-              id="classId"
-              name="classId"
-              value={classId}
-              onChange={(e) => setClassId(e.target.value)}
-              required
-              disabled={saving || classesLoading}
-            >
-              <option value="" disabled>
-                {classesLoading ? 'Loading classes…' : 'Select your class'}
-              </option>
-              {selectableClasses.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </Select>
+            <Label>Math level</Label>
+            <div className="grid gap-2" role="radiogroup" aria-label="Math level">
+              {MATH_LEVELS.map((m) => {
+                const selected = level === m.value;
+                return (
+                  <button
+                    key={m.value}
+                    type="button"
+                    role="radio"
+                    aria-checked={selected}
+                    onClick={() => setLevel(m.value)}
+                    disabled={saving}
+                    className={cn(
+                      'flex items-center justify-between gap-3 rounded-lg border p-3 text-left transition',
+                      'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:opacity-50',
+                      selected ? 'border-primary bg-accent' : 'hover:border-primary hover:bg-accent',
+                    )}
+                  >
+                    <span className="text-sm font-medium">{m.label}</span>
+                    <LevelBadge level={m.value} />
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </CardContent>
 
