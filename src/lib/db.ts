@@ -481,7 +481,11 @@ export async function lockBountyResult(
 
 // ── admin: user management ────────────────────────────────────────────────────
 export async function setTMStudent(uid: string, isTMStudent: boolean): Promise<void> {
-  await updateDoc(userRef(uid), { isTMStudent });
+  // Only TM students belong to a class — drop the class when TM status is removed.
+  await updateDoc(
+    userRef(uid),
+    isTMStudent ? { isTMStudent } : { isTMStudent, classId: '' },
+  );
 }
 
 export async function setRole(uid: string, role: AppUser['role']): Promise<void> {

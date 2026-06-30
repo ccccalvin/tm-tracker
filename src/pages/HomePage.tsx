@@ -59,9 +59,6 @@ export function HomePage() {
     return findYou(rankEntries(users, myUid));
   }, [users, myUid]);
 
-  // Personal stats only make sense for students; admins see the board alone.
-  const showStats = !isAdmin;
-
   const leaderboardCard = (
     <Card>
       <CardHeader>
@@ -132,59 +129,53 @@ export function HomePage() {
 
   return (
     // Vertically center the content in the viewport (minus the sticky header
-    // and the main's vertical padding).
+    // and the main's vertical padding). Students and admins get the same
+    // two-column home — board + actions on the left, personal stats on the right.
     <div className="flex min-h-[calc(100vh-6.5rem)] flex-col justify-center">
-      {showStats ? (
-        <div className="grid items-stretch gap-6 lg:relative lg:left-1/2 lg:w-screen lg:-translate-x-1/2 lg:grid-cols-[450px_296px] lg:justify-center">
-          {/* Left — leaderboard + actions, at a reduced width */}
-          <div className="space-y-6">
-            {leaderboardCard}
-            {actions}
-          </div>
-
-          {/* Right — personal stats: progress on top, taller recent list below */}
-          <div className="flex flex-col gap-6">
-            {completionsLoading ? (
-              <Card>
-                <CardContent className="pt-6">
-                  <Skeleton className="h-12 w-full" />
-                </CardContent>
-              </Card>
-            ) : (
-              <CompletionProgress
-                completed={completedRecent}
-                total={recentPapers.length}
-              />
-            )}
-
-            <Card className="flex flex-1 flex-col">
-              <CardHeader>
-                <CardTitle className="text-base">Recently completed</CardTitle>
-              </CardHeader>
-              <CardContent className="min-h-0 flex-1 overflow-y-auto">
-                {completionsLoading ? (
-                  <div className="space-y-2">
-                    {Array.from({ length: 4 }).map((_, i) => (
-                      <Skeleton key={i} className="h-5 w-full" />
-                    ))}
-                  </div>
-                ) : (
-                  <RecentList
-                    completions={recentCompletions(myCompletions, RECENT_SHOWN)}
-                    showScore={false}
-                    showPdf={false}
-                  />
-                )}
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      ) : (
+      <div className="grid items-stretch gap-6 lg:relative lg:left-1/2 lg:w-screen lg:-translate-x-1/2 lg:grid-cols-[450px_296px] lg:justify-center">
+        {/* Left — leaderboard + actions, at a reduced width */}
         <div className="space-y-6">
           {leaderboardCard}
           {actions}
         </div>
-      )}
+
+        {/* Right — personal stats: progress on top, taller recent list below */}
+        <div className="flex flex-col gap-6">
+          {completionsLoading ? (
+            <Card>
+              <CardContent className="pt-6">
+                <Skeleton className="h-12 w-full" />
+              </CardContent>
+            </Card>
+          ) : (
+            <CompletionProgress
+              completed={completedRecent}
+              total={recentPapers.length}
+            />
+          )}
+
+          <Card className="flex flex-1 flex-col">
+            <CardHeader>
+              <CardTitle className="text-base">Recently completed</CardTitle>
+            </CardHeader>
+            <CardContent className="min-h-0 flex-1 overflow-y-auto">
+              {completionsLoading ? (
+                <div className="space-y-2">
+                  {Array.from({ length: 4 }).map((_, i) => (
+                    <Skeleton key={i} className="h-5 w-full" />
+                  ))}
+                </div>
+              ) : (
+                <RecentList
+                  completions={recentCompletions(myCompletions, RECENT_SHOWN)}
+                  showScore={false}
+                  showPdf={false}
+                />
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }

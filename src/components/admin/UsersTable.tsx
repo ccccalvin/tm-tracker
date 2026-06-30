@@ -246,22 +246,32 @@ function UserRow({
       </td>
 
       <td className="py-2 pr-4">
-        <Select
-          value={user.classId}
-          disabled={busy === 'class'}
-          onChange={(e) => handleReassign(e.target.value)}
-          className="h-8 w-40"
-          aria-label={`Class for ${displayName}`}
-        >
-          {/* Only offer "unassigned" to a user who has no class yet — admins
-              move students between real classes, they don't un-assign them. */}
-          {!user.classId && <option value="">— unassigned —</option>}
-          {classes.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.badge}
-            </option>
-          ))}
-        </Select>
+        {/* Only TM students belong to a class; everyone else shows a plain dash. */}
+        {user.isTMStudent ? (
+          <Select
+            value={user.classId}
+            disabled={busy === 'class'}
+            onChange={(e) => handleReassign(e.target.value)}
+            className="h-8 w-40"
+            aria-label={`Class for ${displayName}`}
+          >
+            {/* Only offer "unassigned" to a user who has no class yet — admins
+                move students between real classes, they don't un-assign them. */}
+            {!user.classId && <option value="">— unassigned —</option>}
+            {classes.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.badge}
+              </option>
+            ))}
+          </Select>
+        ) : (
+          <span
+            className="text-sm text-muted-foreground"
+            title="Only TM students belong to a class"
+          >
+            —
+          </span>
+        )}
       </td>
 
       <td className="py-2 pr-4 whitespace-nowrap text-muted-foreground">
