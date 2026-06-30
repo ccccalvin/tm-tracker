@@ -58,91 +58,99 @@ export function TrackerPage() {
   }
 
   return (
-    <div className="space-y-8">
-      {/* TOP — overall progress */}
-      {completionsLoading ? (
-        <Card>
-          <CardContent className="pt-6">
-            <Skeleton className="h-12 w-full" />
-          </CardContent>
-        </Card>
-      ) : (
-        <CompletionProgress completed={completedRecent} total={recentPapers.length} />
-      )}
+    // Split rail: a sticky summary (progress + to-do) beside the long,
+    // filterable paper list. On lg the block breaks out of the narrow
+    // max-w-3xl column to the full viewport — the same trick the student Home
+    // uses — so both columns get room; below lg it collapses to the original
+    // single-column stack (progress → to-do → all papers).
+    <div className="lg:relative lg:left-1/2 lg:w-screen lg:-translate-x-1/2">
+      <div className="grid gap-6 lg:grid-cols-[360px_minmax(0,520px)] lg:justify-center lg:px-6">
+        {/* LEFT RAIL — progress + to-do, pinned while the list scrolls */}
+        <div className="space-y-6 lg:sticky lg:top-20 lg:self-start">
+          {completionsLoading ? (
+            <Card>
+              <CardContent className="pt-6">
+                <Skeleton className="h-12 w-full" />
+              </CardContent>
+            </Card>
+          ) : (
+            <CompletionProgress completed={completedRecent} total={recentPapers.length} />
+          )}
 
-      {/* to-do queue */}
-      {todosLoading || completionsLoading ? (
+          {todosLoading || completionsLoading ? (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">To-do</CardTitle>
+                <CardDescription className="italic">
+                  “If I quit now, I will soon be back to where I started. And when I
+                  started, I was desperately wishing to be where I am now.”
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-1.5">
+                <Skeleton className="h-10 w-full" />
+                <Skeleton className="h-10 w-full" />
+              </CardContent>
+            </Card>
+          ) : (
+            <TodoList
+              uid={uid}
+              todos={todos}
+              completedIds={completedIds}
+              completionsById={byId}
+              onSetCompleted={setCompleted}
+            />
+          )}
+        </div>
+
+        {/* RIGHT — full, filterable paper list */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">To-do</CardTitle>
-            <CardDescription className="italic">
-              “If I quit now, I will soon be back to where I started. And when I
-              started, I was desperately wishing to be where I am now.”
-            </CardDescription>
+            <CardTitle className="text-lg">All papers</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-1.5">
-            <Skeleton className="h-10 w-full" />
-            <Skeleton className="h-10 w-full" />
+          <CardContent className="space-y-4">
+            <PaperFilters
+              search={search}
+              onSearchChange={setSearch}
+              status={status}
+              onStatusChange={setStatus}
+              showOlder={showOlder}
+              onShowOlderChange={setShowOlder}
+              setId={setId}
+              onSetIdChange={setSetId}
+            />
+
+            <p className="text-xs text-muted-foreground">
+              Showing {formatCount(rows.length)}
+            </p>
+
+            {completionsLoading ? (
+              <div className="space-y-1.5">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <Skeleton key={i} className="h-10 w-full" />
+                ))}
+              </div>
+            ) : rows.length === 0 ? (
+              <p className="rounded-md border border-dashed p-6 text-center text-sm text-muted-foreground">
+                No papers match your filters.
+              </p>
+            ) : (
+              <ul className="space-y-1.5">
+                {rows.map((paper) => (
+                  <PaperRow
+                    key={paper.id}
+                    uid={uid}
+                    paper={paper}
+                    completed={completedIds.has(paper.id)}
+                    completion={byId.get(paper.id)}
+                    inTodo={todoIds.has(paper.id)}
+                    onSetCompleted={setCompleted}
+                  />
+                ))}
+              </ul>
+            )}
           </CardContent>
         </Card>
-      ) : (
-        <TodoList
-          uid={uid}
-          todos={todos}
-          completedIds={completedIds}
-          completionsById={byId}
-          onSetCompleted={setCompleted}
-        />
-      )}
-
-      {/* BOTTOM — full paper list */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">All papers</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <PaperFilters
-            search={search}
-            onSearchChange={setSearch}
-            status={status}
-            onStatusChange={setStatus}
-            showOlder={showOlder}
-            onShowOlderChange={setShowOlder}
-            setId={setId}
-            onSetIdChange={setSetId}
-          />
-
-          <p className="text-xs text-muted-foreground">
-            Showing {formatCount(rows.length)}
-          </p>
-
-          {completionsLoading ? (
-            <div className="space-y-1.5">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <Skeleton key={i} className="h-10 w-full" />
-              ))}
-            </div>
-          ) : rows.length === 0 ? (
-            <p className="rounded-md border border-dashed p-6 text-center text-sm text-muted-foreground">
-              No papers match your filters.
-            </p>
-          ) : (
-            <ul className="space-y-1.5">
-              {rows.map((paper) => (
-                <PaperRow
-                  key={paper.id}
-                  uid={uid}
-                  paper={paper}
-                  completed={completedIds.has(paper.id)}
-                  completion={byId.get(paper.id)}
-                  inTodo={todoIds.has(paper.id)}
-                  onSetCompleted={setCompleted}
-                />
-              ))}
-            </ul>
-          )}
-        </CardContent>
-      </Card>
+      </div>
     </div>
   );
 }
