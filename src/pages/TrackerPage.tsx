@@ -7,7 +7,7 @@ import { PaperFilters } from '@/components/tracker/PaperFilters';
 import { PaperRow } from '@/components/tracker/PaperRow';
 import { useAuthStore, useEffectiveMathLevel } from '@/store/useAuthStore';
 import { useCompletions, useTodos } from '@/hooks/useData';
-import { PAPERS, filterPapers, sortPapers, type PaperStatus, type PaperSort } from '@/lib/catalog';
+import { PAPERS, PAPER_SETS, filterPapers, sortPapers, type PaperStatus, type PaperSort } from '@/lib/catalog';
 import { DEFAULT_MIN_YEAR, DEFAULT_SET_BY_LEVEL } from '@/lib/config';
 import { formatCount } from '@/lib/format';
 
@@ -30,6 +30,15 @@ export function TrackerPage() {
   // Extension → 3U); admins / unset default to all sets. They can still switch.
   // For an admin this level is the header "view as" preview override.
   const defaultSetId = mathLevel ? DEFAULT_SET_BY_LEVEL[mathLevel] : undefined;
+
+  // Advanced students are locked to their own bank: no "All sets", no Ext1
+  // trials — those sets sit above their course, so they don't see them at all.
+  const lockedSetId = mathLevel === 'ADVN' ? DEFAULT_SET_BY_LEVEL.ADVN : undefined;
+  const visibleSets = useMemo(
+    () => (lockedSetId ? PAPER_SETS.filter((s) => s.id === lockedSetId) : PAPER_SETS),
+    [lockedSetId],
+  );
+  const allowAllSets = !lockedSetId;
 
   // Filter state lives here and is passed down to PaperFilters (controlled).
   const [search, setSearch] = useState('');
@@ -142,6 +151,8 @@ export function TrackerPage() {
               onShowOlderChange={setShowOlder}
               setId={setId}
               onSetIdChange={setSetId}
+              sets={visibleSets}
+              allowAllSets={allowAllSets}
             />
 
             <div className="flex items-center justify-between gap-3">
@@ -183,7 +194,7 @@ export function TrackerPage() {
                     completed={completedIds.has(paper.id)}
                     completion={byId.get(paper.id)}
                     inTodo={todoIds.has(paper.id)}
-                    showLevelTag={!setId}
+                    showLevelTag
                     onSetCompleted={setCompleted}
                   />
                 ))}

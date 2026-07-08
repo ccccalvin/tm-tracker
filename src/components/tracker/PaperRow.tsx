@@ -30,7 +30,7 @@ export function PaperRow({
   /** The existing completion record (for the inline editor), if any. */
   completion: Completion | undefined;
   inTodo: boolean;
-  /** Show the ADVN/EXT1 level tag — used in the combined "all sets" view. */
+  /** Show the ADVN/EXT1 level tag (a no-op for sets with no level mapping). */
   showLevelTag?: boolean;
   /** Optimistic complete/incomplete toggle (instant tick, background write). */
   onSetCompleted: (paper: Paper, desired: boolean) => void;
