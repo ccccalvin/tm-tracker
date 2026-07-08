@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { Check, ChevronDown, Loader2, Plus } from 'lucide-react';
 import { Button } from '@/components/ui';
+import { LevelBadge } from '@/components/LevelBadge';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
 import { ScoreNotesEditor } from '@/components/tracker/ScoreNotesEditor';
 import { addTodo, removeTodo } from '@/lib/db';
+import { setLevel } from '@/lib/catalog';
 import { cn } from '@/lib/cn';
 import type { Completion, Paper } from '@/types';
 
@@ -19,6 +21,7 @@ export function PaperRow({
   completed,
   completion,
   inTodo,
+  showLevelTag = false,
   onSetCompleted,
 }: {
   uid: string;
@@ -27,6 +30,8 @@ export function PaperRow({
   /** The existing completion record (for the inline editor), if any. */
   completion: Completion | undefined;
   inTodo: boolean;
+  /** Show the ADVN/EXT1 level tag — used in the combined "all sets" view. */
+  showLevelTag?: boolean;
   /** Optimistic complete/incomplete toggle (instant tick, background write). */
   onSetCompleted: (paper: Paper, desired: boolean) => void;
 }) {
@@ -81,6 +86,10 @@ export function PaperRow({
         </button>
 
         <span className="flex-1 truncate text-sm font-medium">{paper.label}</span>
+
+        {showLevelTag && (
+          <LevelBadge level={setLevel(paper.setId)} className="hidden shrink-0 text-[10px] sm:inline-flex" />
+        )}
 
         {completed && (
           <Button

@@ -2,6 +2,7 @@
  * App-wide constants. The bootstrap admin email is also hardcoded in
  * firestore.rules — keep the two in sync if it ever changes.
  */
+import type { MathLevel } from '@/types';
 
 /** The first admin. On their first sign-in their profile is created with
  * role 'admin'; thereafter admins promote others in-app (DESIGN.md §3, Q30b). */
@@ -21,6 +22,16 @@ export const MATH_LEVELS = [
   { value: 'EXT1', label: 'Mathematics Extension 1' },
   { value: 'EXT2', label: 'Mathematics Extension 2' },
 ] as const;
+
+/** Which paper set a student sees first on the Tracker, keyed by math level.
+ * Advanced students get the 2U bank; Extension 1 & 2 students get the 3U bank
+ * (the hardest set currently available). Admins / not-yet-set fall back to all
+ * sets. The set ids must match those in scripts/generate-catalog.mjs. */
+export const DEFAULT_SET_BY_LEVEL: Record<MathLevel, string> = {
+  ADVN: 'yr12-advn-trials',
+  EXT1: 'yr12-ext1-trials',
+  EXT2: 'yr12-ext1-trials',
+};
 
 /** Default catalog view shows papers from this year onward; a toggle reveals
  * older ones (DESIGN.md §2, Q28b). */

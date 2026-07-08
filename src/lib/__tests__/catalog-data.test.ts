@@ -4,14 +4,22 @@ import { PAPERS, PAPER_SETS, getPaper } from '@/lib/catalog';
 /** Guards the generated catalog.json against drift / parser regressions. */
 describe('catalog.json integrity', () => {
   it('has the expected counts', () => {
-    expect(PAPERS.length).toBe(487);
-    expect(PAPERS.filter((p) => p.year >= 2018).length).toBe(176);
-    expect(new Set(PAPERS.map((p) => p.school)).size).toBe(52);
+    expect(PAPERS.length).toBe(1002);
+    expect(PAPERS.filter((p) => p.year >= 2018).length).toBe(266);
+    expect(new Set(PAPERS.map((p) => p.school)).size).toBe(58);
   });
 
-  it('has exactly one set whose count matches', () => {
-    expect(PAPER_SETS).toHaveLength(1);
-    expect(PAPER_SETS[0].count).toBe(PAPERS.length);
+  it('includes the HSC and CSSA papers even without bundled solutions', () => {
+    expect(PAPERS.filter((p) => p.school === 'HSC').length).toBe(59);
+    expect(PAPERS.filter((p) => p.school === 'CSSA').length).toBe(6);
+  });
+
+  it('has the Advanced and Extension 1 sets, counts summing to the total', () => {
+    expect(PAPER_SETS.map((s) => s.id)).toEqual(['yr12-advn-trials', 'yr12-ext1-trials']);
+    expect(PAPER_SETS.reduce((n, s) => n + s.count, 0)).toBe(PAPERS.length);
+    for (const set of PAPER_SETS) {
+      expect(PAPERS.filter((p) => p.setId === set.id).length).toBe(set.count);
+    }
   });
 
   it('every paper is well-formed and uniquely identified', () => {
@@ -22,9 +30,10 @@ describe('catalog.json integrity', () => {
       ids.add(p.id);
       expect(p.label).toBe(`${p.school} ${p.year} ${p.type}`);
       expect(p.storagePath).toMatch(/^papers\/.+\/.+\.pdf$/);
-      // Only solutions papers are in the catalog.
-      expect(p.fileName).toMatch(/& Solutions\.pdf$/);
-      expect(p.year).toBeGreaterThanOrEqual(2000);
+      // Every paper follows the "<unit> Trials [& Solutions]" naming — school
+      // trials carry solutions; HSC/CSSA exams may not.
+      expect(p.fileName).toMatch(/ (?:2U|3U|4U) Trials( & Solutions)?\.pdf$/);
+      expect(p.year).toBeGreaterThanOrEqual(1960);
       expect(p.year).toBeLessThanOrEqual(2100);
     }
   });
