@@ -10,7 +10,7 @@
       "id": "yr12-ext1-trials",
       "name": "YR12 EXT1 Trials",
       "type": "Trials",
-      "count": 450
+      "count": 509
     }
   ],
   "papers": [
@@ -6953,6 +6953,596 @@
       "label": "Girraween 2021 Trials",
       "storagePath": "papers/yr12-ext1-trials/girraween-2021.pdf",
       "fileName": "Girraween 2021 3U Trials & Solutions.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1967",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1967,
+      "type": "Trials",
+      "label": "HSC 1967 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1967.pdf",
+      "fileName": "HSC 1967 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1968",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1968,
+      "type": "Trials",
+      "label": "HSC 1968 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1968.pdf",
+      "fileName": "HSC 1968 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1969",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1969,
+      "type": "Trials",
+      "label": "HSC 1969 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1969.pdf",
+      "fileName": "HSC 1969 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1970",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1970,
+      "type": "Trials",
+      "label": "HSC 1970 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1970.pdf",
+      "fileName": "HSC 1970 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1971",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1971,
+      "type": "Trials",
+      "label": "HSC 1971 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1971.pdf",
+      "fileName": "HSC 1971 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1972",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1972,
+      "type": "Trials",
+      "label": "HSC 1972 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1972.pdf",
+      "fileName": "HSC 1972 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1973",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1973,
+      "type": "Trials",
+      "label": "HSC 1973 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1973.pdf",
+      "fileName": "HSC 1973 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1974",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1974,
+      "type": "Trials",
+      "label": "HSC 1974 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1974.pdf",
+      "fileName": "HSC 1974 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1975",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1975,
+      "type": "Trials",
+      "label": "HSC 1975 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1975.pdf",
+      "fileName": "HSC 1975 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1976",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1976,
+      "type": "Trials",
+      "label": "HSC 1976 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1976.pdf",
+      "fileName": "HSC 1976 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1977",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1977,
+      "type": "Trials",
+      "label": "HSC 1977 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1977.pdf",
+      "fileName": "HSC 1977 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1978",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1978,
+      "type": "Trials",
+      "label": "HSC 1978 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1978.pdf",
+      "fileName": "HSC 1978 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1979",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1979,
+      "type": "Trials",
+      "label": "HSC 1979 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1979.pdf",
+      "fileName": "HSC 1979 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1980",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1980,
+      "type": "Trials",
+      "label": "HSC 1980 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1980.pdf",
+      "fileName": "HSC 1980 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1981",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1981,
+      "type": "Trials",
+      "label": "HSC 1981 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1981.pdf",
+      "fileName": "HSC 1981 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1982",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1982,
+      "type": "Trials",
+      "label": "HSC 1982 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1982.pdf",
+      "fileName": "HSC 1982 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1983",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1983,
+      "type": "Trials",
+      "label": "HSC 1983 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1983.pdf",
+      "fileName": "HSC 1983 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1984",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1984,
+      "type": "Trials",
+      "label": "HSC 1984 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1984.pdf",
+      "fileName": "HSC 1984 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1985",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1985,
+      "type": "Trials",
+      "label": "HSC 1985 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1985.pdf",
+      "fileName": "HSC 1985 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1986",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1986,
+      "type": "Trials",
+      "label": "HSC 1986 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1986.pdf",
+      "fileName": "HSC 1986 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1987",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1987,
+      "type": "Trials",
+      "label": "HSC 1987 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1987.pdf",
+      "fileName": "HSC 1987 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1988",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1988,
+      "type": "Trials",
+      "label": "HSC 1988 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1988.pdf",
+      "fileName": "HSC 1988 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1989",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1989,
+      "type": "Trials",
+      "label": "HSC 1989 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1989.pdf",
+      "fileName": "HSC 1989 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1990",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1990,
+      "type": "Trials",
+      "label": "HSC 1990 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1990.pdf",
+      "fileName": "HSC 1990 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1991",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1991,
+      "type": "Trials",
+      "label": "HSC 1991 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1991.pdf",
+      "fileName": "HSC 1991 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1992",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1992,
+      "type": "Trials",
+      "label": "HSC 1992 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1992.pdf",
+      "fileName": "HSC 1992 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1993",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1993,
+      "type": "Trials",
+      "label": "HSC 1993 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1993.pdf",
+      "fileName": "HSC 1993 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1994",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1994,
+      "type": "Trials",
+      "label": "HSC 1994 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1994.pdf",
+      "fileName": "HSC 1994 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1995",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1995,
+      "type": "Trials",
+      "label": "HSC 1995 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1995.pdf",
+      "fileName": "HSC 1995 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1996",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1996,
+      "type": "Trials",
+      "label": "HSC 1996 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1996.pdf",
+      "fileName": "HSC 1996 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1997",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1997,
+      "type": "Trials",
+      "label": "HSC 1997 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1997.pdf",
+      "fileName": "HSC 1997 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1998",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1998,
+      "type": "Trials",
+      "label": "HSC 1998 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1998.pdf",
+      "fileName": "HSC 1998 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-1999",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 1999,
+      "type": "Trials",
+      "label": "HSC 1999 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-1999.pdf",
+      "fileName": "HSC 1999 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2000",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2000,
+      "type": "Trials",
+      "label": "HSC 2000 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2000.pdf",
+      "fileName": "HSC 2000 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2001",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2001,
+      "type": "Trials",
+      "label": "HSC 2001 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2001.pdf",
+      "fileName": "HSC 2001 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2002",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2002,
+      "type": "Trials",
+      "label": "HSC 2002 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2002.pdf",
+      "fileName": "HSC 2002 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2003",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2003,
+      "type": "Trials",
+      "label": "HSC 2003 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2003.pdf",
+      "fileName": "HSC 2003 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2004",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2004,
+      "type": "Trials",
+      "label": "HSC 2004 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2004.pdf",
+      "fileName": "HSC 2004 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2005",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2005,
+      "type": "Trials",
+      "label": "HSC 2005 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2005.pdf",
+      "fileName": "HSC 2005 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2006",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2006,
+      "type": "Trials",
+      "label": "HSC 2006 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2006.pdf",
+      "fileName": "HSC 2006 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2007",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2007,
+      "type": "Trials",
+      "label": "HSC 2007 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2007.pdf",
+      "fileName": "HSC 2007 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2008",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2008,
+      "type": "Trials",
+      "label": "HSC 2008 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2008.pdf",
+      "fileName": "HSC 2008 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2009",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2009,
+      "type": "Trials",
+      "label": "HSC 2009 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2009.pdf",
+      "fileName": "HSC 2009 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2010",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2010,
+      "type": "Trials",
+      "label": "HSC 2010 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2010.pdf",
+      "fileName": "HSC 2010 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2011",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2011,
+      "type": "Trials",
+      "label": "HSC 2011 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2011.pdf",
+      "fileName": "HSC 2011 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2012",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2012,
+      "type": "Trials",
+      "label": "HSC 2012 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2012.pdf",
+      "fileName": "HSC 2012 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2013",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2013,
+      "type": "Trials",
+      "label": "HSC 2013 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2013.pdf",
+      "fileName": "HSC 2013 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2014",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2014,
+      "type": "Trials",
+      "label": "HSC 2014 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2014.pdf",
+      "fileName": "HSC 2014 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2015",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2015,
+      "type": "Trials",
+      "label": "HSC 2015 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2015.pdf",
+      "fileName": "HSC 2015 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2016",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2016,
+      "type": "Trials",
+      "label": "HSC 2016 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2016.pdf",
+      "fileName": "HSC 2016 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2017",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2017,
+      "type": "Trials",
+      "label": "HSC 2017 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2017.pdf",
+      "fileName": "HSC 2017 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2018",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2018,
+      "type": "Trials",
+      "label": "HSC 2018 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2018.pdf",
+      "fileName": "HSC 2018 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2019",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2019,
+      "type": "Trials",
+      "label": "HSC 2019 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2019.pdf",
+      "fileName": "HSC 2019 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2020",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2020,
+      "type": "Trials",
+      "label": "HSC 2020 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2020.pdf",
+      "fileName": "HSC 2020 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2021",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2021,
+      "type": "Trials",
+      "label": "HSC 2021 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2021.pdf",
+      "fileName": "HSC 2021 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2022",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2022,
+      "type": "Trials",
+      "label": "HSC 2022 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2022.pdf",
+      "fileName": "HSC 2022 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2023",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2023,
+      "type": "Trials",
+      "label": "HSC 2023 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2023.pdf",
+      "fileName": "HSC 2023 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2024",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2024,
+      "type": "Trials",
+      "label": "HSC 2024 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2024.pdf",
+      "fileName": "HSC 2024 3U Trials.pdf"
+    },
+    {
+      "id": "yr12-ext1-trials__hsc-2025",
+      "setId": "yr12-ext1-trials",
+      "school": "HSC",
+      "year": 2025,
+      "type": "Trials",
+      "label": "HSC 2025 Trials",
+      "storagePath": "papers/yr12-ext1-trials/hsc-2025.pdf",
+      "fileName": "HSC 2025 3U Trials.pdf"
     },
     {
       "id": "yr12-ext1-trials__hunters-hill-2015",
