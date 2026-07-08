@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { filterPapers, type PaperFilter } from '@/lib/catalog';
+import { filterPapers, sortPapers, type PaperFilter } from '@/lib/catalog';
 import type { Paper } from '@/types';
 
 function mk(id: string, school: string, year: number, setId = 'set1'): Paper {
@@ -48,5 +48,21 @@ describe('filterPapers', () => {
     expect(
       filterPapers(PAPERS, { ...base, setId: 'set1', showOlder: true }, new Set(), 2018).map((p) => p.id),
     ).toEqual(['s1', 's2']);
+  });
+});
+
+describe('sortPapers', () => {
+  it('sorts by name: school A→Z then year ascending', () => {
+    expect(sortPapers(PAPERS, 'name').map((p) => p.id)).toEqual(['s3', 's1', 's2']);
+  });
+
+  it('sorts by year descending, breaking ties on school', () => {
+    expect(sortPapers(PAPERS, 'year').map((p) => p.id)).toEqual(['s1', 's3', 's2']);
+  });
+
+  it('does not mutate the input array', () => {
+    const before = PAPERS.map((p) => p.id);
+    sortPapers(PAPERS, 'year');
+    expect(PAPERS.map((p) => p.id)).toEqual(before);
   });
 });

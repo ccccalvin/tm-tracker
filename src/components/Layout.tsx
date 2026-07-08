@@ -4,6 +4,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { useThemeStore } from '@/store/useThemeStore';
 import { useUIStore } from '@/store/useUIStore';
 import { OptionsModal } from '@/components/OptionsModal';
+import { ViewAsSwitcher } from '@/components/ViewAsSwitcher';
 import { CountdownBoxes } from '@/components/CountdownBoxes';
 import { Avatar } from '@/components/Avatar';
 import { cn } from '@/lib/cn';
@@ -59,6 +60,7 @@ export function Layout() {
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-2 sm:gap-3">
+            {isAdmin && <ViewAsSwitcher />}
             <div className="hidden sm:block">
               <CountdownBoxes
                 showTrials={profile?.showTrialsCountdown ?? false}

@@ -1,15 +1,20 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui';
-import { Skeleton } from '@/components/ui';
+import { Skeleton, Select } from '@/components/ui';
 import { TodoList } from '@/components/tracker/TodoList';
 import { CompletionProgress } from '@/components/tracker/CompletionProgress';
 import { PaperFilters } from '@/components/tracker/PaperFilters';
 import { PaperRow } from '@/components/tracker/PaperRow';
-import { useAuthStore } from '@/store/useAuthStore';
+import { useAuthStore, useEffectiveMathLevel } from '@/store/useAuthStore';
 import { useCompletions, useTodos } from '@/hooks/useData';
-import { PAPERS, filterPapers, type PaperStatus } from '@/lib/catalog';
-import { DEFAULT_MIN_YEAR } from '@/lib/config';
+import { PAPERS, filterPapers, sortPapers, type PaperStatus, type PaperSort } from '@/lib/catalog';
+import { DEFAULT_MIN_YEAR, DEFAULT_SET_BY_LEVEL } from '@/lib/config';
 import { formatCount } from '@/lib/format';
+
+const SORT_OPTIONS: { value: PaperSort; label: string }[] = [
+  { value: 'name', label: 'Name (A–Z)' },
+  { value: 'year', label: 'Year (newest)' },
+];
 
 /**
  * Tracker page (DESIGN.md §7): a personal to-do queue on top and the full,
@@ -17,23 +22,40 @@ import { formatCount } from '@/lib/format';
  */
 export function TrackerPage() {
   const uid = useAuthStore((s) => s.firebaseUser?.uid);
+  const mathLevel = useEffectiveMathLevel();
   const { todos, loading: todosLoading } = useTodos(uid);
   const { completedIds, byId, loading: completionsLoading, setCompleted } = useCompletions(uid);
+
+  // Students open the Tracker on their own level's paper set (Advanced → 2U,
+  // Extension → 3U); admins / unset default to all sets. They can still switch.
+  // For an admin this level is the header "view as" preview override.
+  const defaultSetId = mathLevel ? DEFAULT_SET_BY_LEVEL[mathLevel] : undefined;
 
   // Filter state lives here and is passed down to PaperFilters (controlled).
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState<PaperStatus>('all');
   const [showOlder, setShowOlder] = useState(false);
-  const [setId, setSetId] = useState<string | undefined>(undefined);
+  const [setId, setSetId] = useState<string | undefined>(defaultSetId);
+  const [sort, setSort] = useState<PaperSort>('name');
+
+  // Follow the level's default set when it changes under us — e.g. an admin
+  // flipping the header "view as" switcher should see the paper list jump to
+  // that level's bank immediately, without a reload.
+  useEffect(() => {
+    setSetId(defaultSetId);
+  }, [defaultSetId]);
 
   const todoIds = useMemo(() => new Set(todos.map((t) => t.paperId)), [todos]);
 
-  // Progress against the in-scope (recent, year >= DEFAULT_MIN_YEAR) papers —
-  // the same set the list shows by default. Counting only recent completions
-  // keeps the numerator from exceeding the total.
+  // Progress against the in-scope (recent, year >= DEFAULT_MIN_YEAR) papers of
+  // the currently-selected set — so the bar matches the list on screen.
+  // Counting only recent completions keeps the numerator from exceeding total.
   const recentPapers = useMemo(
-    () => PAPERS.filter((p) => p.year >= DEFAULT_MIN_YEAR),
-    [],
+    () =>
+      PAPERS.filter(
+        (p) => p.year >= DEFAULT_MIN_YEAR && (!setId || p.setId === setId),
+      ),
+    [setId],
   );
   const completedRecent = useMemo(
     () => recentPapers.filter((p) => completedIds.has(p.id)).length,
@@ -42,13 +64,16 @@ export function TrackerPage() {
 
   const rows = useMemo(
     () =>
-      filterPapers(
-        PAPERS,
-        { search, status, showOlder, setId },
-        completedIds,
-        DEFAULT_MIN_YEAR,
+      sortPapers(
+        filterPapers(
+          PAPERS,
+          { search, status, showOlder, setId },
+          completedIds,
+          DEFAULT_MIN_YEAR,
+        ),
+        sort,
       ),
-    [search, status, showOlder, setId, completedIds],
+    [search, status, showOlder, setId, sort, completedIds],
   );
 
   if (!uid) {
@@ -119,9 +144,24 @@ export function TrackerPage() {
               onSetIdChange={setSetId}
             />
 
-            <p className="text-xs text-muted-foreground">
-              Showing {formatCount(rows.length)}
-            </p>
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-xs text-muted-foreground">
+                Showing {formatCount(rows.length)}
+              </p>
+
+              <Select
+                value={sort}
+                onChange={(e) => setSort(e.target.value as PaperSort)}
+                aria-label="Sort papers"
+                className="h-8 w-40 text-xs"
+              >
+                {SORT_OPTIONS.map((o) => (
+                  <option key={o.value} value={o.value}>
+                    Sort: {o.label}
+                  </option>
+                ))}
+              </Select>
+            </div>
 
             {completionsLoading ? (
               <div className="space-y-1.5">
@@ -143,6 +183,7 @@ export function TrackerPage() {
                     completed={completedIds.has(paper.id)}
                     completion={byId.get(paper.id)}
                     inTodo={todoIds.has(paper.id)}
+                    showLevelTag={!setId}
                     onSetCompleted={setCompleted}
                   />
                 ))}

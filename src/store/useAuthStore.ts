@@ -44,6 +44,18 @@ export const useIsAuthenticated = () => useAuthStore((s) => s.firebaseUser !== n
 export const useIsAdmin = () => useAuthStore((s) => s.profile?.role === 'admin');
 export const useProfile = () => useAuthStore((s) => s.profile);
 
+/**
+ * The math level the student-facing views should render as. For a normal
+ * student this is just their profile level. For an admin it's the header
+ * "view as" preview override (null = admin's real, level-less view).
+ */
+export const useEffectiveMathLevel = () => {
+  const profile = useAuthStore((s) => s.profile);
+  const previewLevel = useUIStore((s) => s.previewLevel);
+  if (profile?.role === 'admin') return previewLevel;
+  return profile?.mathLevel ?? null;
+};
+
 // ── module-level listener wiring ──────────────────────────────────────────────
 let profileUnsub: (() => void) | null = null;
 
@@ -60,6 +72,8 @@ onAuthStateChanged(auth, (fbUser) => {
     // true at that moment. Reset it here or the modal reappears on next login
     // (the store is module-level and outlives the logged-out session).
     useUIStore.getState().setOptionsOpen(false);
+    // Drop any admin "view as" preview so it never leaks into the next session.
+    useUIStore.getState().setPreviewLevel(null);
     return;
   }
 

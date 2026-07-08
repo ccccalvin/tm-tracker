@@ -39,14 +39,26 @@ const ROOT = resolve(__dirname, '..');
 const SETS = [
   {
     id: 'yr12-advn-trials',
-    name: 'Year 12 Advanced — Trials',
+    name: 'YR12 ADVN Trials',
     type: 'Trials',
     dir: 'yr12-advn-trials',
   },
+  {
+    id: 'yr12-ext1-trials',
+    name: 'YR12 EXT1 Trials',
+    type: 'Trials',
+    dir: 'yr12-ext1-trials',
+  },
 ];
 
-// "<school...> <year> 2U Trials [& Solutions].pdf"
-const FILE_RE = /^(.+?)\s+((?:19|20)\d{2})\s+2U\s+Trials(\s*&\s*Solutions)?\.pdf$/i;
+// "<school...> <year> <unit> Trials [& Solutions].pdf" — unit is 2U/3U/4U.
+const FILE_RE = /^(.+?)\s+((?:19|20)\d{2})\s+(?:2U|3U|4U)\s+Trials(\s*&\s*Solutions)?\.pdf$/i;
+
+// Exam bodies whose papers enter the bank even without bundled worked solutions:
+// the official HSC exams and the CSSA trials. Students self-check these against
+// publicly available marking guidelines. Regular school trials still require
+// "& Solutions" (DESIGN.md §2, Q26b).
+const SOLUTIONS_EXEMPT = new Set(['HSC', 'CSSA']);
 
 /** kebab-case a school name for use in ids/paths: "North Sydney Boys" -> "north-sydney-boys". */
 function slugify(s) {
@@ -81,8 +93,9 @@ function buildCatalog() {
       const school = m[1].trim().replace(/\s+/g, ' ');
       const year = Number(m[2]);
       const hasSolutions = Boolean(m[3]);
-      // Only papers shipping with solutions enter the bank.
-      if (!hasSolutions) continue;
+      // Only papers shipping with solutions enter the bank — except the
+      // exempt exam bodies (HSC / CSSA), which are shown regardless.
+      if (!hasSolutions && !SOLUTIONS_EXEMPT.has(school)) continue;
 
       const slug = `${slugify(school)}-${year}`;
       const id = `${set.id}__${slug}`;
