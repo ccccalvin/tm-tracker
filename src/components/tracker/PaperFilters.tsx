@@ -3,7 +3,8 @@ import { Input } from '@/components/ui';
 import { Button } from '@/components/ui';
 import { Label } from '@/components/ui';
 import { Select } from '@/components/ui';
-import { PAPER_SETS, type PaperStatus } from '@/lib/catalog';
+import { type PaperSet } from '@/types';
+import { type PaperStatus } from '@/lib/catalog';
 import { cn } from '@/lib/cn';
 
 const STATUS_OPTIONS: { value: PaperStatus; label: string }[] = [
@@ -25,6 +26,8 @@ export function PaperFilters({
   onShowOlderChange,
   setId,
   onSetIdChange,
+  sets,
+  allowAllSets,
 }: {
   search: string;
   onSearchChange: (value: string) => void;
@@ -34,8 +37,13 @@ export function PaperFilters({
   onShowOlderChange: (value: boolean) => void;
   setId: string | undefined;
   onSetIdChange: (value: string | undefined) => void;
+  /** Sets the current viewer may switch between. */
+  sets: PaperSet[];
+  /** Whether the combined "All sets" option is offered. */
+  allowAllSets: boolean;
 }) {
-  const multipleSets = PAPER_SETS.length > 1;
+  // No switcher when there's a single fixed set (e.g. a locked-down student).
+  const showSetSwitcher = allowAllSets ? sets.length > 0 : sets.length > 1;
 
   return (
     <div className="space-y-3">
@@ -52,15 +60,15 @@ export function PaperFilters({
           />
         </div>
 
-        {multipleSets && (
+        {showSetSwitcher && (
           <Select
             value={setId ?? ''}
             onChange={(e) => onSetIdChange(e.target.value === '' ? undefined : e.target.value)}
             aria-label="Filter by set"
             className="sm:w-48"
           >
-            <option value="">All sets</option>
-            {PAPER_SETS.map((s) => (
+            {allowAllSets && <option value="">All sets</option>}
+            {sets.map((s) => (
               <option key={s.id} value={s.id}>
                 {s.name}
               </option>
