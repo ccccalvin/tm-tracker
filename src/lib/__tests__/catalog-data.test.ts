@@ -4,13 +4,14 @@ import { PAPERS, PAPER_SETS, getPaper } from '@/lib/catalog';
 /** Guards the generated catalog.json against drift / parser regressions. */
 describe('catalog.json integrity', () => {
   it('has the expected counts', () => {
-    expect(PAPERS.length).toBe(1002);
-    expect(PAPERS.filter((p) => p.year >= 2018).length).toBe(266);
+    expect(PAPERS.length).toBe(1061);
+    expect(PAPERS.filter((p) => p.year >= 2018).length).toBe(274);
     expect(new Set(PAPERS.map((p) => p.school)).size).toBe(58);
   });
 
   it('includes the HSC and CSSA papers even without bundled solutions', () => {
-    expect(PAPERS.filter((p) => p.school === 'HSC').length).toBe(59);
+    // HSC exams sit in both the ADVN (2U) and EXT1 (3U) sets.
+    expect(PAPERS.filter((p) => p.school === 'HSC').length).toBe(118);
     expect(PAPERS.filter((p) => p.school === 'CSSA').length).toBe(6);
   });
 
