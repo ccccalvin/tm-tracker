@@ -8,7 +8,7 @@ import { PaperRow } from '@/components/tracker/PaperRow';
 import { useAuthStore, useEffectiveMathLevel } from '@/store/useAuthStore';
 import { useCompletions, useTodos } from '@/hooks/useData';
 import { PAPERS, PAPER_SETS, filterPapers, sortPapers, type PaperStatus, type PaperSort } from '@/lib/catalog';
-import { DEFAULT_MIN_YEAR, DEFAULT_SET_BY_LEVEL } from '@/lib/config';
+import { DEFAULT_MIN_YEAR, DEFAULT_SET_BY_LEVEL, lockedSetForLevel } from '@/lib/config';
 import { formatCount } from '@/lib/format';
 
 const SORT_OPTIONS: { value: PaperSort; label: string }[] = [
@@ -33,7 +33,7 @@ export function TrackerPage() {
 
   // Advanced students are locked to their own bank: no "All sets", no Ext1
   // trials — those sets sit above their course, so they don't see them at all.
-  const lockedSetId = mathLevel === 'ADVN' ? DEFAULT_SET_BY_LEVEL.ADVN : undefined;
+  const lockedSetId = lockedSetForLevel(mathLevel);
   const visibleSets = useMemo(
     () => (lockedSetId ? PAPER_SETS.filter((s) => s.id === lockedSetId) : PAPER_SETS),
     [lockedSetId],
