@@ -56,6 +56,18 @@ export const useEffectiveMathLevel = () => {
   return profile?.mathLevel ?? null;
 };
 
+/**
+ * Whether to render admin-only chrome (admin nav, admin Home). True only for a
+ * real admin who is NOT currently previewing a student level — flipping the
+ * header "view as" switcher to a level drops the admin into the plain student
+ * experience so it can be reviewed exactly as a student sees it.
+ */
+export const useIsAdminView = () => {
+  const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
+  const previewLevel = useUIStore((s) => s.previewLevel);
+  return isAdmin && previewLevel === null;
+};
+
 // ── module-level listener wiring ──────────────────────────────────────────────
 let profileUnsub: (() => void) | null = null;
 

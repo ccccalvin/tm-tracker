@@ -1,6 +1,6 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { Trophy, ListChecks, Gift, Users, Shield, Sun, Moon, Settings } from 'lucide-react';
-import { useAuthStore } from '@/store/useAuthStore';
+import { useAuthStore, useIsAdminView } from '@/store/useAuthStore';
 import { useThemeStore } from '@/store/useThemeStore';
 import { useUIStore } from '@/store/useUIStore';
 import { OptionsModal } from '@/components/OptionsModal';
@@ -28,8 +28,11 @@ export function Layout() {
   const optionsOpen = useUIStore((s) => s.optionsOpen);
   const setOptionsOpen = useUIStore((s) => s.setOptionsOpen);
 
+  // The switcher is available to any admin; the nav (and the rest of the
+  // student-facing app) follows admin-view, which a preview level turns off.
   const isAdmin = profile?.role === 'admin';
-  const navItems = isAdmin ? adminNav : studentNav;
+  const isAdminView = useIsAdminView();
+  const navItems = isAdminView ? adminNav : studentNav;
 
   return (
     <div className="min-h-screen">

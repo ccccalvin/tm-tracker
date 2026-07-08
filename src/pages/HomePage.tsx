@@ -17,7 +17,7 @@ import {
 import { CompletionProgress } from '@/components/tracker/CompletionProgress';
 import { RecentList } from '@/components/RecentList';
 import { useAllUsers, useCompletions } from '@/hooks/useData';
-import { useAuthStore, useProfile } from '@/store/useAuthStore';
+import { useAuthStore, useIsAdminView } from '@/store/useAuthStore';
 import { useUIStore } from '@/store/useUIStore';
 import { rankEntries, findYou } from '@/lib/ranking';
 import { recentCompletions } from '@/lib/stats';
@@ -30,8 +30,9 @@ const RECENT_SHOWN = 20;
 export function HomePage() {
   const navigate = useNavigate();
   const myUid = useAuthStore((s) => s.firebaseUser?.uid);
-  const profile = useProfile();
-  const isAdmin = profile?.role === 'admin';
+  // Admin-view drives the admin-only Home tweaks; previewing a level turns it
+  // off so the page reads exactly as a student's.
+  const isAdmin = useIsAdminView();
   const setOptionsOpen = useUIStore((s) => s.setOptionsOpen);
 
   const { users, loading: usersLoading } = useAllUsers();
