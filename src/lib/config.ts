@@ -33,6 +33,16 @@ export const DEFAULT_SET_BY_LEVEL: Record<MathLevel, string> = {
   EXT2: 'yr12-ext1-trials',
 };
 
+/** Whether a level is locked to a single bank. Advanced students only ever see
+ * the 2U set; Extension 1 & 2 students cover the Advanced content too, so they
+ * range across every set (2U + 3U). Admins / not-yet-set are unrestricted.
+ * Returns the locked set id, or null when the level sees all sets. Used by both
+ * Home (progress total) and the Tracker (set switcher + progress) so the two
+ * can't drift apart. */
+export function lockedSetForLevel(level: MathLevel | null | undefined): string | null {
+  return level === 'ADVN' ? DEFAULT_SET_BY_LEVEL.ADVN : null;
+}
+
 /** Default catalog view shows papers from this year onward; a toggle reveals
  * older ones (DESIGN.md §2, Q28b). */
 export const DEFAULT_MIN_YEAR = 2018;
