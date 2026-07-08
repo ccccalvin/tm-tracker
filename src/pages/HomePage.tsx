@@ -17,12 +17,12 @@ import {
 import { CompletionProgress } from '@/components/tracker/CompletionProgress';
 import { RecentList } from '@/components/RecentList';
 import { useAllUsers, useCompletions } from '@/hooks/useData';
-import { useAuthStore, useIsAdminView } from '@/store/useAuthStore';
+import { useAuthStore, useIsAdminView, useEffectiveMathLevel } from '@/store/useAuthStore';
 import { useUIStore } from '@/store/useUIStore';
 import { rankEntries, findYou } from '@/lib/ranking';
 import { recentCompletions } from '@/lib/stats';
 import { PAPERS } from '@/lib/catalog';
-import { DEFAULT_MIN_YEAR } from '@/lib/config';
+import { DEFAULT_MIN_YEAR, DEFAULT_SET_BY_LEVEL } from '@/lib/config';
 
 /** How many recent completions to list in the (taller) right-hand box. */
 const RECENT_SHOWN = 20;
@@ -33,6 +33,7 @@ export function HomePage() {
   // Admin-view drives the admin-only Home tweaks; previewing a level turns it
   // off so the page reads exactly as a student's.
   const isAdmin = useIsAdminView();
+  const mathLevel = useEffectiveMathLevel();
   const setOptionsOpen = useUIStore((s) => s.setOptionsOpen);
 
   const { users, loading: usersLoading } = useAllUsers();
@@ -43,10 +44,15 @@ export function HomePage() {
   } = useCompletions(myUid);
 
   // Personal "papers completed" progress — same in-scope set as the Tracker page
-  // (recent papers, year >= DEFAULT_MIN_YEAR) so the numbers line up exactly.
+  // (recent papers, year >= DEFAULT_MIN_YEAR, scoped to the student's own bank)
+  // so the numbers line up exactly. Admins / unset level fall back to all sets.
+  const defaultSetId = mathLevel ? DEFAULT_SET_BY_LEVEL[mathLevel] : undefined;
   const recentPapers = useMemo(
-    () => PAPERS.filter((p) => p.year >= DEFAULT_MIN_YEAR),
-    [],
+    () =>
+      PAPERS.filter(
+        (p) => p.year >= DEFAULT_MIN_YEAR && (!defaultSetId || p.setId === defaultSetId),
+      ),
+    [defaultSetId],
   );
   const completedRecent = useMemo(
     () => recentPapers.filter((p) => completedIds.has(p.id)).length,
