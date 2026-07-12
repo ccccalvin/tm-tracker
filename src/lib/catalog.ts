@@ -15,12 +15,13 @@ export function getPaper(id: string): Paper | undefined {
   return byId.get(id);
 }
 
-/** The math level a paper set corresponds to (2U → ADVN, 3U → EXT1). Drives the
- * level tag shown on rows in the combined "all sets" view, where a paper's
- * level is otherwise ambiguous. Keys are set ids from the catalog. */
+/** The math level a paper set corresponds to (2U → ADVN, 3U → EXT1, 4U → EXT2).
+ * Drives the level tag shown on rows in the combined "all sets" view, where a
+ * paper's level is otherwise ambiguous. Keys are set ids from the catalog. */
 const SET_LEVELS: Record<string, MathLevel> = {
   'yr12-advn-trials': 'ADVN',
   'yr12-ext1-trials': 'EXT1',
+  'yr12-ext2-trials': 'EXT2',
 };
 
 export function setLevel(setId: string): MathLevel | null {

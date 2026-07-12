@@ -9,6 +9,7 @@ dist/
 # committed; the PDFs themselves are uploaded via scripts/upload-pdfs.mjs.
 yr12-advn-trials/
 yr12-ext1-trials/
+yr12-ext2-trials/
 **/*.pdf
 
 # Local env / secrets

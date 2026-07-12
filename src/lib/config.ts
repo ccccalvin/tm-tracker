@@ -24,23 +24,34 @@ export const MATH_LEVELS = [
 ] as const;
 
 /** Which paper set a student sees first on the Tracker, keyed by math level.
- * Advanced students get the 2U bank; Extension 1 & 2 students get the 3U bank
- * (the hardest set currently available). Admins / not-yet-set fall back to all
- * sets. The set ids must match those in scripts/generate-catalog.mjs. */
+ * Each level lands on its own bank: Advanced → 2U, Extension 1 → 3U,
+ * Extension 2 → 4U. Admins / not-yet-set fall back to all sets. The set ids
+ * must match those in scripts/generate-catalog.mjs. */
 export const DEFAULT_SET_BY_LEVEL: Record<MathLevel, string> = {
   ADVN: 'yr12-advn-trials',
   EXT1: 'yr12-ext1-trials',
-  EXT2: 'yr12-ext1-trials',
+  EXT2: 'yr12-ext2-trials',
 };
 
-/** Whether a level is locked to a single bank. Advanced students only ever see
- * the 2U set; Extension 1 & 2 students cover the Advanced content too, so they
- * range across every set (2U + 3U). Admins / not-yet-set are unrestricted.
- * Returns the locked set id, or null when the level sees all sets. Used by both
- * Home (progress total) and the Tracker (set switcher + progress) so the two
- * can't drift apart. */
-export function lockedSetForLevel(level: MathLevel | null | undefined): string | null {
-  return level === 'ADVN' ? DEFAULT_SET_BY_LEVEL.ADVN : null;
+/** The paper sets each level may see, in course order (easiest first). A level
+ * covers its own bank plus every easier one — the HSC course is cumulative:
+ * Advanced sees only 2U; Extension 1 adds 3U; Extension 2 adds 4U. This is what
+ * keeps a level out of harder banks (an Ext1 student never sees the 4U set).
+ * The set ids must match those in scripts/generate-catalog.mjs. */
+export const ALLOWED_SETS_BY_LEVEL: Record<MathLevel, readonly string[]> = {
+  ADVN: ['yr12-advn-trials'],
+  EXT1: ['yr12-advn-trials', 'yr12-ext1-trials'],
+  EXT2: ['yr12-advn-trials', 'yr12-ext1-trials', 'yr12-ext2-trials'],
+};
+
+/** The set ids a level is allowed to browse and be scored against, or null when
+ * unrestricted (admins / not-yet-set see every set). Used by both Home
+ * (progress total) and the Tracker (set switcher + progress) so the two can't
+ * drift apart. */
+export function allowedSetsForLevel(
+  level: MathLevel | null | undefined,
+): readonly string[] | null {
+  return level ? ALLOWED_SETS_BY_LEVEL[level] : null;
 }
 
 /** Default catalog view shows papers from this year onward; a toggle reveals

@@ -52,6 +52,12 @@ const SETS = [
     type: 'Trials',
     dir: 'yr12-ext1-trials',
   },
+  {
+    id: 'yr12-ext2-trials',
+    name: 'YR12 EXT2 Trials',
+    type: 'Trials',
+    dir: 'yr12-ext2-trials',
+  },
 ];
 
 // "<school...> <year> <unit> Trials [& Solutions].pdf" — unit is 2U/3U/4U.
