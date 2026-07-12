@@ -43,7 +43,7 @@ export function TrackerPage() {
   // Filter state lives here and is passed down to PaperFilters (controlled).
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState<PaperStatus>('all');
-  const [showOlder, setShowOlder] = useState(false);
+  const [showOther, setShowOther] = useState(false);
   const [setId, setSetId] = useState<string | undefined>(defaultSetId);
   const [sort, setSort] = useState<PaperSort>('name');
 
@@ -56,13 +56,14 @@ export function TrackerPage() {
 
   const todoIds = useMemo(() => new Set(todos.map((t) => t.paperId)), [todos]);
 
-  // Progress against the in-scope (recent, year >= DEFAULT_MIN_YEAR) papers of
-  // the currently-selected set — so the bar matches the list on screen.
-  // Counting only recent completions keeps the numerator from exceeding total.
+  // Progress against the in-scope (recent + solution-backed) papers of the
+  // currently-selected set — matching the tracker's default view, so the bar
+  // matches the list on screen. Counting only this scope keeps the numerator
+  // from exceeding total.
   const recentPapers = useMemo(
     () =>
       PAPERS.filter(
-        (p) => p.year >= DEFAULT_MIN_YEAR && (!setId || p.setId === setId),
+        (p) => p.year >= DEFAULT_MIN_YEAR && p.hasSolutions && (!setId || p.setId === setId),
       ),
     [setId],
   );
@@ -76,13 +77,13 @@ export function TrackerPage() {
       sortPapers(
         filterPapers(
           PAPERS,
-          { search, status, showOlder, setId },
+          { search, status, showOther, setId },
           completedIds,
           DEFAULT_MIN_YEAR,
         ),
         sort,
       ),
-    [search, status, showOlder, setId, sort, completedIds],
+    [search, status, showOther, setId, sort, completedIds],
   );
 
   if (!uid) {
@@ -147,8 +148,8 @@ export function TrackerPage() {
               onSearchChange={setSearch}
               status={status}
               onStatusChange={setStatus}
-              showOlder={showOlder}
-              onShowOlderChange={setShowOlder}
+              showOther={showOther}
+              onShowOtherChange={setShowOther}
               setId={setId}
               onSetIdChange={setSetId}
               sets={visibleSets}

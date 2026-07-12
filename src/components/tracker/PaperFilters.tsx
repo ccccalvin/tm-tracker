@@ -15,15 +15,15 @@ const STATUS_OPTIONS: { value: PaperStatus; label: string }[] = [
 
 /**
  * Controlled filter bar for the full paper list: search, status pills, a
- * "show older papers" toggle, and (when more than one set exists) a set switcher.
+ * "show other papers" toggle, and (when more than one set exists) a set switcher.
  */
 export function PaperFilters({
   search,
   onSearchChange,
   status,
   onStatusChange,
-  showOlder,
-  onShowOlderChange,
+  showOther,
+  onShowOtherChange,
   setId,
   onSetIdChange,
   sets,
@@ -33,8 +33,8 @@ export function PaperFilters({
   onSearchChange: (value: string) => void;
   status: PaperStatus;
   onStatusChange: (value: PaperStatus) => void;
-  showOlder: boolean;
-  onShowOlderChange: (value: boolean) => void;
+  showOther: boolean;
+  onShowOtherChange: (value: boolean) => void;
   setId: string | undefined;
   onSetIdChange: (value: string | undefined) => void;
   /** Sets the current viewer may switch between. */
@@ -97,11 +97,11 @@ export function PaperFilters({
         <Label className="flex cursor-pointer items-center gap-2 text-sm text-muted-foreground">
           <input
             type="checkbox"
-            checked={showOlder}
-            onChange={(e) => onShowOlderChange(e.target.checked)}
+            checked={showOther}
+            onChange={(e) => onShowOtherChange(e.target.checked)}
             className="h-4 w-4 rounded border-input text-primary accent-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
           />
-          Show older papers
+          Show other papers
         </Label>
       </div>
     </div>

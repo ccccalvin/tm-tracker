@@ -70,6 +70,11 @@ export interface Paper {
   type: string;
   /** Display label, e.g. "Knox 2021 Trials". */
   label: string;
+  /** Whether the paper is backed by worked solutions (bundled "& Solutions", or
+   * official marking guidelines for the exempt HSC/CSSA exams). Solution-backed
+   * papers show in the tracker's default view; the rest sit behind the "Show
+   * other papers" toggle. */
+  hasSolutions: boolean;
   /** Path within the Firebase Storage bucket. */
   storagePath: string;
   fileName: string;
