@@ -8,8 +8,11 @@
  *     Knox 2021 2U Trials & Solutions.pdf
  *     └─school─┘ └yr┘ └────type/suffix────┘
  *
- * becomes one catalog paper. Files WITHOUT "& Solutions" are skipped — every
- * paper in the bank ships with worked solutions (DESIGN.md §2, Q26b).
+ * becomes one catalog paper. Every parseable file enters the bank; each paper
+ * carries a `hasSolutions` flag (true when the filename ends "& Solutions", or
+ * for the exempt exam bodies below). Solution-backed papers show in the
+ * tracker's default view; the rest sit behind its "Show other papers" toggle
+ * (DESIGN.md §2, Q26b).
  *
  * Output: src/data/catalog.json  (committed to the repo; the PDFs themselves
  * live in Firebase Storage, uploaded separately by scripts/upload-pdfs.mjs).
@@ -54,10 +57,10 @@ const SETS = [
 // "<school...> <year> <unit> Trials [& Solutions].pdf" — unit is 2U/3U/4U.
 const FILE_RE = /^(.+?)\s+((?:19|20)\d{2})\s+(?:2U|3U|4U)\s+Trials(\s*&\s*Solutions)?\.pdf$/i;
 
-// Exam bodies whose papers enter the bank even without bundled worked solutions:
+// Exam bodies counted as solution-backed even without bundled worked solutions:
 // the official HSC exams and the CSSA trials. Students self-check these against
-// publicly available marking guidelines. Regular school trials still require
-// "& Solutions" (DESIGN.md §2, Q26b).
+// publicly available marking guidelines, so they show in the default view like
+// any "& Solutions" paper (DESIGN.md §2, Q26b).
 const SOLUTIONS_EXEMPT = new Set(['HSC', 'CSSA']);
 
 /** kebab-case a school name for use in ids/paths: "North Sydney Boys" -> "north-sydney-boys". */
@@ -92,10 +95,10 @@ function buildCatalog() {
       }
       const school = m[1].trim().replace(/\s+/g, ' ');
       const year = Number(m[2]);
-      const hasSolutions = Boolean(m[3]);
-      // Only papers shipping with solutions enter the bank — except the
-      // exempt exam bodies (HSC / CSSA), which are shown regardless.
-      if (!hasSolutions && !SOLUTIONS_EXEMPT.has(school)) continue;
+      // Solution-backed = ships with "& Solutions", or is an exempt exam body
+      // (HSC / CSSA) that students self-check against marking guidelines. Every
+      // paper enters the bank now; this flag drives the tracker's default view.
+      const hasSolutions = Boolean(m[3]) || SOLUTIONS_EXEMPT.has(school);
 
       const slug = `${slugify(school)}-${year}`;
       const id = `${set.id}__${slug}`;
@@ -112,6 +115,7 @@ function buildCatalog() {
         year,
         type: set.type,
         label: `${school} ${year} ${set.type}`,
+        hasSolutions,
         // Path inside the Firebase Storage bucket. upload-pdfs.mjs mirrors this.
         storagePath: `papers/${set.id}/${slug}.pdf`,
         fileName: file,
@@ -154,9 +158,10 @@ if (process.argv.includes('--check')) {
 
 writeFileSync(outPath, json);
 const byYear = catalog.papers.filter((p) => p.year >= 2018).length;
+const withSol = catalog.papers.filter((p) => p.hasSolutions).length;
 console.log(`✓ wrote ${outPath}`);
 console.log(`  sets:    ${catalog.sets.length}`);
-console.log(`  papers:  ${catalog.papers.length} (with solutions)`);
+console.log(`  papers:  ${catalog.papers.length} (${withSol} solution-backed, ${catalog.papers.length - withSol} other)`);
 console.log(`  2018+:   ${byYear}`);
 console.log(`  schools: ${new Set(catalog.papers.map((p) => p.school)).size}`);
 if (catalog.warnings.length) {

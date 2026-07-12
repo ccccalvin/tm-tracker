@@ -8,6 +8,7 @@ dist/
 # The catalog (src/data/catalog.json) is generated from these filenames and IS
 # committed; the PDFs themselves are uploaded via scripts/upload-pdfs.mjs.
 yr12-advn-trials/
+yr12-ext1-trials/
 **/*.pdf
 
 # Local env / secrets

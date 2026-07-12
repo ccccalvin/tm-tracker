@@ -50,8 +50,10 @@ export interface PaperFilter {
   /** Free-text search over the label (school / year / type). */
   search: string;
   status: PaperStatus;
-  /** When false, only papers with year >= minYear are shown. */
-  showOlder: boolean;
+  /** When false, the default view: only recent (year >= minYear) papers that
+   * are solution-backed. When true, "other" papers are also shown — older ones
+   * and those without solutions. */
+  showOther: boolean;
   /** Restrict to one set; undefined = all sets. */
   setId?: string;
 }
@@ -69,7 +71,7 @@ export function filterPapers(
   const q = filter.search.trim().toLowerCase();
   return papers.filter((p) => {
     if (filter.setId && p.setId !== filter.setId) return false;
-    if (!filter.showOlder && p.year < minYear) return false;
+    if (!filter.showOther && (p.year < minYear || !p.hasSolutions)) return false;
     if (filter.status === 'completed' && !completedIds.has(p.id)) return false;
     if (filter.status === 'uncompleted' && completedIds.has(p.id)) return false;
     if (q && !p.label.toLowerCase().includes(q)) return false;

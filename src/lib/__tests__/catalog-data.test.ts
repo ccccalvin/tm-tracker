@@ -4,15 +4,23 @@ import { PAPERS, PAPER_SETS, getPaper } from '@/lib/catalog';
 /** Guards the generated catalog.json against drift / parser regressions. */
 describe('catalog.json integrity', () => {
   it('has the expected counts', () => {
-    expect(PAPERS.length).toBe(1061);
-    expect(PAPERS.filter((p) => p.year >= 2018).length).toBe(274);
-    expect(new Set(PAPERS.map((p) => p.school)).size).toBe(58);
+    expect(PAPERS.length).toBe(1282);
+    expect(PAPERS.filter((p) => p.year >= 2018).length).toBe(324);
+    expect(new Set(PAPERS.map((p) => p.school)).size).toBe(65);
   });
 
   it('includes the HSC and CSSA papers even without bundled solutions', () => {
     // HSC exams sit in both the ADVN (2U) and EXT1 (3U) sets.
     expect(PAPERS.filter((p) => p.school === 'HSC').length).toBe(118);
     expect(PAPERS.filter((p) => p.school === 'CSSA').length).toBe(6);
+  });
+
+  it('flags solution-backed papers; HSC/CSSA count as solution-backed', () => {
+    expect(PAPERS.every((p) => typeof p.hasSolutions === 'boolean')).toBe(true);
+    expect(PAPERS.filter((p) => p.hasSolutions).length).toBe(1206);
+    // The exempt exam bodies show in the default view like any "& Solutions" paper.
+    expect(PAPERS.filter((p) => p.school === 'HSC').every((p) => p.hasSolutions)).toBe(true);
+    expect(PAPERS.filter((p) => p.school === 'CSSA').every((p) => p.hasSolutions)).toBe(true);
   });
 
   it('has the Advanced and Extension 1 sets, counts summing to the total', () => {

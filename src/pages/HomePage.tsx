@@ -43,15 +43,18 @@ export function HomePage() {
     loading: completionsLoading,
   } = useCompletions(myUid);
 
-  // Personal "papers completed" progress, over the recent papers the student
-  // can actually see (year >= DEFAULT_MIN_YEAR). Advanced students are locked to
-  // the 2U bank; Extension students (and admins) count every set — same scope
-  // rule as the Tracker's set switcher, so the totals line up.
+  // Personal "papers completed" progress, over the recent, solution-backed
+  // papers the student sees by default (year >= DEFAULT_MIN_YEAR + hasSolutions).
+  // Advanced students are locked to the 2U bank; Extension students (and admins)
+  // count every set — same scope rule as the Tracker, so the totals line up.
   const lockedSetId = lockedSetForLevel(mathLevel);
   const recentPapers = useMemo(
     () =>
       PAPERS.filter(
-        (p) => p.year >= DEFAULT_MIN_YEAR && (!lockedSetId || p.setId === lockedSetId),
+        (p) =>
+          p.year >= DEFAULT_MIN_YEAR &&
+          p.hasSolutions &&
+          (!lockedSetId || p.setId === lockedSetId),
       ),
     [lockedSetId],
   );
