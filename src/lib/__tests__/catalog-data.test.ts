@@ -4,27 +4,31 @@ import { PAPERS, PAPER_SETS, getPaper } from '@/lib/catalog';
 /** Guards the generated catalog.json against drift / parser regressions. */
 describe('catalog.json integrity', () => {
   it('has the expected counts', () => {
-    expect(PAPERS.length).toBe(1282);
-    expect(PAPERS.filter((p) => p.year >= 2018).length).toBe(324);
-    expect(new Set(PAPERS.map((p) => p.school)).size).toBe(65);
+    expect(PAPERS.length).toBe(1980);
+    expect(PAPERS.filter((p) => p.year >= 2018).length).toBe(525);
+    expect(new Set(PAPERS.map((p) => p.school)).size).toBe(69);
   });
 
   it('includes the HSC and CSSA papers even without bundled solutions', () => {
-    // HSC exams sit in both the ADVN (2U) and EXT1 (3U) sets.
-    expect(PAPERS.filter((p) => p.school === 'HSC').length).toBe(118);
+    // HSC exams sit in the ADVN (2U), EXT1 (3U) and EXT2 (4U) sets.
+    expect(PAPERS.filter((p) => p.school === 'HSC').length).toBe(122);
     expect(PAPERS.filter((p) => p.school === 'CSSA').length).toBe(6);
   });
 
   it('flags solution-backed papers; HSC/CSSA count as solution-backed', () => {
     expect(PAPERS.every((p) => typeof p.hasSolutions === 'boolean')).toBe(true);
-    expect(PAPERS.filter((p) => p.hasSolutions).length).toBe(1206);
+    expect(PAPERS.filter((p) => p.hasSolutions).length).toBe(1796);
     // The exempt exam bodies show in the default view like any "& Solutions" paper.
     expect(PAPERS.filter((p) => p.school === 'HSC').every((p) => p.hasSolutions)).toBe(true);
     expect(PAPERS.filter((p) => p.school === 'CSSA').every((p) => p.hasSolutions)).toBe(true);
   });
 
-  it('has the Advanced and Extension 1 sets, counts summing to the total', () => {
-    expect(PAPER_SETS.map((s) => s.id)).toEqual(['yr12-advn-trials', 'yr12-ext1-trials']);
+  it('has the Advanced, Extension 1 and Extension 2 sets, counts summing to the total', () => {
+    expect(PAPER_SETS.map((s) => s.id)).toEqual([
+      'yr12-advn-trials',
+      'yr12-ext1-trials',
+      'yr12-ext2-trials',
+    ]);
     expect(PAPER_SETS.reduce((n, s) => n + s.count, 0)).toBe(PAPERS.length);
     for (const set of PAPER_SETS) {
       expect(PAPERS.filter((p) => p.setId === set.id).length).toBe(set.count);

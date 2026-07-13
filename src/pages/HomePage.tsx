@@ -22,7 +22,7 @@ import { useUIStore } from '@/store/useUIStore';
 import { rankEntries, findYou } from '@/lib/ranking';
 import { recentCompletions } from '@/lib/stats';
 import { PAPERS } from '@/lib/catalog';
-import { DEFAULT_MIN_YEAR, lockedSetForLevel } from '@/lib/config';
+import { DEFAULT_MIN_YEAR, allowedSetsForLevel } from '@/lib/config';
 
 /** How many recent completions to list in the (taller) right-hand box. */
 const RECENT_SHOWN = 20;
@@ -45,18 +45,19 @@ export function HomePage() {
 
   // Personal "papers completed" progress, over the recent, solution-backed
   // papers the student sees by default (year >= DEFAULT_MIN_YEAR + hasSolutions).
-  // Advanced students are locked to the 2U bank; Extension students (and admins)
-  // count every set — same scope rule as the Tracker, so the totals line up.
-  const lockedSetId = lockedSetForLevel(mathLevel);
+  // Scoped to the banks the level may see (Advanced → 2U, Ext1 → 2U+3U,
+  // Ext2 → 2U+3U+4U; admins count every set) — same scope rule as the Tracker,
+  // so the totals line up.
+  const allowedSetIds = allowedSetsForLevel(mathLevel);
   const recentPapers = useMemo(
     () =>
       PAPERS.filter(
         (p) =>
           p.year >= DEFAULT_MIN_YEAR &&
           p.hasSolutions &&
-          (!lockedSetId || p.setId === lockedSetId),
+          (!allowedSetIds || allowedSetIds.includes(p.setId)),
       ),
-    [lockedSetId],
+    [allowedSetIds],
   );
   const completedRecent = useMemo(
     () => recentPapers.filter((p) => completedIds.has(p.id)).length,

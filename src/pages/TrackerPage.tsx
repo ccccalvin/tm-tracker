@@ -8,7 +8,7 @@ import { PaperRow } from '@/components/tracker/PaperRow';
 import { useAuthStore, useEffectiveMathLevel } from '@/store/useAuthStore';
 import { useCompletions, useTodos } from '@/hooks/useData';
 import { PAPERS, PAPER_SETS, filterPapers, sortPapers, type PaperStatus, type PaperSort } from '@/lib/catalog';
-import { DEFAULT_MIN_YEAR, DEFAULT_SET_BY_LEVEL, lockedSetForLevel } from '@/lib/config';
+import { DEFAULT_MIN_YEAR, DEFAULT_SET_BY_LEVEL, allowedSetsForLevel } from '@/lib/config';
 import { formatCount } from '@/lib/format';
 
 const SORT_OPTIONS: { value: PaperSort; label: string }[] = [
@@ -27,18 +27,26 @@ export function TrackerPage() {
   const { completedIds, byId, loading: completionsLoading, setCompleted } = useCompletions(uid);
 
   // Students open the Tracker on their own level's paper set (Advanced → 2U,
-  // Extension → 3U); admins / unset default to all sets. They can still switch.
-  // For an admin this level is the header "view as" preview override.
+  // Extension 1 → 3U, Extension 2 → 4U); admins / unset default to all sets.
+  // They can still switch. For an admin this level is the header "view as"
+  // preview override.
   const defaultSetId = mathLevel ? DEFAULT_SET_BY_LEVEL[mathLevel] : undefined;
 
-  // Advanced students are locked to their own bank: no "All sets", no Ext1
-  // trials — those sets sit above their course, so they don't see them at all.
-  const lockedSetId = lockedSetForLevel(mathLevel);
-  const visibleSets = useMemo(
-    () => (lockedSetId ? PAPER_SETS.filter((s) => s.id === lockedSetId) : PAPER_SETS),
-    [lockedSetId],
+  // A level only sees its own bank plus every easier one (the course is
+  // cumulative): Advanced → 2U, Ext1 → 2U+3U, Ext2 → 2U+3U+4U. Harder banks are
+  // hidden entirely. null = admin/unset, who range across every set.
+  const allowedSetIds = allowedSetsForLevel(mathLevel);
+  const scopedPapers = useMemo(
+    () => (allowedSetIds ? PAPERS.filter((p) => allowedSetIds.includes(p.setId)) : PAPERS),
+    [allowedSetIds],
   );
-  const allowAllSets = !lockedSetId;
+  const visibleSets = useMemo(
+    () => (allowedSetIds ? PAPER_SETS.filter((s) => allowedSetIds.includes(s.id)) : PAPER_SETS),
+    [allowedSetIds],
+  );
+  // Offer the combined "All sets" option only when the level spans more than one
+  // bank (a single-bank level like Advanced gets no switcher at all).
+  const allowAllSets = visibleSets.length > 1;
 
   // Filter state lives here and is passed down to PaperFilters (controlled).
   const [search, setSearch] = useState('');
@@ -57,15 +65,15 @@ export function TrackerPage() {
   const todoIds = useMemo(() => new Set(todos.map((t) => t.paperId)), [todos]);
 
   // Progress against the in-scope (recent + solution-backed) papers of the
-  // currently-selected set — matching the tracker's default view, so the bar
-  // matches the list on screen. Counting only this scope keeps the numerator
-  // from exceeding total.
+  // currently-selected set — or, when "All sets" is chosen, every set the level
+  // may see. Matches the tracker's default view, so the bar matches the list on
+  // screen. Counting only this scope keeps the numerator from exceeding total.
   const recentPapers = useMemo(
     () =>
-      PAPERS.filter(
+      scopedPapers.filter(
         (p) => p.year >= DEFAULT_MIN_YEAR && p.hasSolutions && (!setId || p.setId === setId),
       ),
-    [setId],
+    [scopedPapers, setId],
   );
   const completedRecent = useMemo(
     () => recentPapers.filter((p) => completedIds.has(p.id)).length,
@@ -76,14 +84,14 @@ export function TrackerPage() {
     () =>
       sortPapers(
         filterPapers(
-          PAPERS,
+          scopedPapers,
           { search, status, showOther, setId },
           completedIds,
           DEFAULT_MIN_YEAR,
         ),
         sort,
       ),
-    [search, status, showOther, setId, sort, completedIds],
+    [scopedPapers, search, status, showOther, setId, sort, completedIds],
   );
 
   if (!uid) {
