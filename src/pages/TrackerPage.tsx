@@ -166,7 +166,8 @@ export function TrackerPage() {
 
             <div className="flex items-center justify-between gap-3">
               <p className="text-xs text-muted-foreground">
-                Showing {formatCount(rows.length)}
+                Showing {formatCount(rows.length)}{' '}
+                {showOther ? '(all)' : `(only papers w. sols, ≥ ${DEFAULT_MIN_YEAR})`}
               </p>
 
               <Select
