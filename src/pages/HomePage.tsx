@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Trophy, ListChecks, Gift, Settings } from 'lucide-react';
+import { Trophy, ListChecks, Gift, Settings, Lock, LogIn, Check, BookOpen } from 'lucide-react';
 import {
   Button,
   Card,
@@ -17,7 +17,13 @@ import {
 import { CompletionProgress } from '@/components/tracker/CompletionProgress';
 import { RecentList } from '@/components/RecentList';
 import { useAllUsers, useCompletions } from '@/hooks/useData';
-import { useAuthStore, useIsAdminView, useEffectiveMathLevel } from '@/store/useAuthStore';
+import {
+  useAuthStore,
+  useIsAdminView,
+  useIsAuthenticated,
+  useEffectiveMathLevel,
+} from '@/store/useAuthStore';
+import { useAuthGate } from '@/store/useAuthGate';
 import { useUIStore } from '@/store/useUIStore';
 import { rankEntries, findYou } from '@/lib/ranking';
 import { recentCompletions } from '@/lib/stats';
@@ -27,7 +33,17 @@ import { DEFAULT_MIN_YEAR, allowedSetsForLevel } from '@/lib/config';
 /** How many recent completions to list in the (taller) right-hand box. */
 const RECENT_SHOWN = 20;
 
+/**
+ * Home. Signed-in students/admins get the live leaderboard + their personal
+ * stats; logged-out visitors get the same shell with a locked leaderboard
+ * teaser and a "sign in to track your progress" card in place of stats.
+ */
 export function HomePage() {
+  const isAuthed = useIsAuthenticated();
+  return isAuthed ? <AuthedHome /> : <GuestHome />;
+}
+
+function AuthedHome() {
   const navigate = useNavigate();
   const myUid = useAuthStore((s) => s.firebaseUser?.uid);
   // Admin-view drives the admin-only Home tweaks; previewing a level turns it
@@ -187,6 +203,127 @@ export function HomePage() {
             </CardContent>
           </Card>
         </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Logged-out Home. Same two-column footprint as the signed-in view, but the
+ * leaderboard is a blurred, locked teaser (student data stays sign-in only) and
+ * the stats column becomes a "sign in to track your progress" call-to-action.
+ */
+function GuestHome() {
+  const navigate = useNavigate();
+  const promptSignIn = useAuthGate((s) => s.promptSignIn);
+
+  return (
+    <div className="flex min-h-[calc(100vh-6.5rem)] flex-col justify-center">
+      <div className="grid items-stretch gap-6 lg:relative lg:left-1/2 lg:w-screen lg:-translate-x-1/2 lg:grid-cols-[450px_296px] lg:justify-center">
+        {/* Left — locked leaderboard teaser + actions */}
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-xl">
+                <Trophy className="h-5 w-5 text-primary" />
+                Leaderboard
+              </CardTitle>
+              <CardDescription className="italic">
+                “Do so much volume that it would be unreasonable to be unsuccessful.”
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="relative">
+                {/* Blurred, non-interactive placeholder rows for allure. */}
+                <div aria-hidden className="space-y-1 select-none blur-[5px]">
+                  {[
+                    'row-gold',
+                    'row-silver',
+                    'row-bronze',
+                    '',
+                    '',
+                  ].map((tint, i) => (
+                    <div
+                      key={i}
+                      className={`flex items-center gap-3 rounded-md px-3 py-2.5 ${tint}`}
+                    >
+                      <span className="w-8 text-center text-sm font-semibold text-muted-foreground">
+                        #{i + 1}
+                      </span>
+                      <span className="h-7 w-7 shrink-0 rounded-full bg-muted-foreground/30" />
+                      <span className="h-3 flex-1 rounded bg-muted-foreground/25" style={{ maxWidth: `${70 - i * 8}%` }} />
+                      <span className="h-3 w-6 rounded bg-muted-foreground/25" />
+                    </div>
+                  ))}
+                </div>
+                {/* Lock overlay + CTA. */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-md bg-background/40 text-center">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-background shadow-sm ring-1 ring-border">
+                    <Lock className="h-5 w-5 text-primary" />
+                  </div>
+                  <p className="max-w-[15rem] text-sm text-muted-foreground">
+                    Sign in to see the rankings and where you stand.
+                  </p>
+                  <Button size="sm" onClick={() => promptSignIn('generic')}>
+                    <LogIn className="mr-1.5 h-4 w-4" />
+                    Sign in
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <Button variant="outline" className="h-auto py-3" onClick={() => navigate('/tracker')}>
+              <BookOpen className="mr-2 h-4 w-4" />
+              Browse papers
+            </Button>
+            <Button
+              variant="outline"
+              className="rainbow-border h-auto border-transparent py-3"
+              onClick={() => navigate('/bounties')}
+            >
+              <Gift className="mr-2 h-4 w-4" />
+              Bounties
+            </Button>
+            <Button variant="outline" className="h-auto py-3" onClick={() => promptSignIn('generic')}>
+              <LogIn className="mr-2 h-4 w-4" />
+              Sign in
+            </Button>
+          </div>
+        </div>
+
+        {/* Right — sign-in call-to-action in place of personal stats */}
+        <Card className="flex flex-col justify-center border-dashed">
+          <CardContent className="space-y-4 py-8 text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <Trophy className="h-6 w-6" />
+            </div>
+            <div className="space-y-1.5">
+              <h3 className="text-lg font-semibold">Track your progress</h3>
+              <p className="text-sm text-muted-foreground">
+                Browse the whole paper bank freely. Make a free account to save what
+                you&apos;ve done and climb the leaderboard.
+              </p>
+            </div>
+            <Button className="w-full" onClick={() => promptSignIn('generic')}>
+              <LogIn className="mr-2 h-4 w-4" />
+              Sign in with Google
+            </Button>
+            <ul className="mx-auto inline-block space-y-1.5 text-left">
+              {[
+                'Tick off papers as you finish them',
+                'Build a personal to-do queue',
+                'Appear on the class leaderboard',
+              ].map((perk) => (
+                <li key={perk} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Check className="h-4 w-4 shrink-0 text-primary" />
+                  {perk}
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

@@ -1,17 +1,23 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Gift, Home, ListChecks } from 'lucide-react';
+import { BookOpen, Gift, Home, ListChecks, Lock, LogIn } from 'lucide-react';
 import { Button, Card, CardContent, CardHeader, Skeleton } from '@/components/ui';
 import { BountyPanel } from '@/components/bounty/BountyBoard';
 import { useAllUsers, useBounties } from '@/hooks/useData';
-import { useAuthStore, useProfile } from '@/store/useAuthStore';
+import { useAuthStore, useIsAuthenticated, useProfile } from '@/store/useAuthStore';
+import { useAuthGate } from '@/store/useAuthGate';
 import { bountySortRank } from '@/lib/bounty';
 
 /**
- * Dedicated bounties page: just the bounty panel (one card, toggle between
- * active bounties). Linked from the Home page.
+ * Dedicated bounties page. Bounties + their standings read student data, so
+ * they're sign-in only: guests get a teaser, signed-in users get the panel.
  */
 export function BountiesPage() {
+  const isAuthed = useIsAuthenticated();
+  return isAuthed ? <AuthedBounties /> : <GuestBounties />;
+}
+
+function AuthedBounties() {
   const navigate = useNavigate();
   const myUid = useAuthStore((s) => s.firebaseUser?.uid);
   const isAdmin = useProfile()?.role === 'admin';
@@ -80,6 +86,49 @@ export function BountiesPage() {
               Go to tracker
             </Button>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GuestBounties() {
+  const navigate = useNavigate();
+  const promptSignIn = useAuthGate((s) => s.promptSignIn);
+
+  return (
+    <div className="flex min-h-[calc(100vh-6.5rem)] flex-col justify-center">
+      <div className="mx-auto w-full max-w-md space-y-6">
+        <Card className="border-dashed">
+          <CardContent className="flex flex-col items-center gap-4 py-12 text-center">
+            <div className="relative">
+              <Gift className="h-9 w-9 text-primary/50" />
+              <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-background ring-1 ring-border">
+                <Lock className="h-3 w-3 text-primary" />
+              </span>
+            </div>
+            <div className="space-y-1.5">
+              <h2 className="text-lg font-semibold">Bounties</h2>
+              <p className="text-sm text-muted-foreground">
+                Prize challenges for the class. Sign in to see what&apos;s running and join in.
+              </p>
+            </div>
+            <Button onClick={() => promptSignIn('generic')}>
+              <LogIn className="mr-1.5 h-4 w-4" />
+              Sign in to view bounties
+            </Button>
+          </CardContent>
+        </Card>
+
+        <div className="grid grid-cols-2 gap-3">
+          <Button variant="outline" className="h-auto py-3" onClick={() => navigate('/')}>
+            <Home className="mr-2 h-4 w-4" />
+            Back to home
+          </Button>
+          <Button variant="outline" className="h-auto py-3" onClick={() => navigate('/tracker')}>
+            <BookOpen className="mr-2 h-4 w-4" />
+            Browse papers
+          </Button>
         </div>
       </div>
     </div>

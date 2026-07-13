@@ -5,8 +5,10 @@ import { Button } from '@/components/ui';
 import { LevelBadge } from '@/components/LevelBadge';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
 import { ScoreNotesEditor } from '@/components/tracker/ScoreNotesEditor';
-import { addTodo, removeTodo } from '@/lib/db';
+import { addTodo, markComplete, removeTodo } from '@/lib/db';
 import { setLevel } from '@/lib/catalog';
+import { useAuthStore } from '@/store/useAuthStore';
+import { useAuthGate } from '@/store/useAuthGate';
 import { cn } from '@/lib/cn';
 import type { Completion, Paper } from '@/types';
 
@@ -24,7 +26,8 @@ export function PaperRow({
   showLevelTag = false,
   onSetCompleted,
 }: {
-  uid: string;
+  /** The signed-in user, or undefined for a logged-out guest (actions gate). */
+  uid: string | undefined;
   paper: Paper;
   completed: boolean;
   /** The existing completion record (for the inline editor), if any. */
@@ -35,16 +38,45 @@ export function PaperRow({
   /** Optimistic complete/incomplete toggle (instant tick, background write). */
   onSetCompleted: (paper: Paper, desired: boolean) => void;
 }) {
+  const promptSignIn = useAuthGate((s) => s.promptSignIn);
   const [todoBusy, setTodoBusy] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
   function toggleComplete() {
+    // Guests: send them through the sign-in gate, then mark it done on the way
+    // out (the tick they attempted "sticks" once they have an account).
+    if (!uid) {
+      promptSignIn('tick', () => {
+        const u = useAuthStore.getState().firebaseUser?.uid;
+        if (!u) return;
+        markComplete(u, paper)
+          .then(() => toast.success('Saved — nice work!'))
+          .catch((err) => {
+            console.error('[tm-tracker] failed to save completion', err);
+            toast.error("Couldn't save that paper. Please try again.");
+          });
+      });
+      return;
+    }
     const desired = !completed;
     onSetCompleted(paper, desired);
     if (desired) setExpanded(true); // reveal score/notes editor right after completing
   }
 
   async function toggleTodo() {
+    if (!uid) {
+      promptSignIn('todo', () => {
+        const u = useAuthStore.getState().firebaseUser?.uid;
+        if (!u) return;
+        addTodo(u, paper, false)
+          .then(() => toast.success('Added to your to-do list'))
+          .catch((err) => {
+            console.error('[tm-tracker] failed to add to-do', err);
+            toast.error("Couldn't update your to-do list. Please try again.");
+          });
+      });
+      return;
+    }
     if (todoBusy) return;
     setTodoBusy(true);
     try {
@@ -141,7 +173,7 @@ export function PaperRow({
         </button>
       )}
 
-      {completed && expanded && (
+      {completed && expanded && uid && (
         <div className="px-2 pb-2 sm:px-3 sm:pb-3">
           <ScoreNotesEditor uid={uid} paperId={paper.id} completion={completion} />
         </div>

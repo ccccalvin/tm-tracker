@@ -1,8 +1,10 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
-import { Trophy, ListChecks, Gift, Users, Shield, Sun, Moon, Settings } from 'lucide-react';
-import { useAuthStore, useIsAdminView } from '@/store/useAuthStore';
+import { Trophy, ListChecks, Gift, Users, Shield, Sun, Moon, Settings, LogIn } from 'lucide-react';
+import { useAuthStore, useIsAdminView, useIsAuthenticated } from '@/store/useAuthStore';
+import { useAuthGate } from '@/store/useAuthGate';
 import { useThemeStore } from '@/store/useThemeStore';
 import { useUIStore } from '@/store/useUIStore';
+import { Button } from '@/components/ui';
 import { OptionsModal } from '@/components/OptionsModal';
 import { ViewAsSwitcher } from '@/components/ViewAsSwitcher';
 import { CountdownBoxes } from '@/components/CountdownBoxes';
@@ -24,6 +26,8 @@ const adminNav = [
 
 export function Layout() {
   const profile = useAuthStore((s) => s.profile);
+  const isAuthed = useIsAuthenticated();
+  const promptSignIn = useAuthGate((s) => s.promptSignIn);
   const { theme, toggleTheme } = useThemeStore();
   const optionsOpen = useUIStore((s) => s.optionsOpen);
   const setOptionsOpen = useUIStore((s) => s.setOptionsOpen);
@@ -77,21 +81,30 @@ export function Layout() {
             >
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
-            <Avatar
-              src={profile?.photoURL}
-              name={profile?.displayName}
-              className="h-7 w-7"
-            />
-            <span className="hidden sm:inline text-sm text-muted-foreground max-w-[10rem] truncate">
-              {profile?.displayName || 'You'}
-            </span>
-            <button
-              onClick={() => setOptionsOpen(true)}
-              title="Options"
-              className="p-2 rounded-md hover:bg-muted transition-colors"
-            >
-              <Settings className="h-4 w-4" />
-            </button>
+            {isAuthed ? (
+              <>
+                <Avatar
+                  src={profile?.photoURL}
+                  name={profile?.displayName}
+                  className="h-7 w-7"
+                />
+                <span className="hidden sm:inline text-sm text-muted-foreground max-w-[10rem] truncate">
+                  {profile?.displayName || 'You'}
+                </span>
+                <button
+                  onClick={() => setOptionsOpen(true)}
+                  title="Options"
+                  className="p-2 rounded-md hover:bg-muted transition-colors"
+                >
+                  <Settings className="h-4 w-4" />
+                </button>
+              </>
+            ) : (
+              <Button size="sm" onClick={() => promptSignIn('generic')}>
+                <LogIn className="h-4 w-4 sm:mr-1.5" />
+                <span className="hidden sm:inline">Sign in</span>
+              </Button>
+            )}
           </div>
         </div>
       </header>
