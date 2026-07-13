@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui';
+import { Lock, LogIn } from 'lucide-react';
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui';
 import { Skeleton, Select } from '@/components/ui';
 import { TodoList } from '@/components/tracker/TodoList';
 import { CompletionProgress } from '@/components/tracker/CompletionProgress';
 import { PaperFilters } from '@/components/tracker/PaperFilters';
 import { PaperRow } from '@/components/tracker/PaperRow';
 import { useAuthStore, useEffectiveMathLevel } from '@/store/useAuthStore';
+import { useAuthGate } from '@/store/useAuthGate';
 import { useCompletions, useTodos } from '@/hooks/useData';
 import { PAPERS, PAPER_SETS, filterPapers, sortPapers, type PaperStatus, type PaperSort } from '@/lib/catalog';
 import { DEFAULT_MIN_YEAR, DEFAULT_SET_BY_LEVEL, allowedSetsForLevel } from '@/lib/config';
@@ -22,6 +24,7 @@ const SORT_OPTIONS: { value: PaperSort; label: string }[] = [
  */
 export function TrackerPage() {
   const uid = useAuthStore((s) => s.firebaseUser?.uid);
+  const promptSignIn = useAuthGate((s) => s.promptSignIn);
   const mathLevel = useEffectiveMathLevel();
   const { todos, loading: todosLoading } = useTodos(uid);
   const { completedIds, byId, loading: completionsLoading, setCompleted } = useCompletions(uid);
@@ -94,12 +97,6 @@ export function TrackerPage() {
     [scopedPapers, search, status, showOther, setId, sort, completedIds],
   );
 
-  if (!uid) {
-    return (
-      <p className="text-sm text-muted-foreground">Sign in to track your papers.</p>
-    );
-  }
-
   return (
     // Split rail: a sticky summary (progress + to-do) beside the long,
     // filterable paper list. On lg the block breaks out of the narrow
@@ -120,7 +117,31 @@ export function TrackerPage() {
             <CompletionProgress completed={completedRecent} total={recentPapers.length} />
           )}
 
-          {todosLoading || completionsLoading ? (
+          {!uid ? (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">To-do</CardTitle>
+                <CardDescription className="italic">
+                  “If I quit now, I will soon be back to where I started. And when I
+                  started, I was desperately wishing to be where I am now.”
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-col items-center gap-3 rounded-md border border-dashed p-6 text-center">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+                    <Lock className="h-4 w-4" />
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Sign in to build a to-do list and save which papers you&apos;ve done.
+                  </p>
+                  <Button size="sm" onClick={() => promptSignIn('generic')}>
+                    <LogIn className="mr-1.5 h-4 w-4" />
+                    Sign in
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ) : todosLoading || completionsLoading ? (
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg">To-do</CardTitle>

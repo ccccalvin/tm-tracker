@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { FileText, Loader2 } from 'lucide-react';
 import { getPaperUrl } from '@/lib/db';
+import { useIsAuthenticated } from '@/store/useAuthStore';
+import { useAuthGate } from '@/store/useAuthGate';
 import { cn } from '@/lib/cn';
 
 /**
@@ -18,11 +20,20 @@ export function PdfOpenButton({
   className?: string;
   title?: string;
 }) {
+  const isAuthed = useIsAuthenticated();
+  const promptSignIn = useAuthGate((s) => s.promptSignIn);
   const [loading, setLoading] = useState(false);
 
   async function open(e: React.MouseEvent) {
     e.stopPropagation();
     if (loading) return;
+    // The paper bank is sign-in only — guests browse the list but must make an
+    // account to open a PDF. (Opening in a new tab after an async auth flow gets
+    // eaten by popup blockers, so we don't auto-replay; they tap Open again.)
+    if (!isAuthed) {
+      promptSignIn('pdf');
+      return;
+    }
     setLoading(true);
     // Open a blank tab synchronously, inside the click gesture, so popup blockers
     // let it through. Do NOT pass 'noopener'/'noreferrer' here — that makes

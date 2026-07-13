@@ -5,8 +5,8 @@ import { useThemeStore } from '@/store/useThemeStore';
 import { FullPageSpinner } from '@/components/Spinner';
 import { Layout } from '@/components/Layout';
 import { MarqueeBackground } from '@/components/MarqueeBackground';
-import { LoginPage } from '@/pages/LoginPage';
-import { OnboardingPage } from '@/pages/OnboardingPage';
+import { SignInGate } from '@/components/SignInGate';
+import { AdminAccessPage } from '@/pages/OnboardingPage';
 import { HomePage } from '@/pages/HomePage';
 import { TrackerPage } from '@/pages/TrackerPage';
 import { BountiesPage } from '@/pages/BountiesPage';
@@ -19,12 +19,8 @@ function App() {
   const profile = useAuthStore((s) => s.profile);
   const theme = useThemeStore((s) => s.theme);
 
-  if (loading) return <FullPageSpinner label="Loading tm-tracker…" />;
-
   const isAuthed = firebaseUser !== null;
   const isAdmin = profile?.role === 'admin';
-  // Students must set name + class before entering; admins skip onboarding.
-  const needsOnboarding = isAuthed && profile !== null && !profile.onboarded;
 
   return (
     <>
@@ -36,56 +32,44 @@ function App() {
         theme={theme}
         toastOptions={{ duration: 4000 }}
       />
-      <Routes>
-        {/* Public landing / sign-in */}
-        <Route
-          path="/login"
-          element={isAuthed ? <Navigate to="/" replace /> : <LoginPage />}
-        />
+      {/* The sign-in gate lives above the router so it survives the loading
+          flash between a popup sign-in and the profile resolving. */}
+      <SignInGate />
 
-        {/* First-run profile setup */}
-        <Route
-          path="/onboarding"
-          element={
-            !isAuthed ? (
-              <Navigate to="/login" replace />
-            ) : needsOnboarding ? (
-              <OnboardingPage />
-            ) : (
-              <Navigate to="/" replace />
-            )
-          }
-        />
+      {loading ? (
+        <FullPageSpinner label="Loading tm-tracker…" />
+      ) : (
+        <Routes>
+          {/* Login is now a modal, not a page — keep the old path working. */}
+          <Route path="/login" element={<Navigate to="/" replace />} />
 
-        {/* Authenticated app */}
-        <Route
-          path="/"
-          element={
-            !isAuthed ? (
-              <Navigate to="/login" replace />
-            ) : needsOnboarding ? (
-              <Navigate to="/onboarding" replace />
-            ) : (
-              <Layout />
-            )
-          }
-        >
-          <Route index element={<HomePage />} />
-          <Route path="tracker" element={<TrackerPage />} />
-          <Route path="bounties" element={<BountiesPage />} />
-          {/* Admin-only */}
+          {/* Hidden path for a co-admin to enter the shared token. Students never
+              come here; the bootstrap admin is promoted automatically. */}
           <Route
-            path="admin"
-            element={isAdmin ? <AdminPage /> : <Navigate to="/" replace />}
+            path="/admin-access"
+            element={isAuthed ? <AdminAccessPage /> : <Navigate to="/" replace />}
           />
-          <Route
-            path="students"
-            element={isAdmin ? <StudentTrackerPage /> : <Navigate to="/" replace />}
-          />
-        </Route>
 
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+          {/* The app shell — open to everyone. Guests browse; server-backed
+              features prompt sign-in via <SignInGate>. */}
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="tracker" element={<TrackerPage />} />
+            <Route path="bounties" element={<BountiesPage />} />
+            {/* Admin-only */}
+            <Route
+              path="admin"
+              element={isAdmin ? <AdminPage /> : <Navigate to="/" replace />}
+            />
+            <Route
+              path="students"
+              element={isAdmin ? <StudentTrackerPage /> : <Navigate to="/" replace />}
+            />
+          </Route>
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      )}
     </>
   );
 }
