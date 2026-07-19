@@ -155,9 +155,8 @@ export function PaperRow({
           size="sm"
           onClick={toggleTodo}
           disabled={todoBusy}
-          // Fixed width so the row doesn't reflow when the label flips between
-          // "To-do" and "In to-do".
-          className="h-6 shrink-0 px-2 text-xs sm:w-[88px]"
+          title={inTodo ? 'Remove from to-do' : 'Add to to-do'}
+          className="h-6 shrink-0 px-2 text-xs"
         >
           {todoBusy ? (
             <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -166,7 +165,9 @@ export function PaperRow({
           ) : (
             <Plus className="h-3.5 w-3.5 sm:mr-1" />
           )}
-          <span className="hidden sm:inline">{inTodo ? 'In to-do' : 'To-do'}</span>
+          {/* Same label either way — the tick/plus icon and the filled variant
+              carry the state, and a fixed label keeps the row from reflowing. */}
+          <span className="hidden sm:inline">To-do</span>
         </Button>
 
         <PdfOpenButton storagePath={paper.storagePath} />

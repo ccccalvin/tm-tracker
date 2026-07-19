@@ -82,19 +82,20 @@ export function ScoreNotesEditor({
       {/* Label-beside-field rows, so score and notes read as one short form. */}
       <div className="space-y-2">
         <div className="flex items-center gap-2">
-          <Label htmlFor={`score-${paperId}`} className="w-20 shrink-0 whitespace-nowrap">
-            Score (%):
+          <Label htmlFor={`score-${paperId}`} className="w-14 shrink-0">
+            Score:
           </Label>
           {/* Plain text input, not type="number": the spinner arrows are useless
               for a percentage and crowd the box. A trailing % sits inside it
               instead, so the unit is visible while typing. */}
-          <div className="relative w-28">
+          <div className="relative w-16">
             <Input
               id={`score-${paperId}`}
               type="text"
               inputMode="numeric"
               maxLength={3}
-              placeholder="optional"
+              // No placeholder — the box is only wide enough for the number
+              // itself. Blank simply means "not recorded".
               value={score}
               onChange={(e) => {
                 touched.current = true;
@@ -103,18 +104,18 @@ export function ScoreNotesEditor({
               onBlur={() => {
                 if (dirty) void save();
               }}
-              className="h-8 w-full pr-7"
+              className="h-8 w-full px-2 pr-5"
             />
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-sm text-muted-foreground"
+              className="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-sm text-muted-foreground"
             >
               %
             </span>
           </div>
         </div>
         <div className="flex items-start gap-2">
-          <Label htmlFor={`notes-${paperId}`} className="w-20 shrink-0 pt-2">
+          <Label htmlFor={`notes-${paperId}`} className="w-14 shrink-0 pt-2">
             Notes:
           </Label>
           <textarea
