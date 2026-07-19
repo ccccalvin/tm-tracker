@@ -6,7 +6,7 @@ const NOW = 1_700_000_000_000;
 const day = 24 * 60 * 60 * 1000;
 
 function c(paperId: string, completedAt: number, score: number | null = null): Completion {
-  return { paperId, paperLabel: paperId, completedAt, score, notes: null };
+  return { paperId, paperLabel: paperId, completed: true, completedAt, score, notes: null };
 }
 
 describe('studentStats', () => {

@@ -133,7 +133,8 @@ Two stacked sections; the page scrolls (the full list is long and need not fit t
 - A personal queue. **Adding a paper copies it here** (it stays in the full list too).
 - **Drag-to-reorder** with clean UX.
 - **✕** to remove an item (doesn't affect the full list).
-- Can **mark complete from here**; completed items **stay in the to-do list, shaded** (not struck-through) — color from the palette.
+- Outstanding items are **shaded amber** ("in progress" — a paper you've committed to but haven't finished).
+- Can **mark complete from here**; completed items **stay in the to-do list, shaded mint** (not struck-through) — colors from the palette.
 - **Unified across sets** — one queue holds papers from any set, distinguished by their Type label.
 
 ### 7.2 Full paper list (bottom)
@@ -143,11 +144,11 @@ Two stacked sections; the page scrolls (the full list is long and need not fit t
 - **Year toggle:** default ≥ 2018; toggle to include older papers.
 - **Set switcher** appears only when more than one set exists.
 - Each row: **instant-tick checkbox** (commits immediately, updates count) · **inline, optional** "add score / notes" expander (no modal) · **"add to to-do"** action · a **paper/PDF icon** that opens the PDF in a new browser tab.
-- **Completed rows shaded** (palette color).
+- **Rows shaded by state:** amber while on the to-do list, mint once completed (palette colors).
 
 ### 7.3 Logging mechanics
 - One tap on the checkbox = done & counted (leaderboard updates live).
-- Optional **score (percentage 0–100%)** and **notes** added inline, anytime.
+- Optional **score (percentage 0–100%)** and **notes** added inline, anytime — **before or after** the paper is ticked. Notes on an un-ticked paper don't count it as completed.
 - **Privacy:** score + notes are visible **only to the student and admins**. A clear, visible reassurance is shown: *"Your scores and notes are private — only you and your teacher can see them. Other students only see how many papers you've completed."*
 
 ---
@@ -198,6 +199,7 @@ Two stacked sections; the page scrolls (the full list is long and need not fit t
 | Background | `#ffffff` / `#f8fafc` | `#0f172a` / `#1e293b` | Page / cards |
 | Text | `#0f172a` | `#e2e8f0` | Body |
 | Completed shade | Mint `#ecfdf5` | Deep green `#064e3b` | Completed papers / to-do items |
+| In-progress shade | Amber `#fef4d3` | Muted amber `#3b310f` | Papers on the to-do list, not yet done |
 | Gold / Silver / Bronze | `#fef9c3` / `#f1f5f9` / `#fde9d7` | muted equivalents | Top-3 leaderboard rows |
 
 ---
@@ -210,7 +212,10 @@ users/{uid}
   isTMStudent (bool), paperCount (int, denormalized), lastCompletedAt, createdAt
 
 users/{uid}/completions/{paperId}
-  paperId, paperLabel, completedAt, score (0–100 | null), notes (string | null)
+  paperId, paperLabel, completed (bool), completedAt, score (0–100 | null), notes (string | null)
+  // Also the home for score/notes, so the doc can exist with completed: false —
+  // either un-ticked (details preserved) or annotated before ever being ticked
+  // (no completedAt, so it stays out of the feed / bounty standings).
 
 users/{uid}/todos/{paperId}
   paperId, paperLabel, order (for drag), addedAt, done (bool)

@@ -80,10 +80,19 @@ export interface Paper {
   fileName: string;
 }
 
-/** A completed paper, stored at `users/{uid}/completions/{paperId}`. Private. */
+/**
+ * A paper's private record, stored at `users/{uid}/completions/{paperId}`.
+ *
+ * The doc doubles as the home for score/notes, so it can exist while the paper
+ * is NOT completed — either un-ticked (score/notes preserved) or never ticked
+ * but annotated. Read `completed` before treating one as a finished paper.
+ */
 export interface Completion {
   paperId: string;
   paperLabel: string;
+  /** False when the paper is un-ticked or only carries score/notes. */
+  completed: boolean;
+  /** 0 when the paper has never been ticked. */
   completedAt: number;
   /** Percentage 0–100, or null if not recorded. Visible only to owner + admins. */
   score: number | null;

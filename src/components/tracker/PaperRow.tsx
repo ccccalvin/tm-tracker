@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { Check, ChevronDown, Loader2, Plus } from 'lucide-react';
+import { Check, ChevronDown, FileText, Loader2, Plus } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { LevelBadge } from '@/components/LevelBadge';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
@@ -14,8 +14,9 @@ import type { Completion, Paper } from '@/types';
 
 /**
  * One row in the full paper list: an instant-tick completion checkbox, the
- * paper label, an "add to to-do" toggle, and a PDF-open button. When complete,
- * the row is shaded and reveals an inline (non-modal) score/notes editor.
+ * paper label, an "add to to-do" toggle, and a PDF-open button. Rows are shaded
+ * by state — amber while on the to-do list, mint once complete — and every row
+ * can reveal an inline (non-modal) score/notes editor.
  */
 export function PaperRow({
   uid,
@@ -41,6 +42,9 @@ export function PaperRow({
   const promptSignIn = useAuthGate((s) => s.promptSignIn);
   const [todoBusy, setTodoBusy] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  // Something already recorded — worth flagging so it isn't hidden behind a
+  // collapsed row the student has no reason to open.
+  const hasDetails = Boolean(completion?.notes) || completion?.score != null;
 
   function toggleComplete() {
     // Guests: send them through the sign-in gate, then mark it done on the way
@@ -97,7 +101,11 @@ export function PaperRow({
     <li
       className={cn(
         'rounded-md border transition-colors',
-        completed ? 'bg-completed text-completed-foreground border-transparent' : 'bg-card',
+        completed
+          ? 'bg-completed text-completed-foreground border-transparent'
+          : inTodo
+            ? 'bg-inprogress text-inprogress-foreground border-transparent'
+            : 'bg-card',
       )}
     >
       <div className="flex items-center gap-2 px-2 py-1 sm:px-3">
@@ -123,18 +131,23 @@ export function PaperRow({
           <LevelBadge level={setLevel(paper.setId)} className="hidden shrink-0 text-[10px] sm:inline-flex" />
         )}
 
-        {completed && (
+        {uid && (
           <Button
             type="button"
-            variant="ghost"
+            variant={hasDetails ? 'secondary' : 'ghost'}
             size="sm"
             onClick={() => setExpanded((v) => !v)}
             aria-expanded={expanded}
-            className="hidden h-6 px-2 text-xs sm:inline-flex"
+            aria-label={`Score and notes for ${paper.label}`}
+            className="h-6 shrink-0 px-2 text-xs"
           >
-            Score / notes
+            <FileText className="h-3.5 w-3.5 sm:mr-1" />
+            <span className="hidden sm:inline">Score / notes</span>
             <ChevronDown
-              className={cn('ml-1 h-3.5 w-3.5 transition-transform', expanded && 'rotate-180')}
+              className={cn(
+                'ml-1 hidden h-3.5 w-3.5 transition-transform sm:inline',
+                expanded && 'rotate-180',
+              )}
             />
           </Button>
         )}
@@ -160,22 +173,14 @@ export function PaperRow({
         <PdfOpenButton storagePath={paper.storagePath} />
       </div>
 
-      {/* On mobile the score/notes toggle gets its own full-width row. */}
-      {completed && (
-        <button
-          type="button"
-          onClick={() => setExpanded((v) => !v)}
-          aria-expanded={expanded}
-          className="flex w-full items-center justify-center gap-1 border-t border-border/40 px-3 py-1.5 text-xs font-medium sm:hidden"
-        >
-          Score / notes
-          <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', expanded && 'rotate-180')} />
-        </button>
-      )}
-
-      {completed && expanded && uid && (
+      {expanded && uid && (
         <div className="px-2 pb-2 sm:px-3 sm:pb-3">
-          <ScoreNotesEditor uid={uid} paperId={paper.id} completion={completion} />
+          <ScoreNotesEditor
+            uid={uid}
+            paperId={paper.id}
+            paperLabel={paper.label}
+            completion={completion}
+          />
         </div>
       )}
     </li>

@@ -27,7 +27,7 @@ export function TrackerPage() {
   const promptSignIn = useAuthGate((s) => s.promptSignIn);
   const mathLevel = useEffectiveMathLevel();
   const { todos, loading: todosLoading } = useTodos(uid);
-  const { completedIds, byId, loading: completionsLoading, setCompleted } = useCompletions(uid);
+  const { completedIds, detailsById, loading: completionsLoading, setCompleted } = useCompletions(uid);
 
   // Students open the Tracker on their own level's paper set (Advanced → 2U,
   // Extension 1 → 3U, Extension 2 → 4U); admins / unset default to all sets.
@@ -160,7 +160,7 @@ export function TrackerPage() {
               uid={uid}
               todos={todos}
               completedIds={completedIds}
-              completionsById={byId}
+              completionsById={detailsById}
               onSetCompleted={setCompleted}
             />
           )}
@@ -223,7 +223,7 @@ export function TrackerPage() {
                     uid={uid}
                     paper={paper}
                     completed={completedIds.has(paper.id)}
-                    completion={byId.get(paper.id)}
+                    completion={detailsById.get(paper.id)}
                     inTodo={todoIds.has(paper.id)}
                     showLevelTag
                     onSetCompleted={setCompleted}

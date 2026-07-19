@@ -8,17 +8,21 @@ import { saveCompletionDetails } from '@/lib/db';
 import type { Completion } from '@/types';
 
 /**
- * Inline (non-modal) editor for the private score + notes on an already-completed
- * paper. Saves on the Save button; the score is an optional 0–100 percentage and
- * notes are free text. Always shows the privacy reassurance (DESIGN.md §7.3).
+ * Inline (non-modal) editor for a paper's private score + notes, available
+ * whether or not the paper is completed (DESIGN.md §7.3 — "anytime"). Saves on
+ * blur or the Save button; the score is an optional 0–100 percentage and notes
+ * are free text. Always shows the privacy reassurance.
  */
 export function ScoreNotesEditor({
   uid,
   paperId,
+  paperLabel,
   completion,
 }: {
   uid: string;
   paperId: string;
+  /** Stored alongside the notes when this is the paper's first saved detail. */
+  paperLabel: string;
   /** The existing completion (for its current score/notes), if any. */
   completion: Completion | undefined;
 }) {
@@ -60,6 +64,7 @@ export function ScoreNotesEditor({
     setSaving(true);
     try {
       await saveCompletionDetails(uid, paperId, {
+        paperLabel,
         score: parsed,
         notes: notes.trim() === '' ? null : notes.trim(),
       });

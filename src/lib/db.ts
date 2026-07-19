@@ -79,6 +79,7 @@ export function mapCompletion(snap: QueryDocumentSnapshot<DocumentData>): Comple
   return {
     paperId: snap.id,
     paperLabel: d.paperLabel ?? '',
+    completed: d.completed !== false,
     completedAt: toMillis(d.completedAt) ?? 0,
     score: typeof d.score === 'number' ? d.score : null,
     notes: typeof d.notes === 'string' ? d.notes : null,
@@ -301,10 +302,11 @@ export async function markComplete(uid: string, paper: Paper): Promise<void> {
     const eRef = completionEventRef(uid, paper.id);
     const cSnap = await tx.get(cRef);
     const tSnap = await tx.get(tRef);
-    if (cSnap.exists() && cSnap.data().completed !== false) return; // already complete
+    if (cSnap.exists() && cSnap.data().completed === true) return; // already complete
     if (cSnap.exists()) {
-      // Re-completing a paper that was previously un-completed: keep the score
-      // and notes that were preserved on the doc, just flag it complete again.
+      // Re-completing a paper that was previously un-completed, or ticking one
+      // that so far only carried score/notes: keep what's on the doc and just
+      // flag it complete.
       tx.update(cRef, { completed: true, completedAt: serverTimestamp() });
     } else {
       tx.set(cRef, {
@@ -354,15 +356,33 @@ export async function unmarkComplete(uid: string, paperId: string): Promise<void
   });
 }
 
-/** Save the optional, private score/notes on an already-completed paper. */
+/**
+ * Save the optional, private score/notes on a paper — completed or not.
+ *
+ * Notes are useful before a paper is finished (a plan, a question to ask), so
+ * this creates the completion doc on demand when none exists. Such a doc is
+ * written `completed: false` with NO `completedAt`, which keeps it out of the
+ * paper count, the activity feed and bounty standings until the paper is
+ * actually ticked (markComplete then flips the flag, preserving score/notes).
+ */
 export async function saveCompletionDetails(
   uid: string,
   paperId: string,
-  details: { score: number | null; notes: string | null },
+  details: { paperLabel: string; score: number | null; notes: string | null },
 ): Promise<void> {
-  await updateDoc(completionRef(uid, paperId), {
-    score: details.score,
-    notes: details.notes,
+  await runTransaction(db, async (tx) => {
+    const cRef = completionRef(uid, paperId);
+    const cSnap = await tx.get(cRef);
+    if (cSnap.exists()) {
+      tx.update(cRef, { score: details.score, notes: details.notes });
+    } else {
+      tx.set(cRef, {
+        paperLabel: details.paperLabel,
+        completed: false,
+        score: details.score,
+        notes: details.notes,
+      });
+    }
   });
 }
 
