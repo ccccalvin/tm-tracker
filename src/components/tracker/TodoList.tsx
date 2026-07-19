@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { Check, ChevronDown, Loader2, X } from 'lucide-react';
+import { Check, ChevronDown, Loader2, NotebookPen, X } from 'lucide-react';
 import {
   Button,
   Card,
@@ -11,6 +11,7 @@ import {
 } from '@/components/ui';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
 import { ScoreNotesEditor } from '@/components/tracker/ScoreNotesEditor';
+import { TINTED_ICON } from '@/components/tracker/PaperRow';
 import { removeTodo } from '@/lib/db';
 import { getPaper } from '@/lib/catalog';
 import { cn } from '@/lib/cn';
@@ -18,8 +19,9 @@ import type { Completion, Paper, TodoItem } from '@/types';
 
 /**
  * The personal to-do queue (top of the Tracker). Items keep the order they were
- * added in. Completed items stay in the list, shaded (not struck through), and
- * can be completed/uncompleted and removed here.
+ * added in. Outstanding items are shaded amber ("in progress"); completed ones
+ * stay in the list shaded mint (not struck through), and can be
+ * completed/uncompleted and removed here.
  */
 export function TodoList({
   uid,
@@ -86,6 +88,7 @@ function TodoRow({
 }) {
   const [removing, setRemoving] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const hasDetails = Boolean(completion?.notes) || completion?.score != null;
 
   const paper = getPaper(todo.paperId);
 
@@ -113,7 +116,9 @@ function TodoRow({
     <li
       className={cn(
         'rounded-md border transition-colors',
-        completed ? 'bg-completed text-completed-foreground border-transparent' : 'bg-card',
+        completed
+          ? 'border-completed-foreground/20 bg-completed text-completed-foreground'
+          : 'border-inprogress-foreground/30 bg-inprogress text-inprogress-foreground',
       )}
     >
       <div className="flex items-center gap-2 px-2 py-1.5 sm:px-3">
@@ -128,7 +133,9 @@ function TodoRow({
             'flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-colors',
             completed
               ? 'border-transparent bg-primary text-primary-foreground'
-              : 'border-input hover:border-primary',
+              // Every row here is shaded, so outline the empty box in the row's
+              // own text color — `border-input` disappears against the amber.
+              : 'border-current/60 hover:border-current',
             !paper && 'opacity-50',
           )}
         >
@@ -137,23 +144,23 @@ function TodoRow({
 
         <span className="flex-1 truncate text-sm font-medium">{todo.paperLabel}</span>
 
-        {completed && (
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={() => setExpanded((v) => !v)}
-            aria-expanded={expanded}
-            className="hidden h-7 px-2 text-xs sm:inline-flex"
-          >
-            Score / notes
-            <ChevronDown
-              className={cn('ml-1 h-3.5 w-3.5 transition-transform', expanded && 'rotate-180')}
-            />
-          </Button>
-        )}
+        <Button
+          type="button"
+          variant={hasDetails ? 'secondary' : 'ghost'}
+          size="sm"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          aria-label={`Score and notes for ${todo.paperLabel}`}
+          title="Score / notes"
+          className="h-7 shrink-0 px-1.5 text-xs"
+        >
+          <NotebookPen className="h-3.5 w-3.5" />
+          <ChevronDown
+            className={cn('ml-0.5 h-3 w-3 transition-transform', expanded && 'rotate-180')}
+          />
+        </Button>
 
-        {paper && <PdfOpenButton storagePath={paper.storagePath} />}
+        {paper && <PdfOpenButton storagePath={paper.storagePath} className={TINTED_ICON} />}
 
         <button
           type="button"
@@ -161,28 +168,23 @@ function TodoRow({
           disabled={removing}
           aria-label={`Remove ${todo.paperLabel} from to-do`}
           title="Remove from to-do"
-          className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
+          className={cn(
+            'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-colors disabled:opacity-50',
+            TINTED_ICON,
+          )}
         >
           {removing ? <Loader2 className="h-4 w-4 animate-spin" /> : <X className="h-4 w-4" />}
         </button>
       </div>
 
-      {/* On mobile the score/notes toggle gets its own full-width row. */}
-      {completed && (
-        <button
-          type="button"
-          onClick={() => setExpanded((v) => !v)}
-          aria-expanded={expanded}
-          className="flex w-full items-center justify-center gap-1 border-t border-border/40 px-3 py-1.5 text-xs font-medium sm:hidden"
-        >
-          Score / notes
-          <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', expanded && 'rotate-180')} />
-        </button>
-      )}
-
-      {completed && expanded && (
+      {expanded && (
         <div className="px-2 pb-2 sm:px-3 sm:pb-3">
-          <ScoreNotesEditor uid={uid} paperId={todo.paperId} completion={completion} />
+          <ScoreNotesEditor
+            uid={uid}
+            paperId={todo.paperId}
+            paperLabel={todo.paperLabel}
+            completion={completion}
+          />
         </div>
       )}
     </li>

@@ -163,9 +163,14 @@ export function useBountyStandings(
 
 /** A user's completions (private). Pass undefined to get an empty result. */
 export function useCompletions(uid: string | undefined): {
+  /** Completed papers only. */
   completions: Completion[];
   completedIds: Set<string>;
-  byId: Map<string, Completion>;
+  /**
+   * Every completion doc keyed by paperId, INCLUDING un-ticked ones — these
+   * carry the private score/notes, which a paper may have before it is done.
+   */
+  detailsById: Map<string, Completion>;
   loading: boolean;
   /**
    * Optimistically mark a paper complete/incomplete. The tick flips instantly
@@ -175,14 +180,16 @@ export function useCompletions(uid: string | undefined): {
    */
   setCompleted: (paper: Paper, desired: boolean) => void;
 } {
-  const [completions, setCompletions] = useState<Completion[]>([]);
+  // Every doc, completed or not — the un-completed ones are kept so their
+  // score/notes stay readable (see `detailsById`).
+  const [allCompletions, setAllCompletions] = useState<Completion[]>([]);
   const [loading, setLoading] = useState(true);
   // paperId → desired completed state, held only while a write is in flight (or
   // until the live snapshot catches up). This is what makes the tick instant.
   const [overrides, setOverrides] = useState<Map<string, boolean>>(new Map());
   useEffect(() => {
     if (!uid) {
-      setCompletions([]);
+      setAllCompletions([]);
       setOverrides(new Map());
       setLoading(false);
       return;
@@ -191,17 +198,20 @@ export function useCompletions(uid: string | undefined): {
     const unsub = onSnapshot(
       collection(db, 'users', uid, 'completions'),
       (snap) => {
-        // Un-completed papers keep their doc (to preserve score/notes) flagged
-        // `completed: false` — exclude them so they don't count as completed.
-        setCompletions(
-          snap.docs.filter((d) => d.data().completed !== false).map(mapCompletion),
-        );
+        setAllCompletions(snap.docs.map(mapCompletion));
         setLoading(false);
       },
       () => setLoading(false),
     );
     return unsub;
   }, [uid]);
+
+  // Papers flagged `completed: false` keep their doc (to preserve score/notes)
+  // — exclude them so they don't count as completed.
+  const completions = useMemo(
+    () => allCompletions.filter((c) => c.completed),
+    [allCompletions],
+  );
 
   const serverIds = useMemo(() => new Set(completions.map((c) => c.paperId)), [completions]);
 
@@ -249,8 +259,11 @@ export function useCompletions(uid: string | undefined): {
     }
     return set;
   }, [serverIds, overrides]);
-  const byId = useMemo(() => new Map(completions.map((c) => [c.paperId, c])), [completions]);
-  return { completions, completedIds, byId, loading, setCompleted };
+  const detailsById = useMemo(
+    () => new Map(allCompletions.map((c) => [c.paperId, c])),
+    [allCompletions],
+  );
+  return { completions, completedIds, detailsById, loading, setCompleted };
 }
 
 /** A user's to-do queue, ordered by manual drag-order. */

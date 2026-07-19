@@ -8,17 +8,21 @@ import { saveCompletionDetails } from '@/lib/db';
 import type { Completion } from '@/types';
 
 /**
- * Inline (non-modal) editor for the private score + notes on an already-completed
- * paper. Saves on the Save button; the score is an optional 0–100 percentage and
- * notes are free text. Always shows the privacy reassurance (DESIGN.md §7.3).
+ * Inline (non-modal) editor for a paper's private score + notes, available
+ * whether or not the paper is completed (DESIGN.md §7.3 — "anytime"). Saves on
+ * blur or the Save button; the score is an optional 0–100 percentage and notes
+ * are free text. Always shows the privacy reassurance.
  */
 export function ScoreNotesEditor({
   uid,
   paperId,
+  paperLabel,
   completion,
 }: {
   uid: string;
   paperId: string;
+  /** Stored alongside the notes when this is the paper's first saved detail. */
+  paperLabel: string;
   /** The existing completion (for its current score/notes), if any. */
   completion: Completion | undefined;
 }) {
@@ -60,6 +64,7 @@ export function ScoreNotesEditor({
     setSaving(true);
     try {
       await saveCompletionDetails(uid, paperId, {
+        paperLabel,
         score: parsed,
         notes: notes.trim() === '' ? null : notes.trim(),
       });
@@ -74,28 +79,45 @@ export function ScoreNotesEditor({
 
   return (
     <div className="space-y-3 rounded-md border bg-background/60 p-3">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-        <div className="space-y-1.5 sm:w-32">
-          <Label htmlFor={`score-${paperId}`}>Score (%)</Label>
-          <Input
-            id={`score-${paperId}`}
-            type="number"
-            inputMode="numeric"
-            min={0}
-            max={100}
-            placeholder="optional"
-            value={score}
-            onChange={(e) => {
-              touched.current = true;
-              setScore(e.target.value);
-            }}
-            onBlur={() => {
-              if (dirty) void save();
-            }}
-          />
+      {/* Label-beside-field rows, so score and notes read as one short form. */}
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <Label htmlFor={`score-${paperId}`} className="w-14 shrink-0">
+            Score:
+          </Label>
+          {/* Plain text input, not type="number": the spinner arrows are useless
+              for a percentage and crowd the box. A trailing % sits inside it
+              instead, so the unit is visible while typing. */}
+          <div className="relative w-16">
+            <Input
+              id={`score-${paperId}`}
+              type="text"
+              inputMode="numeric"
+              maxLength={3}
+              // No placeholder — the box is only wide enough for the number
+              // itself. Blank simply means "not recorded".
+              value={score}
+              onChange={(e) => {
+                touched.current = true;
+                setScore(e.target.value);
+              }}
+              onBlur={() => {
+                if (dirty) void save();
+              }}
+              className="h-8 w-full px-2 pr-5"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-sm text-muted-foreground"
+            >
+              %
+            </span>
+          </div>
         </div>
-        <div className="flex-1 space-y-1.5">
-          <Label htmlFor={`notes-${paperId}`}>Notes</Label>
+        <div className="flex items-start gap-2">
+          <Label htmlFor={`notes-${paperId}`} className="w-14 shrink-0 pt-2">
+            Notes:
+          </Label>
           <textarea
             id={`notes-${paperId}`}
             rows={2}
@@ -108,18 +130,15 @@ export function ScoreNotesEditor({
             onBlur={() => {
               if (dirty) void save();
             }}
-            className="flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex min-w-0 flex-1 rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
           />
         </div>
       </div>
 
       <div className="flex items-center justify-between gap-3">
-        <p className="flex items-start gap-1.5 text-xs text-muted-foreground">
-          <Lock className="mt-0.5 h-3 w-3 shrink-0" />
-          <span>
-            Your scores and notes are private — only you and your teacher can see them.
-            Other students only see how many papers you&rsquo;ve completed.
-          </span>
+        <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <Lock className="h-3 w-3 shrink-0" />
+          <span>Only you and your teacher can see this.</span>
         </p>
         <Button
           type="button"

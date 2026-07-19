@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { Check, ChevronDown, Loader2, Plus } from 'lucide-react';
+import { Check, ChevronDown, Loader2, NotebookPen, Plus } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { LevelBadge } from '@/components/LevelBadge';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
@@ -13,9 +13,17 @@ import { cn } from '@/lib/cn';
 import type { Completion, Paper } from '@/types';
 
 /**
+ * Icon-button colors for a shaded (completed / in-progress) row: `muted-
+ * foreground` is mixed for the page background, not for a tinted one, so it
+ * goes muddy on the mint and amber fills. Ride the row's own text color instead.
+ */
+export const TINTED_ICON = 'text-current/70 hover:bg-foreground/10 hover:text-current';
+
+/**
  * One row in the full paper list: an instant-tick completion checkbox, the
- * paper label, an "add to to-do" toggle, and a PDF-open button. When complete,
- * the row is shaded and reveals an inline (non-modal) score/notes editor.
+ * paper label, an "add to to-do" toggle, and a PDF-open button. Rows are shaded
+ * by state — amber while on the to-do list, mint once complete — and every row
+ * can reveal an inline (non-modal) score/notes editor.
  */
 export function PaperRow({
   uid,
@@ -41,6 +49,10 @@ export function PaperRow({
   const promptSignIn = useAuthGate((s) => s.promptSignIn);
   const [todoBusy, setTodoBusy] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  // Something already recorded — worth flagging so it isn't hidden behind a
+  // collapsed row the student has no reason to open.
+  const hasDetails = Boolean(completion?.notes) || completion?.score != null;
+  const shaded = completed || inTodo;
 
   function toggleComplete() {
     // Guests: send them through the sign-in gate, then mark it done on the way
@@ -95,9 +107,16 @@ export function PaperRow({
 
   return (
     <li
+      // Shaded rows border in their own tint rather than going borderless —
+      // against a filled row a transparent edge leaves stacked rows blurring
+      // into one another.
       className={cn(
         'rounded-md border transition-colors',
-        completed ? 'bg-completed text-completed-foreground border-transparent' : 'bg-card',
+        completed
+          ? 'border-completed-foreground/20 bg-completed text-completed-foreground'
+          : inTodo
+            ? 'border-inprogress-foreground/30 bg-inprogress text-inprogress-foreground'
+            : 'bg-card',
       )}
     >
       <div className="flex items-center gap-2 px-2 py-1 sm:px-3">
@@ -111,7 +130,11 @@ export function PaperRow({
             'flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-colors',
             completed
               ? 'border-transparent bg-primary text-primary-foreground'
-              : 'border-input hover:border-primary',
+              : inTodo
+                // On the amber row, `border-input` is near-invisible — outline
+                // the empty box in the row's own text color instead.
+                ? 'border-current/60 hover:border-current'
+                : 'border-input hover:border-primary',
           )}
         >
           {completed ? <Check className="h-3.5 w-3.5" /> : null}
@@ -123,18 +146,20 @@ export function PaperRow({
           <LevelBadge level={setLevel(paper.setId)} className="hidden shrink-0 text-[10px] sm:inline-flex" />
         )}
 
-        {completed && (
+        {uid && (
           <Button
             type="button"
-            variant="ghost"
+            variant={hasDetails ? 'secondary' : 'ghost'}
             size="sm"
             onClick={() => setExpanded((v) => !v)}
             aria-expanded={expanded}
-            className="hidden h-6 px-2 text-xs sm:inline-flex"
+            aria-label={`Score and notes for ${paper.label}`}
+            title="Score / notes"
+            className="h-6 shrink-0 px-1.5 text-xs"
           >
-            Score / notes
+            <NotebookPen className="h-3.5 w-3.5" />
             <ChevronDown
-              className={cn('ml-1 h-3.5 w-3.5 transition-transform', expanded && 'rotate-180')}
+              className={cn('ml-0.5 h-3 w-3 transition-transform', expanded && 'rotate-180')}
             />
           </Button>
         )}
@@ -145,6 +170,7 @@ export function PaperRow({
           size="sm"
           onClick={toggleTodo}
           disabled={todoBusy}
+          title={inTodo ? 'Remove from to-do' : 'Add to to-do'}
           className="h-6 shrink-0 px-2 text-xs"
         >
           {todoBusy ? (
@@ -154,28 +180,22 @@ export function PaperRow({
           ) : (
             <Plus className="h-3.5 w-3.5 sm:mr-1" />
           )}
-          <span className="hidden sm:inline">{inTodo ? 'In to-do' : 'Add to to-do'}</span>
+          {/* Same label either way — the tick/plus icon and the filled variant
+              carry the state, and a fixed label keeps the row from reflowing. */}
+          <span className="hidden sm:inline">To-do</span>
         </Button>
 
-        <PdfOpenButton storagePath={paper.storagePath} />
+        <PdfOpenButton storagePath={paper.storagePath} className={cn(shaded && TINTED_ICON)} />
       </div>
 
-      {/* On mobile the score/notes toggle gets its own full-width row. */}
-      {completed && (
-        <button
-          type="button"
-          onClick={() => setExpanded((v) => !v)}
-          aria-expanded={expanded}
-          className="flex w-full items-center justify-center gap-1 border-t border-border/40 px-3 py-1.5 text-xs font-medium sm:hidden"
-        >
-          Score / notes
-          <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', expanded && 'rotate-180')} />
-        </button>
-      )}
-
-      {completed && expanded && uid && (
+      {expanded && uid && (
         <div className="px-2 pb-2 sm:px-3 sm:pb-3">
-          <ScoreNotesEditor uid={uid} paperId={paper.id} completion={completion} />
+          <ScoreNotesEditor
+            uid={uid}
+            paperId={paper.id}
+            paperLabel={paper.label}
+            completion={completion}
+          />
         </div>
       )}
     </li>

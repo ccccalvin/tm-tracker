@@ -50,6 +50,11 @@ export default {
           DEFAULT: "hsl(var(--completed))",
           foreground: "hsl(var(--completed-foreground))",
         },
+        // Papers sitting on the to-do list, not done yet.
+        inprogress: {
+          DEFAULT: "hsl(var(--inprogress))",
+          foreground: "hsl(var(--inprogress-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

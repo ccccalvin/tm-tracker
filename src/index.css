@@ -45,6 +45,10 @@
     --completed: 152 81% 96%;
     --completed-foreground: 164 86% 20%;
 
+    /* On the to-do list but not done yet ("in progress") — amber */
+    --inprogress: 48 96% 91%;
+    --inprogress-foreground: 26 84% 28%;
+
     /* Medal row tints (pastel) */
     --medal-gold: 55 97% 88%;
     --medal-silver: 210 40% 94%;
@@ -84,6 +88,11 @@
     /* Muted deep-green completed shade for dark */
     --completed: 164 60% 14%;
     --completed-foreground: 152 60% 80%;
+
+    /* Muted amber in-progress shade for dark. Kept low-saturation: a richer
+       amber drowns the row's borders and checkbox outline. */
+    --inprogress: 40 32% 13%;
+    --inprogress-foreground: 46 90% 78%;
 
     /* Muted medal tints for dark */
     --medal-gold: 45 40% 22%;
