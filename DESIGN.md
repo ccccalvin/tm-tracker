@@ -149,7 +149,7 @@ Two stacked sections; the page scrolls (the full list is long and need not fit t
 ### 7.3 Logging mechanics
 - One tap on the checkbox = done & counted (leaderboard updates live).
 - Optional **score (percentage 0–100%)** and **notes** added inline, anytime — **before or after** the paper is ticked. Notes on an un-ticked paper don't count it as completed.
-- **Privacy:** score + notes are visible **only to the student and admins**. A clear, visible reassurance is shown: *"Your scores and notes are private — only you and your teacher can see them. Other students only see how many papers you've completed."*
+- **Privacy:** score + notes are visible **only to the student and admins**. A short, always-visible reassurance sits under the fields: *"Only you and your teacher can see this."*
 
 ---
 

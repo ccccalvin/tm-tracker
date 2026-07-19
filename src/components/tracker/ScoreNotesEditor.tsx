@@ -79,9 +79,12 @@ export function ScoreNotesEditor({
 
   return (
     <div className="space-y-3 rounded-md border bg-background/60 p-3">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-        <div className="space-y-1.5 sm:w-32">
-          <Label htmlFor={`score-${paperId}`}>Score (%)</Label>
+      {/* Label-beside-field rows, so score and notes read as one short form. */}
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <Label htmlFor={`score-${paperId}`} className="w-16 shrink-0">
+            Score (%):
+          </Label>
           <Input
             id={`score-${paperId}`}
             type="number"
@@ -97,10 +100,13 @@ export function ScoreNotesEditor({
             onBlur={() => {
               if (dirty) void save();
             }}
+            className="h-8 w-24"
           />
         </div>
-        <div className="flex-1 space-y-1.5">
-          <Label htmlFor={`notes-${paperId}`}>Notes</Label>
+        <div className="flex items-start gap-2">
+          <Label htmlFor={`notes-${paperId}`} className="w-16 shrink-0 pt-2">
+            Notes:
+          </Label>
           <textarea
             id={`notes-${paperId}`}
             rows={2}
@@ -113,18 +119,15 @@ export function ScoreNotesEditor({
             onBlur={() => {
               if (dirty) void save();
             }}
-            className="flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex min-w-0 flex-1 rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
           />
         </div>
       </div>
 
       <div className="flex items-center justify-between gap-3">
-        <p className="flex items-start gap-1.5 text-xs text-muted-foreground">
-          <Lock className="mt-0.5 h-3 w-3 shrink-0" />
-          <span>
-            Your scores and notes are private — only you and your teacher can see them.
-            Other students only see how many papers you&rsquo;ve completed.
-          </span>
+        <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <Lock className="h-3 w-3 shrink-0" />
+          <span>Only you and your teacher can see this.</span>
         </p>
         <Button
           type="button"

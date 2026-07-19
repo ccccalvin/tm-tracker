@@ -155,7 +155,9 @@ export function PaperRow({
           size="sm"
           onClick={toggleTodo}
           disabled={todoBusy}
-          className="h-6 shrink-0 px-2 text-xs"
+          // Fixed width so the row doesn't reflow when the label flips between
+          // "To-do" and "In to-do".
+          className="h-6 shrink-0 px-2 text-xs sm:w-[88px]"
         >
           {todoBusy ? (
             <Loader2 className="h-3.5 w-3.5 animate-spin" />
