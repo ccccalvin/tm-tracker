@@ -104,7 +104,7 @@ export function TrackerPage() {
     // uses — so both columns get room; below lg it collapses to the original
     // single-column stack (progress → to-do → all papers).
     <div className="lg:relative lg:left-1/2 lg:w-screen lg:-translate-x-1/2">
-      <div className="grid gap-6 lg:grid-cols-[360px_minmax(0,520px)] lg:justify-center lg:px-6">
+      <div className="grid gap-6 lg:grid-cols-[460px_minmax(0,570px)] lg:justify-center lg:px-6">
         {/* LEFT RAIL — progress + to-do, pinned while the list scrolls */}
         <div className="space-y-6 lg:sticky lg:top-20 lg:self-start">
           {completionsLoading ? (

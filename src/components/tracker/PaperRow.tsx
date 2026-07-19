@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { Check, ChevronDown, FileText, Loader2, Plus } from 'lucide-react';
+import { Check, ChevronDown, Loader2, NotebookPen, Plus } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { LevelBadge } from '@/components/LevelBadge';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
@@ -139,15 +139,12 @@ export function PaperRow({
             onClick={() => setExpanded((v) => !v)}
             aria-expanded={expanded}
             aria-label={`Score and notes for ${paper.label}`}
-            className="h-6 shrink-0 px-2 text-xs"
+            title="Score / notes"
+            className="h-6 shrink-0 px-1.5 text-xs"
           >
-            <FileText className="h-3.5 w-3.5 sm:mr-1" />
-            <span className="hidden sm:inline">Score / notes</span>
+            <NotebookPen className="h-3.5 w-3.5" />
             <ChevronDown
-              className={cn(
-                'ml-1 hidden h-3.5 w-3.5 transition-transform sm:inline',
-                expanded && 'rotate-180',
-              )}
+              className={cn('ml-0.5 h-3 w-3 transition-transform', expanded && 'rotate-180')}
             />
           </Button>
         )}
