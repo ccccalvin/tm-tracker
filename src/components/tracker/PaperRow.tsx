@@ -164,7 +164,7 @@ export function PaperRow({
           ) : (
             <Plus className="h-3.5 w-3.5 sm:mr-1" />
           )}
-          <span className="hidden sm:inline">{inTodo ? 'In to-do' : 'Add to to-do'}</span>
+          <span className="hidden sm:inline">{inTodo ? 'In to-do' : 'To-do'}</span>
         </Button>
 
         <PdfOpenButton storagePath={paper.storagePath} />
