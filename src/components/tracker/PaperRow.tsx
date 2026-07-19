@@ -13,6 +13,13 @@ import { cn } from '@/lib/cn';
 import type { Completion, Paper } from '@/types';
 
 /**
+ * Icon-button colors for a shaded (completed / in-progress) row: `muted-
+ * foreground` is mixed for the page background, not for a tinted one, so it
+ * goes muddy on the mint and amber fills. Ride the row's own text color instead.
+ */
+export const TINTED_ICON = 'text-current/70 hover:bg-foreground/10 hover:text-current';
+
+/**
  * One row in the full paper list: an instant-tick completion checkbox, the
  * paper label, an "add to to-do" toggle, and a PDF-open button. Rows are shaded
  * by state — amber while on the to-do list, mint once complete — and every row
@@ -45,6 +52,7 @@ export function PaperRow({
   // Something already recorded — worth flagging so it isn't hidden behind a
   // collapsed row the student has no reason to open.
   const hasDetails = Boolean(completion?.notes) || completion?.score != null;
+  const shaded = completed || inTodo;
 
   function toggleComplete() {
     // Guests: send them through the sign-in gate, then mark it done on the way
@@ -99,12 +107,15 @@ export function PaperRow({
 
   return (
     <li
+      // Shaded rows border in their own tint rather than going borderless —
+      // against a filled row a transparent edge leaves stacked rows blurring
+      // into one another.
       className={cn(
         'rounded-md border transition-colors',
         completed
-          ? 'bg-completed text-completed-foreground border-transparent'
+          ? 'border-completed-foreground/20 bg-completed text-completed-foreground'
           : inTodo
-            ? 'bg-inprogress text-inprogress-foreground border-transparent'
+            ? 'border-inprogress-foreground/30 bg-inprogress text-inprogress-foreground'
             : 'bg-card',
       )}
     >
@@ -119,7 +130,11 @@ export function PaperRow({
             'flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-colors',
             completed
               ? 'border-transparent bg-primary text-primary-foreground'
-              : 'border-input hover:border-primary',
+              : inTodo
+                // On the amber row, `border-input` is near-invisible — outline
+                // the empty box in the row's own text color instead.
+                ? 'border-current/60 hover:border-current'
+                : 'border-input hover:border-primary',
           )}
         >
           {completed ? <Check className="h-3.5 w-3.5" /> : null}
@@ -170,7 +185,7 @@ export function PaperRow({
           <span className="hidden sm:inline">To-do</span>
         </Button>
 
-        <PdfOpenButton storagePath={paper.storagePath} />
+        <PdfOpenButton storagePath={paper.storagePath} className={cn(shaded && TINTED_ICON)} />
       </div>
 
       {expanded && uid && (

@@ -11,6 +11,7 @@ import {
 } from '@/components/ui';
 import { PdfOpenButton } from '@/components/PdfOpenButton';
 import { ScoreNotesEditor } from '@/components/tracker/ScoreNotesEditor';
+import { TINTED_ICON } from '@/components/tracker/PaperRow';
 import { removeTodo } from '@/lib/db';
 import { getPaper } from '@/lib/catalog';
 import { cn } from '@/lib/cn';
@@ -114,10 +115,10 @@ function TodoRow({
   return (
     <li
       className={cn(
-        'rounded-md border border-transparent transition-colors',
+        'rounded-md border transition-colors',
         completed
-          ? 'bg-completed text-completed-foreground'
-          : 'bg-inprogress text-inprogress-foreground',
+          ? 'border-completed-foreground/20 bg-completed text-completed-foreground'
+          : 'border-inprogress-foreground/30 bg-inprogress text-inprogress-foreground',
       )}
     >
       <div className="flex items-center gap-2 px-2 py-1.5 sm:px-3">
@@ -132,7 +133,9 @@ function TodoRow({
             'flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-colors',
             completed
               ? 'border-transparent bg-primary text-primary-foreground'
-              : 'border-input hover:border-primary',
+              // Every row here is shaded, so outline the empty box in the row's
+              // own text color — `border-input` disappears against the amber.
+              : 'border-current/60 hover:border-current',
             !paper && 'opacity-50',
           )}
         >
@@ -157,7 +160,7 @@ function TodoRow({
           />
         </Button>
 
-        {paper && <PdfOpenButton storagePath={paper.storagePath} />}
+        {paper && <PdfOpenButton storagePath={paper.storagePath} className={TINTED_ICON} />}
 
         <button
           type="button"
@@ -165,7 +168,10 @@ function TodoRow({
           disabled={removing}
           aria-label={`Remove ${todo.paperLabel} from to-do`}
           title="Remove from to-do"
-          className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
+          className={cn(
+            'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-colors disabled:opacity-50',
+            TINTED_ICON,
+          )}
         >
           {removing ? <Loader2 className="h-4 w-4 animate-spin" /> : <X className="h-4 w-4" />}
         </button>
